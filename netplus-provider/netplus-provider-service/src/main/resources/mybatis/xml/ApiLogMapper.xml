@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.ApiLogMapper">
+  <resultMap id="BaseResultMap" type="netplus.provider.api.pojo.ygmalluser.ApiLog">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="API_NAME" jdbcType="VARCHAR" property="apiName" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="DIRECTION" jdbcType="DECIMAL" property="direction" />
+    <result column="RESPONSE" jdbcType="VARCHAR" property="response" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="REQUEST_ID" jdbcType="VARCHAR" property="requestId" />
+    <result column="LOG_TYPE" jdbcType="DECIMAL" property="logType" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, API_NAME, CONTENT, DIRECTION, RESPONSE, CREATE_USER, CREATE_DATE, UPDATE_DATE, 
+    REQUEST_ID, LOG_TYPE, DESCRIPTION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.API_LOG
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from YGMALLUSER.API_LOG
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="netplus.provider.api.pojo.ygmalluser.ApiLog">
+    insert into YGMALLUSER.API_LOG (ID, API_NAME, CONTENT, 
+      DIRECTION, RESPONSE, CREATE_USER, 
+      CREATE_DATE, UPDATE_DATE, REQUEST_ID, 
+      LOG_TYPE, DESCRIPTION)
+    values (#{id,jdbcType=DECIMAL}, #{apiName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=DECIMAL}, #{response,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{requestId,jdbcType=VARCHAR}, 
+      #{logType,jdbcType=DECIMAL}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.provider.api.pojo.ygmalluser.ApiLog">
+    insert into YGMALLUSER.API_LOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="apiName != null">
+        API_NAME,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="direction != null">
+        DIRECTION,
+      </if>
+      <if test="response != null">
+        RESPONSE,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="requestId != null">
+        REQUEST_ID,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="apiName != null">
+        #{apiName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null">
+        #{direction,jdbcType=DECIMAL},
+      </if>
+      <if test="response != null">
+        #{response,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null">
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.provider.api.pojo.ygmalluser.ApiLog">
+    update YGMALLUSER.API_LOG
+    <set>
+      <if test="apiName != null">
+        API_NAME = #{apiName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null">
+        DIRECTION = #{direction,jdbcType=DECIMAL},
+      </if>
+      <if test="response != null">
+        RESPONSE = #{response,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="requestId != null">
+        REQUEST_ID = #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.ApiLog">
+    update YGMALLUSER.API_LOG
+    set API_NAME = #{apiName,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      DIRECTION = #{direction,jdbcType=DECIMAL},
+      RESPONSE = #{response,jdbcType=VARCHAR},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      REQUEST_ID = #{requestId,jdbcType=VARCHAR},
+      LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

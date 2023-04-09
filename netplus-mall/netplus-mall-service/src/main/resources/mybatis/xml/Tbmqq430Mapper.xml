@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq430Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+    <id column="GOODID" jdbcType="VARCHAR" property="goodid" />
+    <result column="PONO" jdbcType="VARCHAR" property="pono" />
+    <result column="POITEMNO" jdbcType="VARCHAR" property="poitemno" />
+    <result column="CATEGORYNAME" jdbcType="VARCHAR" property="categoryname" />
+    <result column="ONELEVELCLANAME" jdbcType="VARCHAR" property="onelevelclaname" />
+    <result column="TWOLEVELCLANAME" jdbcType="VARCHAR" property="twolevelclaname" />
+    <result column="PRODUCTNAME" jdbcType="VARCHAR" property="productname" />
+    <result column="GOODNO" jdbcType="VARCHAR" property="goodno" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="UNITMETHOD" jdbcType="VARCHAR" property="unitmethod" />
+    <result column="QTY" jdbcType="DECIMAL" property="qty" />
+    <result column="QTYUNIT" jdbcType="VARCHAR" property="qtyunit" />
+    <result column="MINBUYQTY" jdbcType="DECIMAL" property="minbuyqty" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="NOTAXPRICE" jdbcType="DECIMAL" property="notaxprice" />
+    <result column="ORIGINPRICE" jdbcType="DECIMAL" property="originprice" />
+    <result column="TAX" jdbcType="DECIMAL" property="tax" />
+    <result column="SPEC" jdbcType="VARCHAR" property="spec" />
+    <result column="BRAND" jdbcType="VARCHAR" property="brand" />
+    <result column="WEIGHT" jdbcType="DECIMAL" property="weight" />
+    <result column="WEIGHTUNIT" jdbcType="VARCHAR" property="weightunit" />
+    <result column="PACKTHICK" jdbcType="DECIMAL" property="packthick" />
+    <result column="PACKWIDTH" jdbcType="DECIMAL" property="packwidth" />
+    <result column="PACKHEIGHT" jdbcType="DECIMAL" property="packheight" />
+    <result column="PACKUNIT" jdbcType="VARCHAR" property="packunit" />
+    <result column="REFERDELIVERYDATE" jdbcType="DECIMAL" property="referdeliverydate" />
+    <result column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <result column="SUPPLIERNAME" jdbcType="VARCHAR" property="suppliername" />
+    <result column="REQNO" jdbcType="VARCHAR" property="reqno" />
+    <result column="REQITEMNO" jdbcType="VARCHAR" property="reqitemno" />
+    <result column="POPRICEDATE" jdbcType="VARCHAR" property="popricedate" />
+    <result column="POPRICETIME" jdbcType="VARCHAR" property="popricetime" />
+    <result column="QLTY" jdbcType="VARCHAR" property="qlty" />
+    <result column="GROUPNO" jdbcType="VARCHAR" property="groupno" />
+    <result column="PICTUREURL" jdbcType="VARCHAR" property="pictureurl" />
+    <result column="SHELVESDATE" jdbcType="VARCHAR" property="shelvesdate" />
+    <result column="SHELVESTIME" jdbcType="VARCHAR" property="shelvestime" />
+    <result column="AUDITUSER" jdbcType="VARCHAR" property="audituser" />
+    <result column="REJECTREASON" jdbcType="VARCHAR" property="rejectreason" />
+    <result column="ISINTTIMEPURCHASE" jdbcType="VARCHAR" property="isinttimepurchase" />
+    <result column="ISDECIMALPURCHASE" jdbcType="VARCHAR" property="isdecimalpurchase" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="DELETED" jdbcType="VARCHAR" property="deleted" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="SOURCEFROM" jdbcType="VARCHAR" property="sourcefrom" />
+    <result column="ISTAXEXCEPTION" jdbcType="VARCHAR" property="istaxexception" />
+    <result column="AGENT" jdbcType="VARCHAR" property="agent" />
+    <result column="APPLYREASON" jdbcType="VARCHAR" property="applyreason" />
+    <result column="PAYTYPE" jdbcType="VARCHAR" property="paytype" />
+    <result column="PAYTYPENAME" jdbcType="VARCHAR" property="paytypename" />
+    <result column="PAYMETHOD" jdbcType="VARCHAR" property="paymethod" />
+    <result column="PAYMETHODNAME" jdbcType="VARCHAR" property="paymethodname" />
+    <result column="PONOPK" jdbcType="VARCHAR" property="ponopk" />
+    <result column="SUPPLIERPK" jdbcType="VARCHAR" property="supplierpk" />
+    <result column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+    <result column="CATEGORYPK" jdbcType="VARCHAR" property="categorypk" />
+    <result column="ONELEVELCLAPK" jdbcType="VARCHAR" property="onelevelclapk" />
+    <result column="TWOLEVELCLAPK" jdbcType="VARCHAR" property="twolevelclapk" />
+    <result column="HASPIC" jdbcType="VARCHAR" property="haspic" />
+    <result column="POPRICESTARTDATE" jdbcType="VARCHAR" property="popricestartdate" />
+    <result column="POPRICESTARTTIME" jdbcType="VARCHAR" property="popricestarttime" />
+    <result column="LEADTIMENUM" jdbcType="DECIMAL" property="leadtimenum" />
+    <result column="AGENTNO" jdbcType="VARCHAR" property="agentno" />
+    <result column="AGENTPHONE" jdbcType="VARCHAR" property="agentphone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GOODID, PONO, POITEMNO, CATEGORYNAME, ONELEVELCLANAME, TWOLEVELCLANAME, PRODUCTNAME, 
+    GOODNO, MATRLNO, UNITMETHOD, QTY, QTYUNIT, MINBUYQTY, PRICE, NOTAXPRICE, ORIGINPRICE, 
+    TAX, SPEC, BRAND, WEIGHT, WEIGHTUNIT, PACKTHICK, PACKWIDTH, PACKHEIGHT, PACKUNIT, 
+    REFERDELIVERYDATE, SUPPLIERNO, SUPPLIERNAME, REQNO, REQITEMNO, POPRICEDATE, POPRICETIME, 
+    QLTY, GROUPNO, PICTUREURL, SHELVESDATE, SHELVESTIME, AUDITUSER, REJECTREASON, ISINTTIMEPURCHASE, 
+    ISDECIMALPURCHASE, STATUS, DELETED, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, 
+    UPDATEDATE, UPDATETIME, SOURCEFROM, ISTAXEXCEPTION, AGENT, APPLYREASON, PAYTYPE, 
+    PAYTYPENAME, PAYMETHOD, PAYMETHODNAME, PONOPK, SUPPLIERPK, MATRLID, MATRLTM, CATEGORYPK, 
+    ONELEVELCLAPK, TWOLEVELCLAPK, HASPIC, POPRICESTARTDATE, POPRICESTARTTIME, LEADTIMENUM, 
+    AGENTNO, AGENTPHONE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ430
+    where GOODID = #{goodid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.TBMQQ430
+    where GOODID = #{goodid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+    insert into YGMALLUSER.TBMQQ430 (GOODID, PONO, POITEMNO, 
+      CATEGORYNAME, ONELEVELCLANAME, TWOLEVELCLANAME, 
+      PRODUCTNAME, GOODNO, MATRLNO, 
+      UNITMETHOD, QTY, QTYUNIT, 
+      MINBUYQTY, PRICE, NOTAXPRICE, 
+      ORIGINPRICE, TAX, SPEC, 
+      BRAND, WEIGHT, WEIGHTUNIT, 
+      PACKTHICK, PACKWIDTH, PACKHEIGHT, 
+      PACKUNIT, REFERDELIVERYDATE, SUPPLIERNO, 
+      SUPPLIERNAME, REQNO, REQITEMNO, 
+      POPRICEDATE, POPRICETIME, QLTY, 
+      GROUPNO, PICTUREURL, SHELVESDATE, 
+      SHELVESTIME, AUDITUSER, REJECTREASON, 
+      ISINTTIMEPURCHASE, ISDECIMALPURCHASE, STATUS, 
+      DELETED, CREATEUSER, CREATEDATE, 
+      CREATETIME, UPDATEUSER, UPDATEDATE, 
+      UPDATETIME, SOURCEFROM, ISTAXEXCEPTION, 
+      AGENT, APPLYREASON, PAYTYPE, 
+      PAYTYPENAME, PAYMETHOD, PAYMETHODNAME, 
+      PONOPK, SUPPLIERPK, MATRLID, 
+      MATRLTM, CATEGORYPK, ONELEVELCLAPK, 
+      TWOLEVELCLAPK, HASPIC, POPRICESTARTDATE, 
+      POPRICESTARTTIME, LEADTIMENUM, AGENTNO, 
+      AGENTPHONE)
+    values (#{goodid,jdbcType=VARCHAR}, #{pono,jdbcType=VARCHAR}, #{poitemno,jdbcType=VARCHAR}, 
+      #{categoryname,jdbcType=VARCHAR}, #{onelevelclaname,jdbcType=VARCHAR}, #{twolevelclaname,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{goodno,jdbcType=VARCHAR}, #{matrlno,jdbcType=VARCHAR}, 
+      #{unitmethod,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, #{qtyunit,jdbcType=VARCHAR}, 
+      #{minbuyqty,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, #{notaxprice,jdbcType=DECIMAL}, 
+      #{originprice,jdbcType=DECIMAL}, #{tax,jdbcType=DECIMAL}, #{spec,jdbcType=VARCHAR}, 
+      #{brand,jdbcType=VARCHAR}, #{weight,jdbcType=DECIMAL}, #{weightunit,jdbcType=VARCHAR}, 
+      #{packthick,jdbcType=DECIMAL}, #{packwidth,jdbcType=DECIMAL}, #{packheight,jdbcType=DECIMAL}, 
+      #{packunit,jdbcType=VARCHAR}, #{referdeliverydate,jdbcType=DECIMAL}, #{supplierno,jdbcType=VARCHAR}, 
+      #{suppliername,jdbcType=VARCHAR}, #{reqno,jdbcType=VARCHAR}, #{reqitemno,jdbcType=VARCHAR}, 
+      #{popricedate,jdbcType=VARCHAR}, #{popricetime,jdbcType=VARCHAR}, #{qlty,jdbcType=VARCHAR}, 
+      #{groupno,jdbcType=VARCHAR}, #{pictureurl,jdbcType=VARCHAR}, #{shelvesdate,jdbcType=VARCHAR}, 
+      #{shelvestime,jdbcType=VARCHAR}, #{audituser,jdbcType=VARCHAR}, #{rejectreason,jdbcType=VARCHAR}, 
+      #{isinttimepurchase,jdbcType=VARCHAR}, #{isdecimalpurchase,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{sourcefrom,jdbcType=VARCHAR}, #{istaxexception,jdbcType=VARCHAR}, 
+      #{agent,jdbcType=VARCHAR}, #{applyreason,jdbcType=VARCHAR}, #{paytype,jdbcType=VARCHAR}, 
+      #{paytypename,jdbcType=VARCHAR}, #{paymethod,jdbcType=VARCHAR}, #{paymethodname,jdbcType=VARCHAR}, 
+      #{ponopk,jdbcType=VARCHAR}, #{supplierpk,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, 
+      #{matrltm,jdbcType=VARCHAR}, #{categorypk,jdbcType=VARCHAR}, #{onelevelclapk,jdbcType=VARCHAR}, 
+      #{twolevelclapk,jdbcType=VARCHAR}, #{haspic,jdbcType=VARCHAR}, #{popricestartdate,jdbcType=VARCHAR}, 
+      #{popricestarttime,jdbcType=VARCHAR}, #{leadtimenum,jdbcType=DECIMAL}, #{agentno,jdbcType=VARCHAR}, 
+      #{agentphone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+    insert into YGMALLUSER.TBMQQ430
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodid != null">
+        GOODID,
+      </if>
+      <if test="pono != null">
+        PONO,
+      </if>
+      <if test="poitemno != null">
+        POITEMNO,
+      </if>
+      <if test="categoryname != null">
+        CATEGORYNAME,
+      </if>
+      <if test="onelevelclaname != null">
+        ONELEVELCLANAME,
+      </if>
+      <if test="twolevelclaname != null">
+        TWOLEVELCLANAME,
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME,
+      </if>
+      <if test="goodno != null">
+        GOODNO,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="unitmethod != null">
+        UNITMETHOD,
+      </if>
+      <if test="qty != null">
+        QTY,
+      </if>
+      <if test="qtyunit != null">
+        QTYUNIT,
+      </if>
+      <if test="minbuyqty != null">
+        MINBUYQTY,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="notaxprice != null">
+        NOTAXPRICE,
+      </if>
+      <if test="originprice != null">
+        ORIGINPRICE,
+      </if>
+      <if test="tax != null">
+        TAX,
+      </if>
+      <if test="spec != null">
+        SPEC,
+      </if>
+      <if test="brand != null">
+        BRAND,
+      </if>
+      <if test="weight != null">
+        WEIGHT,
+      </if>
+      <if test="weightunit != null">
+        WEIGHTUNIT,
+      </if>
+      <if test="packthick != null">
+        PACKTHICK,
+      </if>
+      <if test="packwidth != null">
+        PACKWIDTH,
+      </if>
+      <if test="packheight != null">
+        PACKHEIGHT,
+      </if>
+      <if test="packunit != null">
+        PACKUNIT,
+      </if>
+      <if test="referdeliverydate != null">
+        REFERDELIVERYDATE,
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME,
+      </if>
+      <if test="reqno != null">
+        REQNO,
+      </if>
+      <if test="reqitemno != null">
+        REQITEMNO,
+      </if>
+      <if test="popricedate != null">
+        POPRICEDATE,
+      </if>
+      <if test="popricetime != null">
+        POPRICETIME,
+      </if>
+      <if test="qlty != null">
+        QLTY,
+      </if>
+      <if test="groupno != null">
+        GROUPNO,
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL,
+      </if>
+      <if test="shelvesdate != null">
+        SHELVESDATE,
+      </if>
+      <if test="shelvestime != null">
+        SHELVESTIME,
+      </if>
+      <if test="audituser != null">
+        AUDITUSER,
+      </if>
+      <if test="rejectreason != null">
+        REJECTREASON,
+      </if>
+      <if test="isinttimepurchase != null">
+        ISINTTIMEPURCHASE,
+      </if>
+      <if test="isdecimalpurchase != null">
+        ISDECIMALPURCHASE,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM,
+      </if>
+      <if test="istaxexception != null">
+        ISTAXEXCEPTION,
+      </if>
+      <if test="agent != null">
+        AGENT,
+      </if>
+      <if test="applyreason != null">
+        APPLYREASON,
+      </if>
+      <if test="paytype != null">
+        PAYTYPE,
+      </if>
+      <if test="paytypename != null">
+        PAYTYPENAME,
+      </if>
+      <if test="paymethod != null">
+        PAYMETHOD,
+      </if>
+      <if test="paymethodname != null">
+        PAYMETHODNAME,
+      </if>
+      <if test="ponopk != null">
+        PONOPK,
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+      <if test="categorypk != null">
+        CATEGORYPK,
+      </if>
+      <if test="onelevelclapk != null">
+        ONELEVELCLAPK,
+      </if>
+      <if test="twolevelclapk != null">
+        TWOLEVELCLAPK,
+      </if>
+      <if test="haspic != null">
+        HASPIC,
+      </if>
+      <if test="popricestartdate != null">
+        POPRICESTARTDATE,
+      </if>
+      <if test="popricestarttime != null">
+        POPRICESTARTTIME,
+      </if>
+      <if test="leadtimenum != null">
+        LEADTIMENUM,
+      </if>
+      <if test="agentno != null">
+        AGENTNO,
+      </if>
+      <if test="agentphone != null">
+        AGENTPHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodid != null">
+        #{goodid,jdbcType=VARCHAR},
+      </if>
+      <if test="pono != null">
+        #{pono,jdbcType=VARCHAR},
+      </if>
+      <if test="poitemno != null">
+        #{poitemno,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null">
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclaname != null">
+        #{onelevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclaname != null">
+        #{twolevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="unitmethod != null">
+        #{unitmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyunit != null">
+        #{qtyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="minbuyqty != null">
+        #{minbuyqty,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxprice != null">
+        #{notaxprice,jdbcType=DECIMAL},
+      </if>
+      <if test="originprice != null">
+        #{originprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="spec != null">
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="weightunit != null">
+        #{weightunit,jdbcType=VARCHAR},
+      </if>
+      <if test="packthick != null">
+        #{packthick,jdbcType=DECIMAL},
+      </if>
+      <if test="packwidth != null">
+        #{packwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packheight != null">
+        #{packheight,jdbcType=DECIMAL},
+      </if>
+      <if test="packunit != null">
+        #{packunit,jdbcType=VARCHAR},
+      </if>
+      <if test="referdeliverydate != null">
+        #{referdeliverydate,jdbcType=DECIMAL},
+      </if>
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="reqno != null">
+        #{reqno,jdbcType=VARCHAR},
+      </if>
+      <if test="reqitemno != null">
+        #{reqitemno,jdbcType=VARCHAR},
+      </if>
+      <if test="popricedate != null">
+        #{popricedate,jdbcType=VARCHAR},
+      </if>
+      <if test="popricetime != null">
+        #{popricetime,jdbcType=VARCHAR},
+      </if>
+      <if test="qlty != null">
+        #{qlty,jdbcType=VARCHAR},
+      </if>
+      <if test="groupno != null">
+        #{groupno,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesdate != null">
+        #{shelvesdate,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvestime != null">
+        #{shelvestime,jdbcType=VARCHAR},
+      </if>
+      <if test="audituser != null">
+        #{audituser,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectreason != null">
+        #{rejectreason,jdbcType=VARCHAR},
+      </if>
+      <if test="isinttimepurchase != null">
+        #{isinttimepurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="isdecimalpurchase != null">
+        #{isdecimalpurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="istaxexception != null">
+        #{istaxexception,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="applyreason != null">
+        #{applyreason,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypename != null">
+        #{paytypename,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethod != null">
+        #{paymethod,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethodname != null">
+        #{paymethodname,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="categorypk != null">
+        #{categorypk,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclapk != null">
+        #{onelevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclapk != null">
+        #{twolevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="haspic != null">
+        #{haspic,jdbcType=VARCHAR},
+      </if>
+      <if test="popricestartdate != null">
+        #{popricestartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="popricestarttime != null">
+        #{popricestarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="leadtimenum != null">
+        #{leadtimenum,jdbcType=DECIMAL},
+      </if>
+      <if test="agentno != null">
+        #{agentno,jdbcType=VARCHAR},
+      </if>
+      <if test="agentphone != null">
+        #{agentphone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+    update YGMALLUSER.TBMQQ430
+    <set>
+      <if test="pono != null">
+        PONO = #{pono,jdbcType=VARCHAR},
+      </if>
+      <if test="poitemno != null">
+        POITEMNO = #{poitemno,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null">
+        CATEGORYNAME = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclaname != null">
+        ONELEVELCLANAME = #{onelevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclaname != null">
+        TWOLEVELCLANAME = #{twolevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        GOODNO = #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="unitmethod != null">
+        UNITMETHOD = #{unitmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        QTY = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyunit != null">
+        QTYUNIT = #{qtyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="minbuyqty != null">
+        MINBUYQTY = #{minbuyqty,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null">
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxprice != null">
+        NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+      </if>
+      <if test="originprice != null">
+        ORIGINPRICE = #{originprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        TAX = #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="spec != null">
+        SPEC = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="weightunit != null">
+        WEIGHTUNIT = #{weightunit,jdbcType=VARCHAR},
+      </if>
+      <if test="packthick != null">
+        PACKTHICK = #{packthick,jdbcType=DECIMAL},
+      </if>
+      <if test="packwidth != null">
+        PACKWIDTH = #{packwidth,jdbcType=DECIMAL},
+      </if>
+      <if test="packheight != null">
+        PACKHEIGHT = #{packheight,jdbcType=DECIMAL},
+      </if>
+      <if test="packunit != null">
+        PACKUNIT = #{packunit,jdbcType=VARCHAR},
+      </if>
+      <if test="referdeliverydate != null">
+        REFERDELIVERYDATE = #{referdeliverydate,jdbcType=DECIMAL},
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="reqno != null">
+        REQNO = #{reqno,jdbcType=VARCHAR},
+      </if>
+      <if test="reqitemno != null">
+        REQITEMNO = #{reqitemno,jdbcType=VARCHAR},
+      </if>
+      <if test="popricedate != null">
+        POPRICEDATE = #{popricedate,jdbcType=VARCHAR},
+      </if>
+      <if test="popricetime != null">
+        POPRICETIME = #{popricetime,jdbcType=VARCHAR},
+      </if>
+      <if test="qlty != null">
+        QLTY = #{qlty,jdbcType=VARCHAR},
+      </if>
+      <if test="groupno != null">
+        GROUPNO = #{groupno,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvesdate != null">
+        SHELVESDATE = #{shelvesdate,jdbcType=VARCHAR},
+      </if>
+      <if test="shelvestime != null">
+        SHELVESTIME = #{shelvestime,jdbcType=VARCHAR},
+      </if>
+      <if test="audituser != null">
+        AUDITUSER = #{audituser,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectreason != null">
+        REJECTREASON = #{rejectreason,jdbcType=VARCHAR},
+      </if>
+      <if test="isinttimepurchase != null">
+        ISINTTIMEPURCHASE = #{isinttimepurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="isdecimalpurchase != null">
+        ISDECIMALPURCHASE = #{isdecimalpurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="istaxexception != null">
+        ISTAXEXCEPTION = #{istaxexception,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        AGENT = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="applyreason != null">
+        APPLYREASON = #{applyreason,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypename != null">
+        PAYTYPENAME = #{paytypename,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethod != null">
+        PAYMETHOD = #{paymethod,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethodname != null">
+        PAYMETHODNAME = #{paymethodname,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        PONOPK = #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        MATRLID = #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="categorypk != null">
+        CATEGORYPK = #{categorypk,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclapk != null">
+        ONELEVELCLAPK = #{onelevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclapk != null">
+        TWOLEVELCLAPK = #{twolevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="haspic != null">
+        HASPIC = #{haspic,jdbcType=VARCHAR},
+      </if>
+      <if test="popricestartdate != null">
+        POPRICESTARTDATE = #{popricestartdate,jdbcType=VARCHAR},
+      </if>
+      <if test="popricestarttime != null">
+        POPRICESTARTTIME = #{popricestarttime,jdbcType=VARCHAR},
+      </if>
+      <if test="leadtimenum != null">
+        LEADTIMENUM = #{leadtimenum,jdbcType=DECIMAL},
+      </if>
+      <if test="agentno != null">
+        AGENTNO = #{agentno,jdbcType=VARCHAR},
+      </if>
+      <if test="agentphone != null">
+        AGENTPHONE = #{agentphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GOODID = #{goodid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+    update YGMALLUSER.TBMQQ430
+    set PONO = #{pono,jdbcType=VARCHAR},
+      POITEMNO = #{poitemno,jdbcType=VARCHAR},
+      CATEGORYNAME = #{categoryname,jdbcType=VARCHAR},
+      ONELEVELCLANAME = #{onelevelclaname,jdbcType=VARCHAR},
+      TWOLEVELCLANAME = #{twolevelclaname,jdbcType=VARCHAR},
+      PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      GOODNO = #{goodno,jdbcType=VARCHAR},
+      MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      UNITMETHOD = #{unitmethod,jdbcType=VARCHAR},
+      QTY = #{qty,jdbcType=DECIMAL},
+      QTYUNIT = #{qtyunit,jdbcType=VARCHAR},
+      MINBUYQTY = #{minbuyqty,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+      ORIGINPRICE = #{originprice,jdbcType=DECIMAL},
+      TAX = #{tax,jdbcType=DECIMAL},
+      SPEC = #{spec,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      WEIGHT = #{weight,jdbcType=DECIMAL},
+      WEIGHTUNIT = #{weightunit,jdbcType=VARCHAR},
+      PACKTHICK = #{packthick,jdbcType=DECIMAL},
+      PACKWIDTH = #{packwidth,jdbcType=DECIMAL},
+      PACKHEIGHT = #{packheight,jdbcType=DECIMAL},
+      PACKUNIT = #{packunit,jdbcType=VARCHAR},
+      REFERDELIVERYDATE = #{referdeliverydate,jdbcType=DECIMAL},
+      SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      REQNO = #{reqno,jdbcType=VARCHAR},
+      REQITEMNO = #{reqitemno,jdbcType=VARCHAR},
+      POPRICEDATE = #{popricedate,jdbcType=VARCHAR},
+      POPRICETIME = #{popricetime,jdbcType=VARCHAR},
+      QLTY = #{qlty,jdbcType=VARCHAR},
+      GROUPNO = #{groupno,jdbcType=VARCHAR},
+      PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      SHELVESDATE = #{shelvesdate,jdbcType=VARCHAR},
+      SHELVESTIME = #{shelvestime,jdbcType=VARCHAR},
+      AUDITUSER = #{audituser,jdbcType=VARCHAR},
+      REJECTREASON = #{rejectreason,jdbcType=VARCHAR},
+      ISINTTIMEPURCHASE = #{isinttimepurchase,jdbcType=VARCHAR},
+      ISDECIMALPURCHASE = #{isdecimalpurchase,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      DELETED = #{deleted,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      ISTAXEXCEPTION = #{istaxexception,jdbcType=VARCHAR},
+      AGENT = #{agent,jdbcType=VARCHAR},
+      APPLYREASON = #{applyreason,jdbcType=VARCHAR},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      PAYTYPENAME = #{paytypename,jdbcType=VARCHAR},
+      PAYMETHOD = #{paymethod,jdbcType=VARCHAR},
+      PAYMETHODNAME = #{paymethodname,jdbcType=VARCHAR},
+      PONOPK = #{ponopk,jdbcType=VARCHAR},
+      SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      MATRLID = #{matrlid,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      CATEGORYPK = #{categorypk,jdbcType=VARCHAR},
+      ONELEVELCLAPK = #{onelevelclapk,jdbcType=VARCHAR},
+      TWOLEVELCLAPK = #{twolevelclapk,jdbcType=VARCHAR},
+      HASPIC = #{haspic,jdbcType=VARCHAR},
+      POPRICESTARTDATE = #{popricestartdate,jdbcType=VARCHAR},
+      POPRICESTARTTIME = #{popricestarttime,jdbcType=VARCHAR},
+      LEADTIMENUM = #{leadtimenum,jdbcType=DECIMAL},
+      AGENTNO = #{agentno,jdbcType=VARCHAR},
+      AGENTPHONE = #{agentphone,jdbcType=VARCHAR}
+    where GOODID = #{goodid,jdbcType=VARCHAR}
+  </update></mapper>

@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq441Mapper">
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+
+      insert into ygmalluser.TBMQQ441
+      (
+        orderno, orderdetailno, erporderdetailno, thrplatorderdetailno, goodid, pono, poitemno,
+        categoryname, onelevelclaname, twolevelclaname, productname, goodno, matrlno, unitmethod,
+        qty, qtyunit, minbuyqty, price, notaxprice, originprice, tax, spec, brand, weight,
+        weightunit, packthick, packwidth, packheight, packunit, referdeliverydate, supplierno,
+        suppliername, reqno, reqitemno, popricedate, popricetime, qlty, groupno, pictureurl,
+        shelvesdate, shelvestime, audituser, rejectreason, isinttimepurchase, isdecimalpurchase,
+        sourcefrom, reqdelidate, amt, notaxamt, deliqty, takedeliqty, invoiceqty, status,
+        createuser, createdate, createtime, updateuser, updatedate, updatetime, projectno,
+        projectname, paytype, paytypename, paymethod, paymethodname, agent, deviceapplyno,
+        deviceapplypk, haspic, linepk, linename, orderdetailid, popricestartdate, popricestarttime,
+        ckqty, qtyupper, remark, matrlid, matrltm, categorypk, onelevelclapk,
+        twolevelclapk, isneedpic, leaddate, leadtime, leadtimenum, lowprice, lowqtyunit, remark2,
+        agentno,agentphone,devicesimpleno,matrlqualitypk,matrlqualityname
+      )
+
+      (
+        <foreach collection="list" item="item" separator="union all">
+            select
+                #{item.orderno,jdbcType=VARCHAR}, #{item.orderdetailno,jdbcType=VARCHAR}, #{item.erporderdetailno,jdbcType=VARCHAR},
+                #{item.thrplatorderdetailno,jdbcType=VARCHAR}, #{item.goodid,jdbcType=VARCHAR}, #{item.pono,jdbcType=VARCHAR},
+                #{item.poitemno,jdbcType=VARCHAR}, #{item.categoryname,jdbcType=VARCHAR}, #{item.onelevelclaname,jdbcType=VARCHAR},
+                #{item.twolevelclaname,jdbcType=VARCHAR}, #{item.productname,jdbcType=VARCHAR}, #{item.goodno,jdbcType=VARCHAR},
+                #{item.matrlno,jdbcType=VARCHAR}, #{item.unitmethod,jdbcType=VARCHAR}, #{item.qty,jdbcType=DECIMAL},
+                #{item.qtyunit,jdbcType=VARCHAR}, #{item.minbuyqty,jdbcType=DECIMAL}, #{item.price,jdbcType=DECIMAL},
+                #{item.notaxprice,jdbcType=DECIMAL}, #{item.originprice,jdbcType=DECIMAL}, #{item.tax,jdbcType=DECIMAL},
+                #{item.spec,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, #{item.weight,jdbcType=DECIMAL},
+                #{item.weightunit,jdbcType=VARCHAR}, #{item.packthick,jdbcType=DECIMAL}, #{item.packwidth,jdbcType=DECIMAL},
+                #{item.packheight,jdbcType=DECIMAL}, #{item.packunit,jdbcType=VARCHAR}, #{item.referdeliverydate,jdbcType=DECIMAL},
+                #{item.supplierno,jdbcType=VARCHAR}, #{item.suppliername,jdbcType=VARCHAR}, #{item.reqno,jdbcType=VARCHAR},
+                #{item.reqitemno,jdbcType=VARCHAR}, #{item.popricedate,jdbcType=VARCHAR}, #{item.popricetime,jdbcType=VARCHAR},
+                #{item.qlty,jdbcType=VARCHAR}, #{item.groupno,jdbcType=VARCHAR}, #{item.pictureurl,jdbcType=VARCHAR},
+                #{item.shelvesdate,jdbcType=VARCHAR}, #{item.shelvestime,jdbcType=VARCHAR}, #{item.audituser,jdbcType=VARCHAR},
+                #{item.rejectreason,jdbcType=VARCHAR}, #{item.isinttimepurchase,jdbcType=VARCHAR}, #{item.isdecimalpurchase,jdbcType=VARCHAR},
+                #{item.sourcefrom,jdbcType=VARCHAR}, #{item.reqdelidate,jdbcType=VARCHAR}, #{item.amt,jdbcType=DECIMAL},
+                #{item.notaxamt,jdbcType=DECIMAL}, #{item.deliqty,jdbcType=DECIMAL}, #{item.takedeliqty,jdbcType=DECIMAL},
+                #{item.invoiceqty,jdbcType=DECIMAL}, #{item.status,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR},
+                #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR},
+                #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR}, #{item.projectno,jdbcType=VARCHAR},
+                #{item.projectname,jdbcType=VARCHAR}, #{item.paytype,jdbcType=VARCHAR}, #{item.paytypename,jdbcType=VARCHAR},
+                #{item.paymethod,jdbcType=VARCHAR}, #{item.paymethodname,jdbcType=VARCHAR}, #{item.agent,jdbcType=VARCHAR},
+                #{item.deviceapplyno,jdbcType=VARCHAR}, #{item.deviceapplypk,jdbcType=VARCHAR}, #{item.haspic,jdbcType=VARCHAR},
+                #{item.linepk,jdbcType=VARCHAR}, #{item.linename,jdbcType=VARCHAR}, #{item.orderdetailid,jdbcType=VARCHAR},
+                #{item.popricestartdate,jdbcType=VARCHAR}, #{item.popricestarttime,jdbcType=VARCHAR},
+                #{item.ckqty,jdbcType=DECIMAL}, #{item.qtyupper,jdbcType=DECIMAL}, #{item.remark,jdbcType=VARCHAR},
+                #{item.matrlid,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR}, #{item.categorypk,jdbcType=VARCHAR},
+                #{item.onelevelclapk,jdbcType=VARCHAR}, #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.isneedpic,jdbcType=VARCHAR},
+                #{item.leaddate,jdbcType=VARCHAR}, #{item.leadtime,jdbcType=VARCHAR}, #{item.leadtimenum,jdbcType=DECIMAL},
+                #{item.lowprice,jdbcType=DECIMAL}, #{item.lowqtyunit,jdbcType=VARCHAR}, #{item.remark2,jdbcType=VARCHAR},
+                #{item.agentno,jdbcType=VARCHAR}, #{item.agentphone,jdbcType=VARCHAR}, #{item.devicesimpleno,jdbcType=VARCHAR},
+                #{item.matrlqualitypk,jdbcType=VARCHAR}, #{item.matrlqualityname,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+      )
+
+    </insert>
+
+
+    <select id="getOrderDetail" parameterType="map" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select
+            t41.*,t40.erpOrderNo, t40.supplierno, t40.suppliername,nvl2(cm.orderno,1,0) as hasComment,
+            case when t433.goodid is not null then 'Y' else 'N' end as isAddCart
+        from ygmalluser.tbmqq441 t41
+        join ygmalluser.tbmqq440 t40 on t41.orderno = t40.orderno
+        left join ygmalluser.goodscomment cm on t41.orderno=cm.orderno and t41.orderdetailno=cm.orderdetailno
+        left join ygmalluser.tbmqq433 t433 on t41.goodid=t433.goodid and t40.userno=t433.userno
+        where t41.orderno=#{orderNo}
+        <if test="orderDetailNoList !=null and orderDetailNoList.size>0">
+            and t41.orderdetailno in
+            <foreach collection="orderDetailNoList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+
+    <sql id="getOrderDetailListCore">
+
+        select
+               t1.buyerno,t1.buyername,t1.userno,t1.username,t1.deptname,
+               t1.buyernote,t1.thrplatorderno,t1.consigneename,t1.consigneephone,
+               t1.consigneefulladdr,t1.invoicetitle,t1.receivingdate,t1.receivingtime,
+               t2.*,nvl2(cm.orderno,1,0) as hasComment,
+               case when t433.goodid is not null then 'Y' else 'N' end as isAddCart
+        from ygmalluser.tbmqq441 t2
+        join ygmalluser.tbmqq440 t1 on t2.orderno=t1.orderno
+        left join ygmalluser.goodscomment cm on t2.orderno=cm.orderno and t2.orderdetailno=cm.orderdetailno
+        left join ygmalluser.tbmqq433 t433 on t2.goodid=t433.goodid and t1.userno=t433.userno
+
+        <where>
+            <if test="userNoList !=null and userNoList.size >0">
+                and t1.userno in <foreach collection="userNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="supplierNo !=null and supplierNo != ''">
+                and t1.supplierno = #{supplierNo}
+            </if>
+
+            <if test="buyerNoList !=null and buyerNoList.size >0">
+                and t1.buyerno in <foreach collection="buyerNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="deptNoList !=null and deptNoList.size >0">
+                and t1.deptno in <foreach collection="deptNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="statusList !=null and statusList.size >0">
+                and t1.status in <foreach collection="statusList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="status !=null and status !=''">
+                and t1.status = #{status}
+            </if>
+
+            <if test="orderNo !=null and orderNo !=''">
+                and t1.orderNo = #{orderNo}
+            </if>
+
+            <if test="createTime !=null">
+                <if test="createTime.max !=null and createTime.max !=''">
+                    and t1.createdate &gt;= #{createTime.max}
+                </if>
+
+                <if test="createTime.min !=null and createTime.min !=''">
+                    and t1.createdate &lt;= #{createTime.min}
+                </if>
+            </if>
+
+            <if test="brandList !=null and brandList.size > 0">
+
+                and t2.brand in
+                <foreach collection="brandList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+                t1.orderno like '%'||#{searchKey}||'%'
+                or t1.suppliername like '%'||#{searchKey}||'%'
+                or t2.productname like '%'||#{searchKey}||'%'
+                or t2.goodno like '%'||#{searchKey}||'%'
+                or t2.spec like '%'||#{searchKey}||'%'
+                or t2.matrlno like '%'||#{searchKey}||'%'
+                )
+            </if>
+        </where>
+
+        order by t1.createdate desc, t1.createtime desc
+
+    </sql>
+
+
+    <select id="getOrderDetailList" parameterType="map" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select t5.*
+
+        from (
+
+                select
+                t4.*, rownum r
+                from (<include refid="getOrderDetailListCore" />) t4
+
+        ) t5
+
+        where t5.r <include refid="Common.gte" /> and t5.r <include refid="Common.lte"/>
+
+
+    </select>
+
+    <select id="getOrderDetailCount" parameterType="map" resultType="java.lang.Integer">
+        select count(1)
+        from (<include refid="getOrderDetailListCore" />) t4
+    </select>
+
+    <update id="changeOrderDetailStatus" parameterType="map">
+
+        update ygmalluser.tbmqq441 t2
+        set
+          t2.status=#{newStatus},
+          t2.updateuser=#{updateUser},
+          t2.updatedate=#{updateDate},
+          t2.updatetime=#{updateTime}
+
+        <where>
+            t2.orderno=#{orderNo}
+            and t2.status=#{oldStatus}
+
+            <if test="orderDetailNo !=null and orderDetailNo!=''">
+                and t2.orderdetailno=#{orderDetailNo}
+            </if>
+
+            <if test="orderDetailNoList !=null and orderDetailNo!=''">
+
+                and t2.orderdetailno in
+                <foreach collection="orderDetailNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+
+            </if>
+
+
+            <if test="supplierNo !=null and supplierNo!=''">
+                and exists (
+                    select t1.orderno
+                    from ygmalluser.tbmqq440 t1
+                    where t1.orderno=t2.orderno and t1.supplierno=#{supplierNo}
+                    )
+            </if>
+
+        </where>
+
+    </update>
+
+
+    <select id="getOrderDetailId" parameterType="map" resultType="String">
+
+        select orderdetailid
+        from ygmalluser.tbmqq440 t1
+        join ygmalluser.tbmqq441 t2 on t1.orderno=t2.orderno
+
+
+        <where>
+
+            <if test="orderNo !=null and orderNo !=''">
+                and t2.orderno=#{orderNo}
+            </if>
+
+            <if test="orderdetailIdList !=null and orderdetailIdList.size > 0">
+                and t2.orderdetailid in
+                <foreach collection="orderdetailIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+
+
+    </select>
+
+
+    <select id="getApproveDetail" parameterType="String" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select t1.approvecode, t1.remainbudget, t3.*
+        from ygmalluser.approve t1
+        join ygmalluser.tbmqq440 t2 on t1.approvecode=t2.approvecode
+        join ygmalluser.tbmqq441 t3 on t2.orderno=t3.orderno
+        where t1.approvecode=#{approveCode}
+
+
+    </select>
+
+
+
+    <select id="getSyncScheduleOrderDetailId" parameterType="map" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select
+          t1.orderdetailid,
+          t2.orderno
+        from ygmalluser.tbmqq441 t1
+        join ygmalluser.tbmqq440 t2 on t1.orderno=t2.orderno
+        <where>
+
+            and t1.status in ('25', '30')
+            and t2.status = '25'
+
+            <if test="orderNoList !=null and orderNoList.size > 0">
+                and orderno in <foreach collection="orderNoList" item="item" open="(" separator="," close=")">#{item]}</foreach>
+            </if>
+
+            <if test="orderDetailIdList !=null and orderDetailIdList.size > 0">
+                and orderdetailid in <foreach collection="orderDetailIdList" item="item" open="(" separator="," close=")">#{item]}</foreach>
+            </if>
+
+        </where>
+
+    </select>
+
+
+    <select id="getSyncInvoiceOrderDetailId" parameterType="map" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select
+            t1.orderdetailid,
+            t2.orderno
+            from ygmalluser.tbmqq441 t1
+            join ygmalluser.tbmqq440 t2 on t1.orderno=t2.orderno
+        <where>
+
+            and t1.status in ('30', '35')
+            and t2.status in ('25', '30')
+            and t1.qty &gt; t1.invoiceqty
+
+            <if test="orderNoList !=null and orderNoList.size > 0">
+                and orderno in <foreach collection="orderNoList" item="item" open="(" separator="," close=")">#{item]}</foreach>
+            </if>
+
+            <if test="orderDetailIdList !=null and orderDetailIdList.size > 0">
+                and orderdetailid in <foreach collection="orderDetailIdList" item="item" open="(" separator="," close=")">#{item]}</foreach>
+            </if>
+
+        </where>
+    </select>
+
+
+    <update id="updateQtyByOrderDetailId" parameterType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        update ygmalluser.tbmqq441
+
+        <set>
+            deliqty = #{deliqty},
+            takedeliqty = #{takedeliqty},
+
+            <if test="status != null">
+                status = #{status},
+            </if>
+
+
+            <if test="expressno != null">
+                expressno = #{expressno},
+            </if>
+
+            updateuser = #{updateuser},
+            updatedate = #{updatedate},
+            updatetime = #{updatetime}
+        </set>
+
+        where orderdetailid = #{orderdetailid} and status in ('25', '30')
+
+    </update>
+
+
+    <update id="updateInvoiceQtyByOrderDetailId" parameterType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        update ygmalluser.tbmqq441
+        set
+            invoiceqty = #{invoiceqty},
+            updateuser = #{updateuser},
+            updatedate = #{updatedate},
+            updatetime = #{updatetime}
+
+        where orderdetailid = #{orderdetailid} and qty &gt;= #{invoiceqty}
+
+    </update>
+
+    <select id="getOrderDetaiExportlList" parameterType="map" resultType="netplus.mall.api.vo.order.PurchaseOrderDetailExportVo">
+        select t6.*
+        from (
+            select
+            t5.*, rownum r
+            from (
+                select t1.buyerno,t1.buyername,t1.userno,t1.username,t1.deptname,
+                       t1.buyernote,t1.thrplatorderno,t1.consigneename,t1.consigneephone,
+                       t1.consigneefulladdr,t1.invoicetitle,t1.receivingdate,t1.receivingtime,
+                       t2.*,tbdu01.bizcontact,tbdu01.bizcontactphone
+                from ygmalluser.tbmqq440 t1
+                left join ygmalluser.tbmqq441 t2 on t1.orderno=t2.orderno
+                left join ygmalluser.tbdu01 tbdu01 on t1.supplierno=tbdu01.compno
+                <where>
+                    <if test="orderNoList !=null and orderNoList.size >0">
+                        and t1.orderno in <foreach collection="orderNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+                    </if>
+                </where>
+            ) t5
+        ) t6
+        where t6.r <include refid="Common.gte" /> and t6.r <include refid="Common.lte"/>
+
+
+    </select>
+
+    <select id="getUsedDeviceApply" parameterType="map" resultType="String">
+
+        select deviceapplyno
+        from ygmalluser.tbmqq441
+        where
+          deviceapplyno in
+          <foreach collection="deviceApplyNoList" item="item" open="(" separator="," close=")">
+              #{item}
+          </foreach>
+          and status not in ('20', '40')
+
+    </select>
+
+    <update id="updateLeadDate" parameterType="String">
+
+        update ygmalluser.tbmqq441
+        set
+          leaddate=to_char(sysdate + leadtimenum, 'yyyymmdd'),
+          leadtime='235959'
+        where
+          orderno=#{orderNo}
+          and status='25'
+
+
+    </update>
+
+
+    <update id="updateOrderDetailCancelStatus" parameterType="String">
+
+        update ygmalluser.tbmqq441
+        set
+          status='40'
+        where
+        orderdetailid=#{orderDetailId}
+        and status='25'
+    </update>
+
+
+    <select id="getOrderNoById" parameterType="String" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select t1.orderno, t2.supplierno
+        from ygmalluser.tbmqq441 t1
+        join ygmalluser.tbmqq440 t2 on t1.orderno=t2.orderno
+        where orderdetailid=#{orderDetailId}
+
+
+    </select>
+
+
+    <select id="getNoCheckMatrlIdQty" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+
+        select matrlid, nvl(sum(qty), 0) as qty
+        from ygmalluser.tbmqq441 t1
+        join ygmalluser.tbmqq440 t2 on t1.orderno=t2.orderno
+        where
+          t2.status in ('10', '15')
+          and t1.status in ('10', '15')
+
+        group by matrlid
+    </select>
+
+
+    <select id="checkOrderIsCancel" parameterType="String" resultType="java.lang.Integer">
+
+        select count(1)
+        from ygmalluser.tbmqq441
+        where status !='40' and rownum = 1 and orderno = #{orderNo}
+
+    </select>
+
+
+    <select id="checkOrderIsOver" parameterType="String" resultType="java.lang.Integer">
+
+        select count(1)
+        from ygmalluser.tbmqq441
+        where status !='40' and status != '35' and rownum = 1 and orderno = #{orderNo}
+
+    </select>
+
+    <sql id="MallInventorySearchCore">
+        select *
+        from ygmalluser.tbmqq441
+        where
+            matrlid in
+            <foreach collection="matrlIdList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            and status in
+            <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        order by createdate,createtime
+    </sql>
+
+    <select id="getMallInventoryByMatrlId" resultType="netplus.component.entity.data.KeyValue">
+        select t.matrlid as key,
+               sum(t.qty) as value
+        from (<include refid="MallInventorySearchCore" />) t
+        group by t.matrlid
+    </select>
+
+    <select id="getMallGoodsInventoryDetailByMatrlId" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+        select tt.*
+        from (
+            select t.*,rownum as r
+            from (<include refid="MallInventorySearchCore" />) t
+        ) tt
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+    </select>
+
+    <select id="getMallGoodsInventoryDetailCountByMatrlId" resultType="int">
+        select count(1)
+        from (<include refid="MallInventorySearchCore" />) t
+    </select>
+
+    <select id="getOrderDetailByOrderNoList" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+        select *
+        from ygmalluser.tbmqq441
+        where orderno in
+        <foreach collection="orderNoList" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <update id="updateOrderDetailStatus" parameterType="map">
+        update ygmalluser.tbmqq441
+        set updateuser = #{updateuser},
+            updatedate = #{updatedate},
+            updatetime = #{updatetime},
+            status = #{status}
+        where orderno = #{orderno}
+    </update>
+
+    <select id="getAgentInfoByOrderNo" parameterType="list" resultType="netplus.mall.api.vo.order.AgentInfoVo">
+        select agentno,agentphone
+        from ygmalluser.tbmqq441
+        where orderno in
+        <foreach collection="needWarnOrderNo" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and agentno is not null
+        group by agentno,agentphone
+    </select>
+
+    <select id="getWarnOrderInfoByAgent" parameterType="list" resultType="netplus.mall.api.vo.order.AgentWarnVo">
+        select
+               t1.agentno,
+               t2.supplierno,
+               to_date(concat(t3.approvedate,t3.approvetime),'yyyymmddhh24miss')+1 as timeoutdate
+        from (
+            select orderno,agentno
+            from ygmalluser.tbmqq441
+            where agentno in
+            <foreach collection="agentNoList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            group by orderno,agentno
+        ) t1
+        left join ygmalluser.tbmqq440 t2 on t1.orderno=t2.orderno
+        left join ygmalluser.approve t3 on t2.approvecode=t3.approvecode
+        where t2.status='15'
+        and t3.approvedate is not null
+    </select>
+
+
+    <sql id="getCountGoodInfoCore">
+         select
+               t1.buyerno, t1.buyername, t1.userno,t1.username, t1.deptname,
+               t1.receivingdate, t1.receivingtime, t3.approvedate, t3.approvetime,
+               t2.*
+        from ygmalluser.tbmqq441 t2
+        join ygmalluser.tbmqq440 t1 on t2.orderno=t1.orderno
+        left join ygmalluser.approve t3 on t1.approvecode=t3.approvecode
+        <where>
+            <if test="statusList !=null and statusList.size >0">
+                and t2.status in <foreach collection="statusList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+            <if test="!isAdmin">
+                and t2.agentno=#{agentno}
+            </if>
+        </where>
+
+
+    </sql>
+
+    <select id="getCountGoodInfo" resultType="netplus.mall.api.vo.order.Tbmqq441Vo">
+        select tt.*
+        from (
+            select t.*,rownum as r
+            from (<include refid="getCountGoodInfoCore" />) t
+        ) tt
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+    </select>
+
+
+    <select id="getCountGoodCount" parameterType="map" resultType="java.lang.Integer">
+        select count(1)
+        from (<include refid="getCountGoodInfoCore" />) t
+    </select>
+
+
+</mapper>

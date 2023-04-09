@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq438Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+    <id column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <id column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <result column="SUPPLIERNAME" jdbcType="VARCHAR" property="suppliername" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="QTY" jdbcType="DECIMAL" property="qty" />
+    <result column="AMT" jdbcType="DECIMAL" property="amt" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SUPPLIERNO, MATRLID, SUPPLIERNAME, MATRLNO, QTY, AMT, CREATEDATE, CREATETIME, UPDATEDATE, 
+    UPDATETIME, MATRLTM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438Key" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ438
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438Key">
+    delete from YGMALLUSER.TBMQQ438
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+    insert into YGMALLUSER.TBMQQ438 (SUPPLIERNO, MATRLID, SUPPLIERNAME, 
+      MATRLNO, QTY, AMT, 
+      CREATEDATE, CREATETIME, UPDATEDATE, 
+      UPDATETIME, MATRLTM)
+    values (#{supplierno,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, #{suppliername,jdbcType=VARCHAR}, 
+      #{matrlno,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, #{amt,jdbcType=DECIMAL}, 
+      #{createdate,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{matrltm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+    insert into YGMALLUSER.TBMQQ438
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="qty != null">
+        QTY,
+      </if>
+      <if test="amt != null">
+        AMT,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="amt != null">
+        #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+    update YGMALLUSER.TBMQQ438
+    <set>
+      <if test="suppliername != null">
+        SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        QTY = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="amt != null">
+        AMT = #{amt,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+    update YGMALLUSER.TBMQQ438
+    set SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      QTY = #{qty,jdbcType=DECIMAL},
+      AMT = #{amt,jdbcType=DECIMAL},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR}
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </update></mapper>

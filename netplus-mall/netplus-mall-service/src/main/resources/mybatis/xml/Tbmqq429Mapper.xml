@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq429Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+    <id column="PICTURENUM" jdbcType="VARCHAR" property="picturenum" />
+    <id column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <id column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <id column="DELETED" jdbcType="VARCHAR" property="deleted" />
+    <id column="PICTURETYPE" jdbcType="VARCHAR" property="picturetype" />
+    <result column="PICTUREURL" jdbcType="VARCHAR" property="pictureurl" />
+    <result column="PICTURENAME" jdbcType="VARCHAR" property="picturename" />
+    <result column="GOODNO" jdbcType="VARCHAR" property="goodno" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PICTURENUM, SUPPLIERNO, MATRLID, DELETED, PICTURETYPE, PICTUREURL, PICTURENAME, GOODNO, 
+    MATRLNO, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, UPDATEDATE, UPDATETIME, 
+    MATRLTM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429Key" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ429
+    where PICTURENUM = #{picturenum,jdbcType=VARCHAR}
+      and SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+      and DELETED = #{deleted,jdbcType=VARCHAR}
+      and PICTURETYPE = #{picturetype,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429Key">
+    delete from YGMALLUSER.TBMQQ429
+    where PICTURENUM = #{picturenum,jdbcType=VARCHAR}
+      and SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLTM = #{matrltm,jdbcType=VARCHAR}
+      and DELETED = #{deleted,jdbcType=VARCHAR}
+      and PICTURETYPE = #{picturetype,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+    insert into YGMALLUSER.TBMQQ429 (PICTURENUM, SUPPLIERNO, MATRLID, 
+      DELETED, PICTURETYPE, PICTUREURL, 
+      PICTURENAME, GOODNO, MATRLNO, 
+      CREATEUSER, CREATEDATE, CREATETIME, 
+      UPDATEUSER, UPDATEDATE, UPDATETIME, 
+      MATRLTM)
+    values (#{picturenum,jdbcType=VARCHAR}, #{supplierno,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=VARCHAR}, #{picturetype,jdbcType=VARCHAR}, #{pictureurl,jdbcType=VARCHAR}, 
+      #{picturename,jdbcType=VARCHAR}, #{goodno,jdbcType=VARCHAR}, #{matrlno,jdbcType=VARCHAR}, 
+      #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{updateuser,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR}, 
+      #{matrltm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+    insert into YGMALLUSER.TBMQQ429
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="picturenum != null">
+        PICTURENUM,
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="picturetype != null">
+        PICTURETYPE,
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL,
+      </if>
+      <if test="picturename != null">
+        PICTURENAME,
+      </if>
+      <if test="goodno != null">
+        GOODNO,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="picturenum != null">
+        #{picturenum,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=VARCHAR},
+      </if>
+      <if test="picturetype != null">
+        #{picturetype,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="picturename != null">
+        #{picturename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+    update YGMALLUSER.TBMQQ429
+    <set>
+      <if test="pictureurl != null">
+        PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="picturename != null">
+        PICTURENAME = #{picturename,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        GOODNO = #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        DELETED = #{deleted,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PICTURENUM = #{picturenum,jdbcType=VARCHAR}
+      and SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLTM = #{matrltm,jdbcType=VARCHAR}
+      and PICTURETYPE = #{picturetype,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+    update YGMALLUSER.TBMQQ429
+    set PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      PICTURENAME = #{picturename,jdbcType=VARCHAR},
+      GOODNO = #{goodno,jdbcType=VARCHAR},
+      MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR}
+    where PICTURENUM = #{picturenum,jdbcType=VARCHAR}
+      and SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+      and DELETED = #{deleted,jdbcType=VARCHAR}
+      and PICTURETYPE = #{picturetype,jdbcType=VARCHAR}
+  </update>
+</mapper>

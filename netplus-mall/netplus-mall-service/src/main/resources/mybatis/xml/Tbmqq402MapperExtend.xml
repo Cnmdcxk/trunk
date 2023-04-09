@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq402Mapper">
+
+  <select id="getOneLevelClanameListKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+    select distinct
+    onelevelclaname as key,
+    onelevelclaname as value
+    from ygmalluser.tbmqq402
+  </select>
+
+  <select id="getOneLevelClanameInfo" parameterType="map" resultMap="BaseResultMap">
+        select * from ygmalluser.tbmqq402
+        where categoryname=#{categoryname}
+        and onelevelclaname=#{onelevelclaname}
+    </select>
+
+    <select id="getonelevelclaname" resultType="String">
+        select *
+        from (select onelevelclaname from ygmalluser.tbmqq402
+        where categoryname=#{categoryname})
+        where rownum <![CDATA[<=]]> 4
+    </select>
+
+    <select id="getOneLevelClaNameList" parameterType="map" resultType="String">
+        select onelevelclaname
+        from ygmalluser.tbmqq402
+
+        <where>
+            <if test="categoryName !=null and categoryName !=''">
+                and categoryname=#{categoryName}
+            </if>
+
+            <if test="oneLevelClaName !=null and oneLevelClaName !=''">
+                and onelevelclaname=#{oneLevelClaName}
+            </if>
+        </where>
+    </select>
+
+    <select id="getOneLevelClaAndCategory" parameterType="map"  resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq402">
+
+        select
+            categoryname,
+            onelevelclaname
+        from ygmalluser.tbmqq402
+        <where>
+
+              onelevelclaname in
+              <foreach collection="oneLevelClaNameList" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+
+        </where>
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.tbmqq402
+        (
+            categoryname, onelevelclaname, isactive,
+            createuser, createdate, createtime,
+            updateuser, updatedate, updatetime,
+            onelevelclapk, categorypk, sortnum
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+            #{item.categoryname,jdbcType=VARCHAR}, #{item.onelevelclaname,jdbcType=VARCHAR}, #{item.isactive,jdbcType=VARCHAR},
+            #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR},
+            #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR},
+            #{item.onelevelclapk,jdbcType=VARCHAR}, #{item.categorypk,jdbcType=VARCHAR}, #{item.sortnum,jdbcType=VARCHAR}
+
+            from dual
+        </foreach>
+        )
+    </insert>
+
+
+    <delete id="deleteAll">
+        delete from ygmalluser.tbmqq402
+    </delete>
+</mapper>

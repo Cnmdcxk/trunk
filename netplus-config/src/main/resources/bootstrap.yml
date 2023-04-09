@@ -1,0 +1,135 @@
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: false
+    config:
+      enabled: false
+    refresh:
+      refreshable: none
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000000
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000000
+        readTimeout: 4000000
+
+sign:
+  key: yg8cfb5673294611e9bb7c00163e10ccfb
+
+---
+spring:
+  profiles: default
+  loginUrl: /provider/login/
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://10.36.8.34:20001/eureka/
+    healthcheck:
+      enabled: true
+service:
+  netplus-protal-service: http://10.36.8.34:20003
+  netplus-provider-service: http://10.36.8.34:20007
+  netplus-component-service: http://10.36.8.34:20025
+  netplus-messaging-service: http://10.36.8.34:20009
+  netplus-excel-service: http://10.36.8.34:20022
+  netplus-interface-monitor-service: http://10.36.8.34:20029
+  netplus-joint-erp-in-service: http://10.36.8.34:20033
+  netplus-joint-erp-out-service: http://10.36.8.34:20034
+  netplus-joint-ob-in-service: http://10.36.8.34:20035
+  netplus-joint-ob-out-service: http://10.36.8.34:20036
+  netplus-mall-service: http://10.36.8.34:20037
+  netplus-joint-zkh-in-service: http://10.36.8.34:20043
+  netplus-joint-zkh-out-service: http://10.36.8.34:20044
+cdn:
+  url: /statics
+environment:
+  desc: dev
+
+
+---
+spring:
+  profiles: ygmall_test
+  loginUrl: /provider/login/
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://10.36.8.34:20001/eureka/
+    healthcheck:
+      enabled: true
+service:
+  netplus-protal-service: http://127.0.0.1:20003
+  netplus-provider-service: http://127.0.0.1:20007
+  netplus-component-service: http://127.0.0.1:20025
+  netplus-messaging-service: http://127.0.0.1:20009
+  netplus-excel-service: http://127.0.0.1:20022
+  netplus-interface-monitor-service: http://127.0.0.1:20029
+  netplus-joint-erp-in-service: http://127.0.0.1:20033
+  netplus-joint-erp-out-service: http://127.0.0.1:20034
+  netplus-joint-ob-in-service: http://127.0.0.1:20035
+  netplus-joint-ob-out-service: http://127.0.0.1:20036
+  netplus-mall-service: http://127.0.0.1:20037
+  netplus-joint-zkh-in-service: http://127.0.0.1:20043
+  netplus-joint-zkh-out-service: http://127.0.0.1:20044
+cdn:
+  url: /statics
+environment:
+  desc: test
+
+
+---
+spring:
+  profiles: ygmall_prod
+  loginUrl: /provider/login/
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.3.57:20001/eureka/
+    healthcheck:
+      enabled: true
+service:
+  netplus-protal-service: ""
+  netplus-provider-service: ""
+  netplus-component-service: ""
+  netplus-messaging-service: ""
+  netplus-excel-service: ""
+  netplus-interface-monitor-service: ""
+  netplus-joint-erp-in-service: ""
+  netplus-joint-erp-out-service: ""
+  netplus-joint-ob-in-service: ""
+  netplus-joint-ob-out-service: ""
+  netplus-mall-service: ""
+  netplus-joint-zkh-in-service: ""
+  netplus-joint-zkh-out-service: ""
+cdn:
+  url: /statics
+environment:
+  desc: prod
+
+

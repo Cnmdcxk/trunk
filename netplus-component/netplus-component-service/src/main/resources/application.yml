@@ -1,0 +1,124 @@
+server:
+  port: 20025
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-component-service
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+  redis:
+    host: 10.36.8.33
+    port: 6379
+    password: ygRedis&123
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+localServer:
+  path: /app/deploy/upload/ # 服务器保存地址
+  urlPrefix: https://testebuy.yong-gang.cn/upload/    # 互联网访问地址
+server:
+  tomcat:
+    basedir: /tmp
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-component-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+  redis:
+    host: 10.36.8.33
+    port: 6379
+    password: ygRedis&123
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+localServer:
+  path: /app/deploy/upload/ # 服务器保存地址
+  urlPrefix: https://testebuy.yong-gang.cn/upload/      # 互联网访问地址
+
+server:
+  tomcat:
+    basedir: /tmp
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-component-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+  redis:
+    host: 192.168.3.59
+    port: 6379
+    password: ygRedis&123
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+localServer:
+  path: /app/deploy/upload/ # 服务器保存地址
+  urlPrefix: https://ebuy.yong-gang.cn/upload/       # 互联网访问地址
+
+server:
+  tomcat:
+    basedir: /tmp

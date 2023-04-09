@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq406Mapper">
+    <sql id="getSkuMaterialSql">
+        select t1.productname,t1.spec,t1.unit,t1.matrlno,t1.matrldesc,t1.twolevelclaname,t1.matrltm,
+               t2.onelevelclaname,t3.categoryname,t4.updateuser,t4.updatedate,t4.updatetime,t4.thrplatgoodno,t4.supplierno,
+               t4.suppliername,t4.THRPLATUNIT,t4.thrplatproductname,t4.thrplatspec,t4.thrplatquality,t4.isactive
+        from ygmalluser.tbmqq406 t4
+        join ygmalluser.tbmqq405 t1  on  t4.matrltm=t1.matrltm
+        join ygmalluser.tbmqq403 t2 on t2.twolevelclapk=t1.twolevelclapk
+        join ygmalluser.tbmqq402 t3 on t3.onelevelclapk=t2.onelevelclapk
+        <where>
+
+            <if test="searchKey != null and searchKey != ''">
+                and (
+                t1.matrltm like '%' || #{searchKey} || '%'
+                or t4.thrplatgoodno like '%' || #{searchKey} || '%'
+                )
+            </if>
+
+            <if test="isactive!=null and isactive.size>0" >
+                and t4.isactive in
+                <foreach collection="isactive" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+
+            </if>
+
+            <if test="updateDate != null">
+                <if test="updateDate.max !=null and updateDate.max !=''">
+                    and t1.updatedate &lt;= replace(#{updateDate.max,jdbcType=VARCHAR}, '-','')
+                </if>
+
+                <if test="updateDate.min !=null and updateDate.min !=''">
+                    and t1.updatedate &gt;= replace(#{updateDate.min,jdbcType=VARCHAR},'-','')
+                </if>
+            </if>
+
+            <if test="isthrplat !=null and isthrplat!=''">
+                <choose>
+                    <when test="isthrplat =='Y'.toString()">
+                        and t4.thrplatgoodno! =' '
+                    </when>
+                    <otherwise>
+                        and t4.thrplatgoodno =' '
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        order by t1.updatedate desc, t1.updatetime desc
+    </sql>
+    <select id="getTbmqq406Key" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq406Key">
+
+        select
+            matrlid,
+            supplierno
+        from ygmalluser.tbmqq406
+
+    </select>
+
+
+    <select id="getMatrlNoByGoodNo" parameterType="map" resultType="netplus.mall.api.vo.Tbmqq406Vo">
+
+        select t1.matrlno, t2.twolevelclaname, t3.onelevelclaname, t4.categoryname
+        from ygmalluser.tbmqq406 t1
+                 join ygmalluser.tbmqq405 t2 on t1.matrlno=t2.matrlno
+                 join ygmalluser.tbmqq403 t3 on t2.twolevelclaname=t3.twolevelclaname
+                 join ygmalluser.tbmqq402 t4 on t3.onelevelclaname=t4.onelevelclaname
+
+        where
+            supplierno=#{supplierNo}
+          and thrplatgoodno=#{thrplatGoodNo}
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.TBMQQ406
+        (
+        matrlno, supplierno, thrplatgoodno,
+        suppliername, thrplatunit, thrplatproductname,
+        thrplatspec, thrplatquality, isactive,
+        createuser, createdate, createtime,
+        updateuser, updatedate, updatetime,matrltm,matrlid
+        )
+
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+            #{item.matrlno,jdbcType=VARCHAR}, #{item.supplierno,jdbcType=VARCHAR}, #{item.thrplatgoodno,jdbcType=VARCHAR},
+            #{item.suppliername,jdbcType=VARCHAR}, #{item.thrplatunit,jdbcType=VARCHAR}, #{item.thrplatproductname,jdbcType=VARCHAR},
+            #{item.thrplatspec,jdbcType=VARCHAR}, #{item.thrplatquality,jdbcType=VARCHAR}, #{item.isactive,jdbcType=VARCHAR},
+            #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR},
+            #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR},
+            #{item.matrltm,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+
+    <select id="getCategoryByGoodsno" resultType="netplus.mall.api.vo.CategoryVo">
+        select c.TWOLEVELCLANAME,d.ONELEVELCLANAME,d.CATEGORYNAME,a.THRPLATUNIT
+        from ygmalluser.TBMQQ406 a join ygmalluser.TBMQQ405 b on a.MATRLNO = b.MATRLNO
+                           join ygmalluser.TBMQQ403 c on c.TWOLEVELCLANAME = b.TWOLEVELCLANAME
+                           join ygmalluser.TBMQQ402 d on d.ONELEVELCLANAME =c.ONELEVELCLANAME
+        where a.THRPLATGOODNO = #{goodsNo,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getMatrlNo"  parameterType="map" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+
+        select matrltm,THRPLATGOODNO,matrlid
+        from ygmalluser.tbmqq406
+        where
+            matrltm=#{matrlTm}
+    </select>
+
+    <select id="getSkuMaterialList" parameterType="java.util.Map" resultType="netplus.mall.api.vo.Tbmqq406Vo">
+        select tt.*
+        from
+        (
+        select t.*, rownum r
+        from ( <include refid="getSkuMaterialSql" /> ) t
+        ) tt
+        where tt.r <include refid="Common.gte" /> and tt.r <include refid="Common.lte"/>
+    </select>
+
+    <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) totalCount
+        from ( <include refid="getSkuMaterialSql" /> ) t
+    </select>
+
+    <update id="update406ByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+        update ygmalluser.TBMQQ406
+        set thrplatgoodno=#{thrplatgoodno,jdbcType=VARCHAR},
+            ISACTIVE = #{isactive,jdbcType=VARCHAR}
+        where MATRLTM = #{matrltm,jdbcType=VARCHAR}
+              and suppliername=#{suppliername,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectGoodNo" parameterType="map" resultType="int">
+        select count(1) from ygmalluser.TBMQQ406 where thrplatgoodno=#{thrplatgoodno}
+    </select>
+</mapper>

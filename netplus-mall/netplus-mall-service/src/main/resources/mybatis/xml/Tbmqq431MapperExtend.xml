@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq431Mapper">
+
+    <sql id="getGoodsGroupCore">
+        select t1.*
+        from ygmalluser.tbmqq431 t1
+        <where>
+
+
+            <if test="supplierNo !=null and supplierNo !=''">
+                and t1.supplierno=#{supplierNo}
+            </if>
+            <if test="brandList !=null and brandList.size>0">
+                and exists (
+                                select goodid
+                                from ygmalluser.tbmqq430 t2
+                                where
+                                t2.groupno=t1.groupno
+                                and t2.brand in <foreach collection="brandList" item="item" open="(" separator="," close=")">#{item}</foreach>
+                           )
+            </if>
+
+            <if test="categoryNameList !=null and categoryNameList!=''">
+
+                and exists (
+                                select goodid
+                                from ygmalluser.tbmqq430 t2
+                                where
+                                t2.groupno=t1.groupno
+                                and t2.categoryname = #{categoryNameList}
+                            )
+
+            </if>
+
+
+
+            <if test="createTime != null">
+                <if test="createTime.max !=null and createTime.max !=''">
+                    and t1.createdate &lt;= replace(#{createTime.max}, '-','')
+                </if>
+                <if test="createTime.min !=null and createTime.min !=''">
+                    and t1.createdate &gt;= replace(#{createTime.min},'-','')
+                </if>
+            </if>
+
+
+            <if test="searchKey != null and searchKey != ''">
+               and (
+                      t1.groupno like '%'||#{searchKey}||'%'
+                      or exists (
+
+                                    select goodid
+                                    from ygmalluser.tbmqq430 t2
+                                    where
+                                    t2.groupno=t1.groupno
+                                    and (
+
+                                            t2.productname like '%'||#{searchKey}||'%'
+                                            or t2.brand like '%'||#{searchKey}||'%'
+                                            or t2.spec like '%'||#{searchKey}||'%'
+                                            or t2.matrlno like '%'||#{searchKey}||'%'
+
+                                        )
+
+
+                                )
+                   )
+            </if>
+        </where>
+        order by t1.createdate desc
+    </sql>
+
+    <select id="getGoodsGroupList" resultType="netplus.mall.api.vo.GoodsGroupVo">
+
+        select tt.*
+        from
+        (
+        select t.*, rownum r
+        from (<include refid="getGoodsGroupCore"/>) t
+        ) tt where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(1)
+        from (<include refid="getGoodsGroupCore" />) tt
+    </select>
+
+    <sql id="getGroupGoodCore">
+
+        select t2.*
+        from ygmalluser.TBMQQ431 t1
+        join ygmalluser.TBMQQ430 t2 on t1.groupno =t2.groupno
+
+        <where>
+            t1.supplierno=#{supplierNo}
+
+            <if test="brandList !=null and brandList.size>0">
+
+                and t2.brand in <foreach collection="brandList" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+            </if>
+
+            <if test="categoryNameList !=null and categoryNameList!=''">
+
+                and t2.categoryname = #{categoryNameList}
+
+            </if>
+
+            <if test="createTime != null">
+                <if test="createTime.max !=null and createTime.max !=''">
+                    and t1.createdate &lt;= replace(#{createTime.max}, '-','')
+                </if>
+                <if test="createTime.min !=null and createTime.min !=''">
+                    and t1.createdate &gt;= replace(#{createTime.min},'-','')
+                </if>
+            </if>
+
+
+            <if test="searchKey != null and searchKey != ''">
+                and (
+                t1.groupno like '%'||#{searchKey}||'%'
+                or t2.productname like '%'||#{searchKey}||'%'
+                or t2.brand like '%'||#{searchKey}||'%'
+                or t2.spec like '%'||#{searchKey}||'%'
+                or t2.matrlno like '%'||#{searchKey}||'%'
+                )
+
+            </if>
+
+            <if test="groupNo !=null and groupNo !=''">
+                and t1.groupno=#{groupNo}
+            </if>
+        </where>
+
+    </sql>
+
+    <select id="getCategoryNameListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+            tt.categoryname as key,
+            tt.categoryname as value
+        from (<include refid="getGroupGoodCore" />) tt
+        group by tt.categoryname
+    </select>
+
+    <select id="getBrandListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+            tt.brand as key,
+            tt.brand as value
+        from (<include refid="getGroupGoodCore" />) tt
+        where tt.brand is not null
+        group by tt.brand
+
+    </select>
+
+    <select id="getGroupGoodList" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select tt.* from (<include refid="getGroupGoodCore" />) tt
+
+    </select>
+
+
+    <delete id="deleteGoodsGroup">
+        delete from ygmalluser.TBMQQ431
+        where groupno = #{groupNo,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="batchDeleteGoodsGroup">
+        delete from ygmalluser.TBMQQ431
+        where groupno in
+        <foreach collection="list" item="groups" open="(" separator="," close=")">
+            #{groups}
+        </foreach>
+    </delete>
+</mapper>

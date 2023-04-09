@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="netplus-interface-monitor-service" />
+        <module name="netplus-joint-erp-api" />
+        <module name="netplus-job-core" />
+        <module name="netplus-joint-erp-in-service" />
+        <module name="netplus-interface-monitor-web" />
+        <module name="netplus-provider-api" />
+        <module name="netplus-mall-api" />
+        <module name="netplus-component-freemarker-web" />
+        <module name="netplus-interface-monitor-api" />
+        <module name="netplus-mall-web" />
+        <module name="netplus-commonservice-eureka" />
+        <module name="netplus-joint-erp-out-service" />
+        <module name="netplus-provider-web" />
+        <module name="netplus-excel-service" />
+        <module name="netplus-joint-zkh-out-service" />
+        <module name="netplus-joint-zkh-api" />
+        <module name="netplus-messaging-service" />
+        <module name="netplus-job-client" />
+        <module name="netplus-component-api" />
+        <module name="netplus-job-admin" />
+        <module name="netplus-common" />
+        <module name="netplus-provider-service" />
+        <module name="netplus-config" />
+        <module name="netplus-messaging-web" />
+        <module name="netplus-mall-service" />
+        <module name="netplus-portal-web" />
+        <module name="netplus-messaging-api" />
+        <module name="netplus-joint-zkh-in-service" />
+        <module name="netplus-component-service" />
+        <module name="netplus-static" />
+        <module name="netplus-excel-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="netplus-chat" target="1.8" />
+      <module name="netplus-common" target="1.8" />
+      <module name="netplus-commonservice-eureka" target="1.8" />
+      <module name="netplus-component" target="1.8" />
+      <module name="netplus-component-api" target="1.8" />
+      <module name="netplus-component-freemarker-web" target="1.8" />
+      <module name="netplus-component-service" target="1.8" />
+      <module name="netplus-config" target="1.5" />
+      <module name="netplus-excel" target="1.8" />
+      <module name="netplus-excel-api" target="1.8" />
+      <module name="netplus-excel-service" target="1.8" />
+      <module name="netplus-interface-monitor" target="1.8" />
+      <module name="netplus-interface-monitor-api" target="1.8" />
+      <module name="netplus-interface-monitor-service" target="1.8" />
+      <module name="netplus-interface-monitor-web" target="1.8" />
+      <module name="netplus-job" target="1.8" />
+      <module name="netplus-job-admin" target="1.8" />
+      <module name="netplus-job-client" target="1.8" />
+      <module name="netplus-job-core" target="1.8" />
+      <module name="netplus-joint-erp" target="1.8" />
+      <module name="netplus-joint-erp-api" target="1.8" />
+      <module name="netplus-joint-erp-in-service" target="1.8" />
+      <module name="netplus-joint-erp-out-service" target="1.8" />
+      <module name="netplus-joint-zkh" target="1.8" />
+      <module name="netplus-joint-zkh-api" target="1.8" />
+      <module name="netplus-joint-zkh-in-service" target="1.8" />
+      <module name="netplus-joint-zkh-out-service" target="1.8" />
+      <module name="netplus-mall" target="1.8" />
+      <module name="netplus-mall-api" target="1.8" />
+      <module name="netplus-mall-service" target="1.8" />
+      <module name="netplus-mall-web" target="1.8" />
+      <module name="netplus-messaging" target="1.8" />
+      <module name="netplus-messaging-api" target="1.8" />
+      <module name="netplus-messaging-service" target="1.8" />
+      <module name="netplus-messaging-web" target="1.8" />
+      <module name="netplus-portal" target="1.8" />
+      <module name="netplus-portal-web" target="1.8" />
+      <module name="netplus-provider" target="1.8" />
+      <module name="netplus-provider-api" target="1.8" />
+      <module name="netplus-provider-service" target="1.8" />
+      <module name="netplus-provider-web" target="1.8" />
+      <module name="netplus-static" target="1.5" />
+      <module name="trunk" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="netplus-common" options="-parameters" />
+      <module name="netplus-commonservice-eureka" options="-parameters" />
+      <module name="netplus-component-api" options="-parameters" />
+      <module name="netplus-component-freemarker-web" options="-parameters" />
+      <module name="netplus-component-service" options="-parameters" />
+      <module name="netplus-excel-api" options="-parameters" />
+      <module name="netplus-excel-service" options="-parameters" />
+      <module name="netplus-interface-monitor-api" options="-parameters" />
+      <module name="netplus-interface-monitor-service" options="-parameters" />
+      <module name="netplus-interface-monitor-web" options="-parameters" />
+      <module name="netplus-job-admin" options="-parameters" />
+      <module name="netplus-job-client" options="-parameters" />
+      <module name="netplus-job-core" options="-parameters" />
+      <module name="netplus-joint-erp-api" options="-parameters" />
+      <module name="netplus-joint-erp-in-service" options="-parameters" />
+      <module name="netplus-joint-erp-out-service" options="-parameters" />
+      <module name="netplus-joint-zkh-api" options="-parameters" />
+      <module name="netplus-joint-zkh-in-service" options="-parameters" />
+      <module name="netplus-joint-zkh-out-service" options="-parameters" />
+      <module name="netplus-mall-api" options="-parameters" />
+      <module name="netplus-mall-service" options="-parameters" />
+      <module name="netplus-mall-web" options="-parameters" />
+      <module name="netplus-messaging-api" options="-parameters" />
+      <module name="netplus-messaging-service" options="-parameters" />
+      <module name="netplus-messaging-web" options="-parameters" />
+      <module name="netplus-portal-web" options="-parameters" />
+      <module name="netplus-provider-api" options="-parameters" />
+      <module name="netplus-provider-service" options="-parameters" />
+      <module name="netplus-provider-web" options="-parameters" />
+    </option>
+  </component>
+</project>

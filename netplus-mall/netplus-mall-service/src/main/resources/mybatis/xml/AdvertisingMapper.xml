@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.AdvertisingMapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Advertising">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="IMAGEPATH" jdbcType="VARCHAR" property="imagepath" />
+    <result column="IMAGENAME" jdbcType="VARCHAR" property="imagename" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="NUM" jdbcType="DECIMAL" property="num" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, IMAGEPATH, IMAGENAME, STATUS, NUM, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, 
+    UPDATEDATE, UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.ADVERTISING
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.ADVERTISING
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Advertising">
+    insert into YGMALLUSER.ADVERTISING (ID, IMAGEPATH, IMAGENAME, 
+      STATUS, NUM, CREATEUSER, 
+      CREATEDATE, CREATETIME, UPDATEUSER, 
+      UPDATEDATE, UPDATETIME)
+    values (#{id,jdbcType=VARCHAR}, #{imagepath,jdbcType=VARCHAR}, #{imagename,jdbcType=VARCHAR}, 
+      #{status,jdbcType=DECIMAL}, #{num,jdbcType=DECIMAL}, #{createuser,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Advertising">
+    insert into YGMALLUSER.ADVERTISING
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="imagepath != null">
+        IMAGEPATH,
+      </if>
+      <if test="imagename != null">
+        IMAGENAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepath != null">
+        #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagename != null">
+        #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Advertising">
+    update YGMALLUSER.ADVERTISING
+    <set>
+      <if test="imagepath != null">
+        IMAGEPATH = #{imagepath,jdbcType=VARCHAR},
+      </if>
+      <if test="imagename != null">
+        IMAGENAME = #{imagename,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        NUM = #{num,jdbcType=DECIMAL},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Advertising">
+    update YGMALLUSER.ADVERTISING
+    set IMAGEPATH = #{imagepath,jdbcType=VARCHAR},
+      IMAGENAME = #{imagename,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      NUM = #{num,jdbcType=DECIMAL},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

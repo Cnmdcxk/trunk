@@ -1,0 +1,170 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq429Mapper">
+
+
+    <select id="getGoodPicList" parameterType="map" resultType="netplus.mall.api.vo.picLib.Tbmqq429Vo">
+
+        select *
+        from ygmalluser.tbmqq429
+        <where>
+
+
+            <if test="matrlTm !=null and matrlTm !=''">
+                and matrltm=#{matrlTm}
+            </if>
+
+            <if test="matrlTmList !=null and matrlTmList.size>0">
+                and matrltm in
+                <foreach collection="matrlTmList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            and supplierno=#{supplierNo}
+        </where>
+
+        order by picturenum
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.TBMQQ429
+        (
+            supplierno, matrlno, picturenum,
+            picturetype, pictureurl, picturename,
+            goodno, deleted, createuser,
+            createdate, createtime, updateuser,
+            updatedate, updatetime, matrltm,
+            matrlid
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+                #{item.supplierno,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR}, #{item.picturenum,jdbcType=VARCHAR},
+                #{item.picturetype,jdbcType=VARCHAR}, #{item.pictureurl,jdbcType=VARCHAR}, #{item.picturename,jdbcType=VARCHAR},
+                #{item.goodno,jdbcType=VARCHAR}, #{item.deleted,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR},
+                #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR},
+                #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR},
+                #{item.matrlid,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+
+
+    <select id="getPicLibList" resultType="netplus.mall.api.vo.picLib.Tbmqq429Vo">
+
+        select *
+        from ygmalluser.tbmqq429
+        <where>
+            supplierno = #{supplierNo,jdbcType=VARCHAR}
+
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+                      CONCAT(CONCAT(matrltm,'_'), PICTURENUM) like '%'||#{searchKey}||'%'
+                      or CONCAT(CONCAT(goodno,'_'), PICTURENUM) like '%'||#{searchKey}||'%'
+                    )
+            </if>
+
+            <if test="pictureType !=null and pictureType !=''">
+                and picturetype=#{pictureType}
+            </if>
+
+
+            <if test="deleted !=null and deleted !=''">
+                and deleted=#{deleted}
+            </if>
+
+        </where>
+
+        order by createdate desc, matrltm desc, picturenum
+
+    </select>
+
+
+    <select id="getMatrlNoPicNum" resultType="String">
+
+        select picturenum
+        from ygmalluser.tbmqq429
+        where
+          supplierno=#{supplierNo,jdbcType=VARCHAR}
+          and matrltm=#{matrlTm,jdbcType=VARCHAR}
+          and picturetype=#{pictureType,jdbcType=VARCHAR}
+
+
+    </select>
+
+
+    <select id="getPicByMatrlTmAndSupplierNo" resultType="netplus.mall.api.vo.picLib.Tbmqq429Vo">
+
+        select *
+        from ygmalluser.tbmqq429
+        <where>
+            <if test="supplierNo !=null and supplierNo !=''" >
+                supplierno = #{supplierNo}
+            </if>
+
+            <if test="matrlTm !=null and matrlTm !=''" >
+                and matrltm = #{matrlTm}
+            </if>
+
+            <if test="matrlTmList !=null and matrlTmList.size>0" >
+                and matrltm in <foreach collection="matrlTmList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="deleted !=null and deleted !=''">
+                and deleted = #{deleted}
+            </if>
+            <if test="pictureType!=null and pictureType!=''">
+                and picturetype=#{pictureType}
+            </if>
+            <if test="picturenum !=null and picturenum!=''">
+                and picturenum =#{picturenum}
+            </if>
+        </where>
+
+    </select>
+
+
+    <delete id="delBySupplierNoAndMatrlno">
+
+        delete from ygmalluser.tbmqq429
+        where
+          matrlno in <foreach collection="matrlNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+          and supplierno in <foreach collection="supplierNoList" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+    </delete>
+
+    <delete id="delSame" parameterType="map">
+        delete
+        from ygmalluser.tbmqq429
+        where deleted = #{deleted}
+        and picturetype=#{pictureType}
+        and matrltm = #{matrlTm}
+        and supplierno = #{supplierNo}
+        and picturenum =#{picturenum}
+    </delete>
+
+
+    <update id="updatePic" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq429">
+        update YGMALLUSER.TBMQQ429
+        set PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+        PICTURENAME = #{picturename,jdbcType=VARCHAR},
+        GOODNO = #{goodno,jdbcType=VARCHAR},
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+        MATRLTM = #{matrltm,jdbcType=VARCHAR}
+        where PICTURENUM = #{picturenum,jdbcType=VARCHAR}
+        and SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+        and MATRLTM = #{matrltm,jdbcType=VARCHAR}
+        and DELETED = #{deleted,jdbcType=VARCHAR}
+        and PICTURETYPE = #{picturetype,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

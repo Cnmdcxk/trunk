@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq438Mapper">
+
+
+    <select id="getMatrlIdBySupplierNo" parameterType="String" resultType="String">
+
+        select matrlid
+        from ygmalluser.tbmqq438
+        where supplierno=#{supplierNo}
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into ygmalluser.tbmqq438
+        (
+            supplierno, matrlno, suppliername,
+            qty, amt, createdate,
+            createtime, updatedate, updatetime,
+            matrlid, matrltm
+        )
+
+        (
+
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.supplierno,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR}, #{item.suppliername,jdbcType=VARCHAR},
+                    #{item.qty,jdbcType=DECIMAL}, #{item.amt,jdbcType=DECIMAL}, #{item.createdate,jdbcType=VARCHAR},
+                    #{item.createtime,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR},
+                    #{item.matrlid,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR}
+                from dual
+            </foreach>
+        )
+    </insert>
+
+    <update id="updateSale" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq438">
+
+        update ygmalluser.tbmqq438
+        set
+          qty = qty + #{qty},
+          amt = amt + #{amt},
+          updatedate = #{updatedate},
+          updatetime = #{updatetime}
+
+        where matrlid = #{matrlid} and supplierno = #{supplierno}
+
+    </update>
+
+    <sql id="rankingData" >
+        select row_number()over(PARTITION BY t2.ONELEVELCLANAME ORDER BY t1.QTY desc)n,
+        t1.SUPPLIERNO,t1.SUPPLIERNAME,t1.QTY,t1.matrlid,t1.matrltm,
+        t2.MATRLNO,t2.PICTUREURL,t2.GOODID,t2.PRICE,t2.TWOLEVELCLANAME,t2.ONELEVELCLANAME
+        from ygmalluser.tbmqq438 t1
+        join ygmalluser.tbmqq430 t2 on t1.matrltm=t2.matrltm and t1.supplierno=t2.supplierno
+    </sql>
+
+    <select id="getRankingData"  resultType="netplus.mall.api.vo.GoodsVo">
+        select t.* from (<include refid="rankingData"/>) t
+        where n &lt;= 2
+    </select>
+
+    <sql id="ranking2Data" >
+        select row_number()over(PARTITION BY t2.ONELEVELCLANAME ORDER BY t1.QTY desc)m,
+        t1.SUPPLIERNO,t1.SUPPLIERNAME,t1.QTY,t1.matrlid,t1.matrltm,
+        t2.MATRLNO,t2.PICTUREURL,t2.GOODID,t2.PRICE,t2.TWOLEVELCLANAME,t2.ONELEVELCLANAME
+        from ygmalluser.tbmqq438 t1
+        join ygmalluser.tbmqq430 t2 on t1.matrltm=t2.matrltm and t1.supplierno=t2.supplierno
+    </sql>
+
+    <select id="getShoppingList"  resultType="netplus.mall.api.vo.GoodsVo">
+        select t.* from (<include refid="ranking2Data"/>) t
+        where t.m &lt;= 20
+    </select>
+
+</mapper>

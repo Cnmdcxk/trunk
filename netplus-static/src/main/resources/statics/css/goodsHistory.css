@@ -1,0 +1,29 @@
+
+.el-input--suffix .el-input__inner {
+    padding-right: 20px !important;
+}
+
+.el-input--suffix .el-input__inner ::-webkit-input-placeholder {
+    padding-left: unset !important;
+}
+
+.el-input__suffix {
+    top: 9px;
+    right: 18px;
+}
+
+::-webkit-input-placeholder {
+    text-indent: unset !important;
+}
+
+:-moz-placeholder {
+    text-indent: unset !important;
+}
+
+::-moz-placeholder {
+    text-indent: unset !important;
+}
+
+:-ms-input-placeholder {
+    text-indent: unset !important;
+}

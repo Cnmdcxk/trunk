@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.DepartmentMapper">
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+
+
+        insert into ygmalluser.department
+        (
+            depno, depnum, depname,
+            comppk, compname, compno,
+            tax, compaddr, compphone,
+            bank, banknum,createdate,
+            createtime
+
+        )
+
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                #{item.depno}, #{item.depnum}, #{item.depname},
+                #{item.comppk}, #{item.compname}, #{item.compno},
+                #{item.tax}, #{item.compaddr}, #{item.compphone},
+                #{item.bank}, #{item.banknum},#{item.createdate},
+                #{item.createtime}
+                from dual
+            </foreach>
+        )
+    </insert>
+
+    <delete id="deleteAll">
+        delete  from  ygmalluser.department
+    </delete>
+
+
+</mapper>

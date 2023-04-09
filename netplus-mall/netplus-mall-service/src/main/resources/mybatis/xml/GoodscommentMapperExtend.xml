@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.GoodscommentMapper">
+
+  <resultMap id="GoodsCommentVoMap" type="netplus.mall.api.vo.GoodsCommentVo" extends="BaseResultMap">
+    <collection property="images" ofType="string">
+      <result column="URL"/>
+    </collection>
+  </resultMap>
+
+  <sql id="getGoodsCommentVoCore">
+    select t1.*,t2.url
+    from ygmalluser.goodscomment t1
+    left join ygmalluser.goodscommentimg t2
+        on t1.orderno=t2.orderno
+        and t1.orderdetailno=t2.orderdetailno
+    order by t1.commentdate desc,t1.commenttime desc,t2.sort
+  </sql>
+
+  <sql id="getGoodsCommentVoPageCore">
+    select *
+    from ygmalluser.goodscomment
+    <where>
+      <if test="goodId != null">
+        and goodid = #{goodId}
+      </if>
+      <if test="materialTm != null">
+        and matrltm = #{materialTm}
+      </if>
+      <if test="materialNo != null">
+        and matrlno = #{materialNo}
+      </if>
+      <if test="commentLevel != null">
+        and commentlevel = #{commentLevel}
+      </if>
+    </where>
+    order by commentdate desc,commenttime desc
+  </sql>
+
+  <select id="getCommentByOrderInfo" resultMap="GoodsCommentVoMap">
+    select *
+    from (<include refid="getGoodsCommentVoCore"/>) t
+    where t.orderno = #{orderNo}
+    and t.orderDetailNo = #{orderDetailNo}
+  </select>
+
+  <select id="getCommentsPageByGoodsInfo" resultMap="GoodsCommentVoMap">
+    select t3.*,t4.url from (
+      select t2.* from (
+        select t1.*, rownum r
+        from (<include refid="getGoodsCommentVoPageCore"/>) t1
+      ) t2
+      where t2.r<include refid="Common.gte"/> and t2.r<include refid="Common.lte"/>
+    ) t3
+    left join ygmalluser.goodscommentimg t4
+    on t3.orderno=t4.orderno
+    and t3.orderdetailno=t4.orderdetailno
+    order by t3.commentdate desc,t3.commenttime desc,t4.sort
+  </select>
+
+  <select id="getCommentsCountByGoodsInfo" resultType="netplus.mall.api.vo.CommentLevelCountVo">
+    select commentlevel commentLevel,count(1) totalCount
+    from ygmalluser.goodscomment
+    <where>
+      <if test="goodId != null">
+        and goodid = #{goodId}
+      </if>
+      <if test="materialTm != null">
+        and matrltm = #{materialTm}
+      </if>
+      <if test="materialNo != null">
+        and matrlno = #{materialNo}
+      </if>
+    </where>
+    group by commentlevel
+  </select>
+
+</mapper>

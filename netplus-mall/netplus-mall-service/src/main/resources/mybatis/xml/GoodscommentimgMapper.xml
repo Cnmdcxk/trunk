@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.GoodscommentimgMapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Goodscommentimg">
+    <result column="ORDERNO" jdbcType="VARCHAR" property="orderno" />
+    <result column="ORDERDETAILNO" jdbcType="VARCHAR" property="orderdetailno" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="SORT" jdbcType="DECIMAL" property="sort" />
+  </resultMap>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscommentimg">
+    insert into YGMALLUSER.GOODSCOMMENTIMG (ORDERNO, ORDERDETAILNO, URL, 
+      SORT)
+    values (#{orderno,jdbcType=VARCHAR}, #{orderdetailno,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscommentimg">
+    insert into YGMALLUSER.GOODSCOMMENTIMG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        ORDERNO,
+      </if>
+      <if test="orderdetailno != null">
+        ORDERDETAILNO,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailno != null">
+        #{orderdetailno,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

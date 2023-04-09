@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.iface.monitor.service.dao.Tbmqq460Mapper">
+
+    <sql id="getInterFaceData">
+        SELECT
+        reqtime,
+        reqid,reqname,resptime,callee,caller,status,times
+        FROM ygmalluser.tbmqq460
+        <where>
+            <if test="searchKey!=null and searchKey!=''">
+                and (reqid like '%'||#{searchKey}||'%'
+                or reqname like '%'||#{searchKey}||'%'
+                or callee like '%'||#{searchKey}||'%'
+                or caller like '%'||#{searchKey}||'%'
+                )
+            </if>
+            <if test="callerList!=null and callerList.size >0">
+                and caller in
+                <foreach collection="callerList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="calleeList!=null and calleeList.size >0">
+                and callee in
+                <foreach collection="calleeList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="reqnameList!=null and reqnameList.size >0">
+                and reqname in
+                <foreach collection="reqnameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="statusList!= null and statusList.size > 0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="reqTime != null">
+                <if test="reqTime.max !=null and reqTime.max !=''">
+                    and TO_CHAR(reqtime / (1000 * 60 * 60 * 24) +
+                    TO_DATE('1970-01-01 08:00:00', 'YYYY/MM/DD HH:MI:SS'), 'YYYYMMDD') &lt;= replace(#{reqTime.max,jdbcType=VARCHAR},'-','')
+                </if>
+                <if test="reqTime.min !=null and reqTime.min !=''">
+                    and TO_CHAR(reqtime / (1000 * 60 * 60 * 24) +
+                    TO_DATE('1970-01-01 08:00:00', 'YYYY/MM/DD HH:MI:SS'), 'YYYYMMDD') &gt;= replace(#{reqTime.min,jdbcType=VARCHAR},'-','')
+                </if>
+            </if>
+        </where>
+        order by reqtime desc,reqname desc
+    </sql>
+
+    <select id="selectRespData" parameterType="java.lang.String" resultType="netplus.iface.monitor.api.vo.Tbmqq460Vo">
+        select requrl,reqdata,respdata
+        from ygmalluser.tbmqq460
+        where reqid=#{reqid}
+    </select>
+
+    <select id="getInterFaceDataList" parameterType="map" resultType="netplus.iface.monitor.api.vo.Tbmqq460Vo">
+        select
+          tt.*
+        from (
+            select t460.*,rownum r
+            from ( <include refid="getInterFaceData"/> )t460
+        ) tt
+        where tt.r <include refid="Common.lte"/> and tt.r <include refid="Common.gte"/>
+    </select>
+    <select id="getCount" parameterType = "map" resultType="int">
+        select count(*) from (<include refid="getInterFaceData"/>) t
+    </select>
+
+    <select id="getCalleeKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select t.callee as key,
+        t.callee as value
+        from(<include refid="getInterFaceData"/>) t
+        group by t.callee
+    </select>
+    <select id="getCallerKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select t.caller as key,
+        t.caller as value
+        from(<include refid="getInterFaceData"/>) t
+        group by t.caller
+    </select>
+    <select id="getReqNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select t.reqname as key
+        ,t.reqname as value
+        from(<include refid="getInterFaceData"/>)t
+        group by t.reqname
+    </select>
+
+    <delete id="deleteInformation" parameterType = "long">
+        delete from ygmalluser.tbmqq460 where reqtime &lt;= #{beforeTime}
+    </delete>
+
+</mapper>

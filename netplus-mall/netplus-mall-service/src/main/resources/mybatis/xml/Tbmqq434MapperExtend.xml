@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq434Mapper">
+
+    <sql id="getMyCollectListCore">
+
+        select
+          t1.*,
+          t2.status,
+          case when t433.goodid is not null then 'Y' else 'N' end as isAddCart
+        from ygmalluser.tbmqq434 t1
+        left join ygmalluser.tbmqq430 t2 on t1.goodid=t2.goodid
+        left join ygmalluser.tbmqq433 t433 on t1.goodid=t433.goodid and t1.userno=t433.userno
+
+        <where>
+            t1.userno=#{userNo,jdbcType=VARCHAR}
+
+            <if test="productName !=null and productName !=''">
+                and t1.productname=#{productName}
+            </if>
+
+            <if test="brand !=null and brand !=''">
+                and t1.brand=#{brand}
+            </if>
+
+            <if test="spec !=null and spec !=''">
+                and t1.spec=#{spec}
+            </if>
+
+            <if test="goodNo !=null and goodNo !=''">
+                and t1.goodno=#{goodNo}
+            </if>
+
+            <if test="supplierName !=null and supplierName !=''">
+                and t1.suppliername=#{supplierName}
+            </if>
+
+            <if test="matrlNo !=null and matrlNo !=''">
+                and t1.matrlno=#{matrlNo}
+            </if>
+
+            <if test="searchKey!=null and searchKey!=''">
+                and (
+                t1.productname like '%'||#{searchKey}||'%'
+                or t1.brand like '%'||#{searchKey}||'%'
+                or t1.matrlno like '%'||#{searchKey}||'%'
+                or t1.matrltm like '%'||#{searchKey}||'%'
+                )
+
+            </if>
+
+
+            <if test="categoryNameList !=null and categoryNameList!=''">
+                and t1.categoryname =#{categoryNameList}
+            </if>
+
+            <if test="goodIdList !=null and goodIdList.size >0 ">
+                and t1.goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item,jdbcType=VARCHAR}
+                </foreach>
+            </if>
+
+        </where>
+
+        order by t1.createdate desc ,t1.createtime desc
+
+    </sql>
+
+    <select id="getMyCollectList" parameterType="map" resultType="netplus.mall.api.vo.goodCollect.GoodCollectVo">
+
+        select t4.*
+        from
+              (
+
+                select t3.*, rownum rn
+                from (
+                        select t5.*,t6.price as futurePrice,t6.popricestartdate as futurePoPriceStartDate
+                        from (<include refid="getMyCollectListCore" />) t5
+                        left join ygmalluser.futuregood t6 on t5.matrlid=t6.matrlid and t5.supplierno=t6.supplierno
+                    ) t3
+
+              ) t4
+
+        where t4.rn <include refid="Common.gte" /> and t4.rn <include refid="Common.lte"/>
+
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+
+        select count(1)
+        from (<include refid="getMyCollectListCore" />) t3
+
+    </select>
+
+    <select id="getCategoryNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+          t3.categoryname as key,
+          t3.categoryname as value
+        from (<include refid="getMyCollectListCore" />) t3
+        group by t3.categoryname
+
+    </select>
+
+    <delete id="delMyCollect" parameterType="map">
+
+        delete from ygmalluser.tbmqq434
+        <where>
+            userno=#{userNo}
+
+            <if test="goodIds !=null">
+               and goodid in
+               <foreach item="goodId" collection="goodIds" open="(" separator="," close=")">
+                   #{goodId}
+               </foreach>
+            </if>
+        </where>
+
+    </delete>
+
+    <select id="getMyCollectListByGoodsIds" parameterType="map" resultType="netplus.mall.api.vo.goodCollect.GoodCollectVo">
+        <include refid="getMyCollectListCore" />
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into YGMALLUSER.TBMQQ434
+            (
+             USERNO, GOODID, CATEGORYNAME,
+             ONELEVELCLANAME, TWOLEVELCLANAME, PRODUCTNAME,
+             GOODNO, MATRLNO, QTY,
+             QTYUNIT, PRICE, NOTAXPRICE,
+             TAX, SPEC, BRAND, REFERDELIVERYDATE,
+             USERNAME, SUPPLIERNO, SUPPLIERNAME,
+             PICTUREURL, CREATEUSER, CREATEDATE,
+             CREATETIME, UPDATEUSER, UPDATEDATE,
+             UPDATETIME, SOURCEFROM, PONOPK,
+             SUPPLIERPK, MATRLID, MATRLTM,
+             CATEGORYPK, ONELEVELCLAPK, TWOLEVELCLAPK,
+             remark
+        )
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.userno,jdbcType=VARCHAR}, #{item.goodid,jdbcType=VARCHAR}, #{item.categoryname,jdbcType=VARCHAR},
+                    #{item.onelevelclaname,jdbcType=VARCHAR}, #{item.twolevelclaname,jdbcType=VARCHAR}, #{item.productname,jdbcType=VARCHAR},
+                    #{item.goodno,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR}, #{item.qty,jdbcType=DECIMAL},
+                    #{item.qtyunit,jdbcType=VARCHAR}, #{item.price,jdbcType=DECIMAL}, #{item.notaxprice,jdbcType=DECIMAL},
+                    #{item.tax,jdbcType=DECIMAL}, #{item.spec,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, #{item.referdeliverydate,jdbcType=DECIMAL},
+                    #{item.username,jdbcType=VARCHAR}, #{item.supplierno,jdbcType=VARCHAR}, #{item.suppliername,jdbcType=VARCHAR},
+                    #{item.pictureurl,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR},
+                    #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR},
+                    #{item.updatetime,jdbcType=VARCHAR}, #{item.sourcefrom,jdbcType=VARCHAR}, #{item.ponopk,jdbcType=VARCHAR},
+                    #{item.supplierpk,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR},
+                    #{item.categorypk,jdbcType=VARCHAR}, #{item.onelevelclapk,jdbcType=VARCHAR}, #{item.twolevelclapk,jdbcType=VARCHAR},
+                    #{item.remark,jdbcType=VARCHAR}
+                from dual
+            </foreach>
+        )
+    </insert>
+
+    <update id="updateCollectRemark">
+        update ygmalluser.tbmqq434
+        set remark=#{remark}
+        where userno = #{userNo}
+          and goodid = #{goodId}
+    </update>
+
+    <select id="getMyCollectListRemark" parameterType="map" resultType="netplus.mall.api.vo.goodCollect.GoodCollectVo">
+        select goodid,remark
+        from ygmalluser.tbmqq434
+        <where>
+            userno=#{userno}
+            <if test="goodIdList !=null and goodIdList.size > 0">
+                and goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+</mapper>

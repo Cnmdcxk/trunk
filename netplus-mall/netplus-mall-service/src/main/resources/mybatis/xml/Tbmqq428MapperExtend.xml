@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq428Mapper">
+
+    <select id="getTop" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select t2.goodid, t2.productname, t2.price, t2.pictureurl
+        from ygmalluser.tbmqq428 t1
+        join ygmalluser.tbmqq430 t2 on t2.matrlno=t1.matrlno and t2.supplierno=t1.supplierno
+        where t2.status='YSJ'
+
+    </select>
+
+    <delete id="clearData">
+        delete from ygmalluser.tbmqq428
+    </delete>
+
+</mapper>

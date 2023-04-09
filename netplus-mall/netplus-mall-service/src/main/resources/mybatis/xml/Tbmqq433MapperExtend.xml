@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq433Mapper">
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+
+        insert into ygmalluser.tbmqq433
+        (
+            userno, goodid, pono,
+            poitemno, categoryname, onelevelclaname,
+            twolevelclaname, productname, goodno,
+            matrlno, unitmethod, qty,
+            qtyunit, minbuyqty, price,
+            notaxprice, originprice, tax,
+            spec, brand, weight,
+            weightunit, packthick, packwidth,
+            packheight, packunit, referdeliverydate,
+            supplierno, suppliername, reqno,
+            reqitemno, popricedate, popricetime,
+            qlty, groupno, pictureurl,
+            shelvesdate, shelvestime, isinttimepurchase,
+            isdecimalpurchase, createuser, createdate,
+            createtime, updateuser, updatedate,
+            updatetime, sourcefrom, username,
+            reqdelidate, projectno, projectname,
+            paytype, paytypename, paymethod,
+            paymethodname, ponopk, supplierpk,
+            matrlid, matrltm, categorypk,
+            onelevelclapk, twolevelclapk, haspic,
+            popricestartdate, popricestarttime, leadtimenum,
+            deviceapplyno, deviceapplypk, isneedpic,
+            agentno, agentphone
+        )
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.userno,jdbcType=VARCHAR}, #{item.goodid,jdbcType=VARCHAR}, #{item.pono,jdbcType=VARCHAR},
+                    #{item.poitemno,jdbcType=VARCHAR}, #{item.categoryname,jdbcType=VARCHAR}, #{item.onelevelclaname,jdbcType=VARCHAR},
+                    #{item.twolevelclaname,jdbcType=VARCHAR}, #{item.productname,jdbcType=VARCHAR}, #{item.goodno,jdbcType=VARCHAR},
+                    #{item.matrlno,jdbcType=VARCHAR}, #{item.unitmethod,jdbcType=VARCHAR}, #{item.qty,jdbcType=DECIMAL},
+                    #{item.qtyunit,jdbcType=VARCHAR}, #{item.minbuyqty,jdbcType=DECIMAL}, #{item.price,jdbcType=DECIMAL},
+                    #{item.notaxprice,jdbcType=DECIMAL}, #{item.originprice,jdbcType=DECIMAL}, #{item.tax,jdbcType=DECIMAL},
+                    #{item.spec,jdbcType=VARCHAR}, #{item.brand,jdbcType=VARCHAR}, #{item.weight,jdbcType=DECIMAL},
+                    #{item.weightunit,jdbcType=VARCHAR}, #{item.packthick,jdbcType=DECIMAL}, #{item.packwidth,jdbcType=DECIMAL},
+                    #{item.packheight,jdbcType=DECIMAL}, #{item.packunit,jdbcType=VARCHAR}, #{item.referdeliverydate,jdbcType=DECIMAL},
+                    #{item.supplierno,jdbcType=VARCHAR}, #{item.suppliername,jdbcType=VARCHAR}, #{item.reqno,jdbcType=VARCHAR},
+                    #{item.reqitemno,jdbcType=VARCHAR}, #{item.popricedate,jdbcType=VARCHAR}, #{item.popricetime,jdbcType=VARCHAR},
+                    #{item.qlty,jdbcType=VARCHAR}, #{item.groupno,jdbcType=VARCHAR}, #{item.pictureurl,jdbcType=VARCHAR},
+                    #{item.shelvesdate,jdbcType=VARCHAR}, #{item.shelvestime,jdbcType=VARCHAR}, #{item.isinttimepurchase,jdbcType=VARCHAR},
+                    #{item.isdecimalpurchase,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR},
+                    #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR},
+                    #{item.updatetime,jdbcType=VARCHAR}, #{item.sourcefrom,jdbcType=VARCHAR}, #{item.username,jdbcType=VARCHAR},
+                    #{item.reqdelidate,jdbcType=VARCHAR}, #{item.projectno,jdbcType=VARCHAR}, #{item.projectname,jdbcType=VARCHAR},
+                    #{item.paytype,jdbcType=VARCHAR}, #{item.paytypename,jdbcType=VARCHAR}, #{item.paymethod,jdbcType=VARCHAR},
+                    #{item.paymethodname,jdbcType=VARCHAR}, #{item.ponopk,jdbcType=VARCHAR}, #{item.supplierpk,jdbcType=VARCHAR},
+                    #{item.matrlid,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR}, #{item.categorypk,jdbcType=VARCHAR},
+                    #{item.onelevelclapk,jdbcType=VARCHAR}, #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.haspic,jdbcType=VARCHAR},
+                    #{item.popricestartdate,jdbcType=VARCHAR}, #{item.popricestarttime,jdbcType=VARCHAR}, #{item.leadtimenum,jdbcType=DECIMAL},
+                    #{item.deviceapplyno,jdbcType=VARCHAR}, #{item.deviceapplypk,jdbcType=VARCHAR}, #{item.isneedpic,jdbcType=VARCHAR},
+                    #{item.agentno,jdbcType=VARCHAR},#{item.agentphone,jdbcType=VARCHAR}
+
+                from dual
+            </foreach>
+        )
+
+    </insert>
+
+
+    <sql id="getMyShoppingCartListCore">
+        select
+            t1.userno,t1.goodid,t1.pono,
+            t1.poitemno,t1.categoryname,t1.onelevelclaname,
+            t1.twolevelclaname,t1.productname,
+            t1.goodno,t1.matrlno,t1.unitmethod,
+            t1.qty,t1.qtyunit,t1.price,
+            t1.notaxprice,t1.originprice,
+            t1.tax,t1.spec,t1.brand,
+            t1.weight,t1.weightunit,t1.packthick,
+            t1.packwidth,t1.packheight,t1.packunit,
+            t1.referdeliverydate,t1.supplierno,t1.suppliername,
+            t1.reqno,t1.reqitemno,t1.popricedate,
+            t1.popricetime,t1.qlty,t1.groupno,
+            t1.pictureurl,t1.shelvesdate,t1.shelvestime,
+            t1.isdecimalpurchase,t1.createuser,t1.createdate,
+            t1.createtime,t1.updateuser,t1.updatedate,
+            t1.updatetime,t1.sourcefrom,
+            t1.username,t1.reqdelidate,t1.projectno,
+            t1.projectname,t1.paytype,t1.paytypename,
+            t1.paymethod,t1.paymethodname,
+            t1.ponopk,t1.supplierpk,t1.matrlid,
+            t1.matrltm,t1.categorypk,t1.onelevelclapk,
+            t1.twolevelclapk,t1.haspic,
+            t1.popricestartdate,t1.popricestarttime,t1.leadtimenum,
+            t1.deviceapplyno,t1.deviceapplypk,t1.isneedpic,t1.remark,
+            t1.devicesimpleno,
+
+            t1.qty as oldQty,
+            t1.projectname||t1.projectno as projectNameAndNo,
+            t2.minbuyqty,
+            t2.isinttimepurchase,
+
+            case
+              when t2.status in('25', '35', '40')
+              then 'Y'
+              else 'N'
+            end as cartGoodStatus
+
+        from ygmalluser.tbmqq433 t1
+        left join ygmalluser.tbmqq430 t2 on t1.goodid=t2.goodid
+        <where>
+            t1.userno=#{userno}
+
+            <if test="categoryList !=null and categoryList.size >0 ">
+                and t1.categorypk in
+                <foreach collection="categoryList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="brandList !=null and brandList.size>0">
+                and t1.brand in
+                <foreach collection="brandList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+                    t1.productname like '%'|| #{searchKey} || '%'
+                    or t1.brand like '%'|| #{searchKey} || '%'
+                    or t1.matrltm like '%'|| #{searchKey} || '%'
+                    or t1.matrlno like '%'|| #{searchKey} || '%'
+                    or t1.spec like '%'|| #{searchKey} || '%'
+                )
+            </if>
+
+            <if test="goodIdList !=null and goodIdList.size > 0">
+                and t1.goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="getMyShoppingCartList" parameterType="map" resultType="netplus.mall.api.vo.shoppingCart.Tbmqq433Vo">
+
+        select t3.*,t4.price as futurePrice,t4.popricestartdate as futurePoPriceStartDate
+        from (<include refid="getMyShoppingCartListCore" />) t3
+        left join ygmalluser.futuregood t4 on t3.matrlid=t4.matrlid and t3.supplierno=t4.supplierno
+
+    </select>
+
+    <select id="getCategoryNameFilter" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+          t3.categorypk as key,
+          t3.categoryname as value
+        from (<include refid="getMyShoppingCartListCore" /> ) t3
+        group by t3.categoryname, t3.categorypk
+
+    </select>
+
+
+    <select id="getBrandFilter" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+        t3.brand as key, t3.brand as value
+        from (<include refid="getMyShoppingCartListCore" /> ) t3
+        where t3.brand is not null
+        group by t3.brand
+
+    </select>
+
+
+    <delete id="delMyShoppingCart" parameterType="map">
+
+        delete from ygmalluser.tbmqq433 t1
+        <where>
+            t1.userno=#{userno}
+            and t1.goodid in <foreach collection="goodIdList" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+            <if test="statusList !=null and statusList !=''">
+                exists (
+                          select goodid
+                          from ygmalluser.tbmqq430 t2
+                          where
+                                t2.goodid=t1.goodid
+                                and t2.status in
+                                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                                    #{item}
+                                </foreach>
+                       )
+            </if>
+
+        </where>
+
+    </delete>
+
+
+    <select id="getShoppingCartCount"  resultType="int">
+        select count(1)
+        from ygmalluser.tbmqq433 t1
+        <where>
+            t1.userno=#{userno}
+        </where>
+    </select>
+
+    <select id="getMyShoppingCartByGoodId" parameterType="map" resultType="netplus.mall.api.vo.shoppingCart.Tbmqq433Vo">
+
+        select *
+        from ygmalluser.tbmqq433
+        where goodid=#{goodId} and userno=#{userNo}
+
+    </select>
+
+
+    <update id="update" parameterType="netplus.mall.api.vo.shoppingCart.Tbmqq433Vo">
+        update ygmalluser.TBMQQ433
+        <set>
+
+            <if test="qty != null">
+                QTY = #{qty,jdbcType=DECIMAL},
+            </if>
+            <if test="price != null">
+                PRICE = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="notaxprice != null">
+                NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+            </if>
+            <if test="updateuser != null">
+                UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedate != null">
+                UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null">
+                UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                USERNAME = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="projectno != null">
+                PROJECTNO = #{projectno,jdbcType=VARCHAR},
+            </if>
+            <if test="projectname != null">
+                PROJECTNAME = #{projectname,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceapplyno != null">
+                DEVICEAPPLYNO = #{deviceapplyno,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceapplypk != null">
+                DEVICEAPPLYPK = #{deviceapplypk,jdbcType=VARCHAR},
+            </if>
+            <if test="isneedpic != null">
+                ISNEEDPIC = #{isneedpic,jdbcType=VARCHAR},
+            </if>
+        </set>
+
+        where
+          USERNO = #{userno}
+          <if test="goodid !=null and goodid !=''">
+              and GOODID = #{goodid}
+          </if>
+
+          <if test="goodIdList !=null and goodIdList.size>0">
+              and GOODID in
+              <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+
+    </update>
+
+    <update id="updateShoppingCartRemark">
+        update ygmalluser.tbmqq433
+        set remark=#{remark}
+        where userno = #{userNo}
+          and goodid = #{goodId}
+    </update>
+    
+    <select id="getMyShoppingCartRemark" parameterType="map" resultType="netplus.mall.api.vo.shoppingCart.Tbmqq433Vo">
+        select goodid,remark
+        from ygmalluser.tbmqq433
+        <where>
+            userno=#{userno}
+            <if test="goodIdList !=null and goodIdList.size > 0">
+                and goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+</mapper>

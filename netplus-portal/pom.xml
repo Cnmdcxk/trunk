@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>netplus</groupId>
+        <artifactId>netplus-parent</artifactId>
+        <version>1.31</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>netplus-portal</artifactId>
+    <version>1.0.YG-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>netplus-portal-web</module>
+    </modules>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>yidu-snapshots</id>
+            <name>yidu-snapshots</name>
+            <url>http://yidu-dev.com:8092/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>yidu-releases</id>
+            <name>yidu-releases</name>
+            <url>http://yidu-dev.com:8092/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+</project>

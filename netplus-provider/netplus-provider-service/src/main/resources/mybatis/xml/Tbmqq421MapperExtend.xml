@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq421Mapper">
+    <select id="ispermission" resultType="netplus.provider.api.pojo.ygmalluser.Tbmqq421" parameterType="string">
+        select t.*
+        from ygmalluser.TBMQQ421 t
+        where rolecode=#{rolecode}
+
+    </select>
+
+
+    <delete id="delByRoleCode" parameterType="map">
+
+        delete from ygmalluser.tbmqq421 where rolecode=#{rolecode}
+
+    </delete>
+
+
+
+
+    <insert id="bulkCreate" parameterType="java.util.List">
+
+        insert into ygmalluser.tbmqq421
+        (
+            ROLECODE, PRIVILEGECODE, CREATEUSER,
+            CREATEDATE, CREATETIME, UPDATEUSER,
+            UPDATEDATE, UPDATETIME
+        )
+
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.rolecode},
+                    #{item.privilegecode},
+                    #{item.createuser},
+                    #{item.createdate},
+                    #{item.createtime},
+                    #{item.updateuser},
+                    #{item.updatedate},
+                    #{item.updatetime}
+                from dual
+            </foreach>
+        )
+
+    </insert>
+</mapper>

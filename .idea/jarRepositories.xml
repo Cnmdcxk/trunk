@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="yidu-snapshots" />
+      <option name="name" value="yidu-snapshots" />
+      <option name="url" value="http://yidu-dev.com:8092/nexus/content/repositories/snapshots/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="aliyun" />
+      <option name="name" value="aliyun" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="yidu" />
+      <option name="name" value="yidu" />
+      <option name="url" value="http://47.102.43.226:8092/nexus/content/groups/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="yidu-releases" />
+      <option name="name" value="yidu-releases" />
+      <option name="url" value="http://yidu-dev.com:8092/nexus/content/repositories/releases/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="pansx1-yunzhijiaoauth-main" />
+      <option name="name" value="main" />
+      <option name="url" value="https://pansx1-maven.pkg.coding.net/repository/yunzhijiaoauth/main/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus-aliyun" />
+      <option name="name" value="Nexus aliyun" />
+      <option name="url" value="http://maven.aliyun.com/nexus/content/groups/public/" />
+    </remote-repository>
+  </component>
+</project>

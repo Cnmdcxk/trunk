@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbdu01Mapper">
+  <resultMap id="BaseResultMap" type="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+    <id column="USERNO" jdbcType="VARCHAR" property="userno" />
+    <result column="COMPNO" jdbcType="VARCHAR" property="compno" />
+    <result column="DEPNO" jdbcType="VARCHAR" property="depno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="MODIFYUSER" jdbcType="VARCHAR" property="modifyuser" />
+    <result column="MODIFYDATE" jdbcType="VARCHAR" property="modifydate" />
+    <result column="ISAVAILABLE" jdbcType="VARCHAR" property="isavailable" />
+    <result column="ISROLE" jdbcType="VARCHAR" property="isrole" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="COMPPK" jdbcType="VARCHAR" property="comppk" />
+    <result column="COMPNAME" jdbcType="VARCHAR" property="compname" />
+    <result column="USERTYPE" jdbcType="VARCHAR" property="usertype" />
+    <result column="DEPNAME" jdbcType="VARCHAR" property="depname" />
+    <result column="DEPNUM" jdbcType="VARCHAR" property="depnum" />
+    <result column="EMPTYPE" jdbcType="VARCHAR" property="emptype" />
+    <result column="BIZCONTACT" jdbcType="VARCHAR" property="bizcontact" />
+    <result column="BIZCONTACTPHONE" jdbcType="VARCHAR" property="bizcontactphone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERNO, COMPNO, DEPNO, NAME, PHONE, CREATEUSER, CREATEDATE, MODIFYUSER, MODIFYDATE, 
+    ISAVAILABLE, ISROLE, PASSWORD, COMPPK, COMPNAME, USERTYPE, DEPNAME, DEPNUM, EMPTYPE, 
+    BIZCONTACT, BIZCONTACTPHONE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBDU01
+    where USERNO = #{userno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.TBDU01
+    where USERNO = #{userno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+    insert into YGMALLUSER.TBDU01 (USERNO, COMPNO, DEPNO, 
+      NAME, PHONE, CREATEUSER, 
+      CREATEDATE, MODIFYUSER, MODIFYDATE, 
+      ISAVAILABLE, ISROLE, PASSWORD, 
+      COMPPK, COMPNAME, USERTYPE, 
+      DEPNAME, DEPNUM, EMPTYPE, 
+      BIZCONTACT, BIZCONTACTPHONE)
+    values (#{userno,jdbcType=VARCHAR}, #{compno,jdbcType=VARCHAR}, #{depno,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=VARCHAR}, #{modifyuser,jdbcType=VARCHAR}, #{modifydate,jdbcType=VARCHAR}, 
+      #{isavailable,jdbcType=VARCHAR}, #{isrole,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{comppk,jdbcType=VARCHAR}, #{compname,jdbcType=VARCHAR}, #{usertype,jdbcType=VARCHAR}, 
+      #{depname,jdbcType=VARCHAR}, #{depnum,jdbcType=VARCHAR}, #{emptype,jdbcType=VARCHAR}, 
+      #{bizcontact,jdbcType=VARCHAR}, #{bizcontactphone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+    insert into YGMALLUSER.TBDU01
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        USERNO,
+      </if>
+      <if test="compno != null">
+        COMPNO,
+      </if>
+      <if test="depno != null">
+        DEPNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="modifyuser != null">
+        MODIFYUSER,
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE,
+      </if>
+      <if test="isavailable != null">
+        ISAVAILABLE,
+      </if>
+      <if test="isrole != null">
+        ISROLE,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="comppk != null">
+        COMPPK,
+      </if>
+      <if test="compname != null">
+        COMPNAME,
+      </if>
+      <if test="usertype != null">
+        USERTYPE,
+      </if>
+      <if test="depname != null">
+        DEPNAME,
+      </if>
+      <if test="depnum != null">
+        DEPNUM,
+      </if>
+      <if test="emptype != null">
+        EMPTYPE,
+      </if>
+      <if test="bizcontact != null">
+        BIZCONTACT,
+      </if>
+      <if test="bizcontactphone != null">
+        BIZCONTACTPHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="compno != null">
+        #{compno,jdbcType=VARCHAR},
+      </if>
+      <if test="depno != null">
+        #{depno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyuser != null">
+        #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="isavailable != null">
+        #{isavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="isrole != null">
+        #{isrole,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="comppk != null">
+        #{comppk,jdbcType=VARCHAR},
+      </if>
+      <if test="compname != null">
+        #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null">
+        #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="depnum != null">
+        #{depnum,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null">
+        #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="bizcontact != null">
+        #{bizcontact,jdbcType=VARCHAR},
+      </if>
+      <if test="bizcontactphone != null">
+        #{bizcontactphone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+    update YGMALLUSER.TBDU01
+    <set>
+      <if test="compno != null">
+        COMPNO = #{compno,jdbcType=VARCHAR},
+      </if>
+      <if test="depno != null">
+        DEPNO = #{depno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyuser != null">
+        MODIFYUSER = #{modifyuser,jdbcType=VARCHAR},
+      </if>
+      <if test="modifydate != null">
+        MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="isavailable != null">
+        ISAVAILABLE = #{isavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="isrole != null">
+        ISROLE = #{isrole,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="comppk != null">
+        COMPPK = #{comppk,jdbcType=VARCHAR},
+      </if>
+      <if test="compname != null">
+        COMPNAME = #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        USERTYPE = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null">
+        DEPNAME = #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="depnum != null">
+        DEPNUM = #{depnum,jdbcType=VARCHAR},
+      </if>
+      <if test="emptype != null">
+        EMPTYPE = #{emptype,jdbcType=VARCHAR},
+      </if>
+      <if test="bizcontact != null">
+        BIZCONTACT = #{bizcontact,jdbcType=VARCHAR},
+      </if>
+      <if test="bizcontactphone != null">
+        BIZCONTACTPHONE = #{bizcontactphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERNO = #{userno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+    update YGMALLUSER.TBDU01
+    set COMPNO = #{compno,jdbcType=VARCHAR},
+      DEPNO = #{depno,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      MODIFYUSER = #{modifyuser,jdbcType=VARCHAR},
+      MODIFYDATE = #{modifydate,jdbcType=VARCHAR},
+      ISAVAILABLE = #{isavailable,jdbcType=VARCHAR},
+      ISROLE = #{isrole,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      COMPPK = #{comppk,jdbcType=VARCHAR},
+      COMPNAME = #{compname,jdbcType=VARCHAR},
+      USERTYPE = #{usertype,jdbcType=VARCHAR},
+      DEPNAME = #{depname,jdbcType=VARCHAR},
+      DEPNUM = #{depnum,jdbcType=VARCHAR},
+      EMPTYPE = #{emptype,jdbcType=VARCHAR},
+      BIZCONTACT = #{bizcontact,jdbcType=VARCHAR},
+      BIZCONTACTPHONE = #{bizcontactphone,jdbcType=VARCHAR}
+    where USERNO = #{userno,jdbcType=VARCHAR}
+  </update></mapper>

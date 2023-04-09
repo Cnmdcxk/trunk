@@ -1,0 +1,74 @@
+server:
+  port: 20044
+
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-joint-zkh-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+zkh:
+  url: https://openapi.uat.zkh360.com/yonggang/
+  clientId: A191824
+  clientSecret: fg92dhe20uj3103w
+  username: api_yonggang
+  password: ef73781effc5774100f87fe2f437a435
+
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-joint-zkh-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+
+zkh:
+  url: https://openapi.uat.zkh360.com/yonggang/
+  clientId: A191824
+  clientSecret: fg92dhe20uj3103w
+  username: api_yonggang
+  password: ef73781effc5774100f87fe2f437a435
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-joint-zkh-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+zkh:
+  url: https://openapi.zkh360.com/yonggang/
+  clientId: A191824
+  clientSecret: gf7t32d9e31ydhd
+  username: api_yonggang
+  password: 516c6a0d5d74a2d1a43284b586769cef
+
+
+

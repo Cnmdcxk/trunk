@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="netplus.excel.service.dao.ExcelTempMemoMapper">
+
+    <insert id="bulkInsert" useGeneratedKeys="false" keyProperty="id" parameterType="java.util.List">
+        insert into excel_temp_memo
+        (
+            batch_code, field, value, create_person
+        )
+
+        (
+
+            <foreach collection="list" item="item" separator="union all">
+                select
+
+                    #{item.batchCode,jdbcType=VARCHAR}, #{item.field,jdbcType=VARCHAR},
+                    #{item.value,jdbcType=VARCHAR}, #{item.createPerson,jdbcType=VARCHAR}
+
+                from dual
+            </foreach>
+
+        )
+
+    </insert>
+
+    <select id="selectMomeByBatchCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from excel_temp_memo
+        where  batch_code = #{batchCode,jdbcType=VARCHAR}
+    </select>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq436Mapper">
+
+    <insert id="addGoodLog">
+        insert into ygmalluser.tbmqq436
+        select * from ygmalluser.tbmqq430
+        where goodid=#{goodId}
+
+    </insert>
+
+
+    <insert id="addGoodLogs">
+        insert into ygmalluser.tbmqq436
+        select * from ygmalluser.tbmqq430
+        where goodid in <foreach collection="goodIdList" item="item" open="(" separator="," close=")" >#{item}</foreach>
+    </insert>
+
+    <sql id="getGoodsHistoryCore">
+        select * from ygmalluser.tbmqq436
+        where suppliername like '%' || #{suppliername} || '%' and pono like '%' || #{pono} || '%' and matrltm like '%' || #{matrltm} || '%'
+        order by createdate || createtime desc
+    </sql>
+
+    <select id="getGoodsHistoryList" parameterType="map" resultType="netplus.mall.api.vo.GoodsHistoryVo">
+        select * from (<include refid="getGoodsHistoryCore" />)
+    </select>
+
+    <select id="getSupplierName" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select tt.suppliername as value, tt.supplierno as key
+        from (<include refid="getGoodsHistoryCore" />) tt
+
+        group by tt.suppliername, tt.supplierno
+    </select>
+
+    <select id="getMatrltm" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select tt.matrltm as value, tt.matrltm as key
+        from (<include refid="getGoodsHistoryCore" />) tt
+
+        group by tt.matrltm
+    </select>
+
+    <select id="getPono" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+        select tt.pono as value, tt.ponopk as key
+        from (<include refid="getGoodsHistoryCore" />) tt
+
+        group by tt.pono, tt.ponopk
+    </select>
+</mapper>

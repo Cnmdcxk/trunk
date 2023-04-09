@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq406Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+    <id column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <id column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="SUPPLIERNAME" jdbcType="VARCHAR" property="suppliername" />
+    <result column="THRPLATGOODNO" jdbcType="VARCHAR" property="thrplatgoodno" />
+    <result column="THRPLATUNIT" jdbcType="VARCHAR" property="thrplatunit" />
+    <result column="THRPLATPRODUCTNAME" jdbcType="VARCHAR" property="thrplatproductname" />
+    <result column="THRPLATSPEC" jdbcType="VARCHAR" property="thrplatspec" />
+    <result column="THRPLATQUALITY" jdbcType="VARCHAR" property="thrplatquality" />
+    <result column="ISACTIVE" jdbcType="VARCHAR" property="isactive" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SUPPLIERNO, MATRLID, MATRLNO, SUPPLIERNAME, THRPLATGOODNO, THRPLATUNIT, THRPLATPRODUCTNAME, 
+    THRPLATSPEC, THRPLATQUALITY, ISACTIVE, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, 
+    UPDATEDATE, UPDATETIME, MATRLTM
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406Key" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ406
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406Key">
+    delete from YGMALLUSER.TBMQQ406
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+    insert into YGMALLUSER.TBMQQ406 (SUPPLIERNO, MATRLID, MATRLNO, 
+      SUPPLIERNAME, THRPLATGOODNO, THRPLATUNIT, 
+      THRPLATPRODUCTNAME, THRPLATSPEC, THRPLATQUALITY, 
+      ISACTIVE, CREATEUSER, CREATEDATE, 
+      CREATETIME, UPDATEUSER, UPDATEDATE, 
+      UPDATETIME, MATRLTM)
+    values (#{supplierno,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, #{matrlno,jdbcType=VARCHAR}, 
+      #{suppliername,jdbcType=VARCHAR}, #{thrplatgoodno,jdbcType=VARCHAR}, #{thrplatunit,jdbcType=VARCHAR}, 
+      #{thrplatproductname,jdbcType=VARCHAR}, #{thrplatspec,jdbcType=VARCHAR}, #{thrplatquality,jdbcType=VARCHAR}, 
+      #{isactive,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{matrltm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+    insert into YGMALLUSER.TBMQQ406
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME,
+      </if>
+      <if test="thrplatgoodno != null">
+        THRPLATGOODNO,
+      </if>
+      <if test="thrplatunit != null">
+        THRPLATUNIT,
+      </if>
+      <if test="thrplatproductname != null">
+        THRPLATPRODUCTNAME,
+      </if>
+      <if test="thrplatspec != null">
+        THRPLATSPEC,
+      </if>
+      <if test="thrplatquality != null">
+        THRPLATQUALITY,
+      </if>
+      <if test="isactive != null">
+        ISACTIVE,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatgoodno != null">
+        #{thrplatgoodno,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatunit != null">
+        #{thrplatunit,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatproductname != null">
+        #{thrplatproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatspec != null">
+        #{thrplatspec,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatquality != null">
+        #{thrplatquality,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+    update YGMALLUSER.TBMQQ406
+    <set>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatgoodno != null">
+        THRPLATGOODNO = #{thrplatgoodno,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatunit != null">
+        THRPLATUNIT = #{thrplatunit,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatproductname != null">
+        THRPLATPRODUCTNAME = #{thrplatproductname,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatspec != null">
+        THRPLATSPEC = #{thrplatspec,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatquality != null">
+        THRPLATQUALITY = #{thrplatquality,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        ISACTIVE = #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+    and MATRLID = #{matrlid,jdbcType=VARCHAR}
+
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq406">
+    update YGMALLUSER.TBMQQ406
+    set MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      THRPLATGOODNO = #{thrplatgoodno,jdbcType=VARCHAR},
+      THRPLATUNIT = #{thrplatunit,jdbcType=VARCHAR},
+      THRPLATPRODUCTNAME = #{thrplatproductname,jdbcType=VARCHAR},
+      THRPLATSPEC = #{thrplatspec,jdbcType=VARCHAR},
+      THRPLATQUALITY = #{thrplatquality,jdbcType=VARCHAR},
+      ISACTIVE = #{isactive,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR}
+    where SUPPLIERNO = #{supplierno,jdbcType=VARCHAR}
+      and MATRLID = #{matrlid,jdbcType=VARCHAR}
+  </update>
+</mapper>

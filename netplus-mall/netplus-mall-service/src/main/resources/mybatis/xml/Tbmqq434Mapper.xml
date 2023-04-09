@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq434Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq434">
+    <id column="USERNO" jdbcType="VARCHAR" property="userno" />
+    <id column="GOODID" jdbcType="VARCHAR" property="goodid" />
+    <result column="CATEGORYNAME" jdbcType="VARCHAR" property="categoryname" />
+    <result column="ONELEVELCLANAME" jdbcType="VARCHAR" property="onelevelclaname" />
+    <result column="TWOLEVELCLANAME" jdbcType="VARCHAR" property="twolevelclaname" />
+    <result column="PRODUCTNAME" jdbcType="VARCHAR" property="productname" />
+    <result column="GOODNO" jdbcType="VARCHAR" property="goodno" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="QTY" jdbcType="DECIMAL" property="qty" />
+    <result column="QTYUNIT" jdbcType="VARCHAR" property="qtyunit" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="NOTAXPRICE" jdbcType="DECIMAL" property="notaxprice" />
+    <result column="TAX" jdbcType="DECIMAL" property="tax" />
+    <result column="SPEC" jdbcType="VARCHAR" property="spec" />
+    <result column="BRAND" jdbcType="VARCHAR" property="brand" />
+    <result column="REFERDELIVERYDATE" jdbcType="DECIMAL" property="referdeliverydate" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <result column="SUPPLIERNAME" jdbcType="VARCHAR" property="suppliername" />
+    <result column="PICTUREURL" jdbcType="VARCHAR" property="pictureurl" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="SOURCEFROM" jdbcType="VARCHAR" property="sourcefrom" />
+    <result column="PONOPK" jdbcType="VARCHAR" property="ponopk" />
+    <result column="SUPPLIERPK" jdbcType="VARCHAR" property="supplierpk" />
+    <result column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+    <result column="CATEGORYPK" jdbcType="VARCHAR" property="categorypk" />
+    <result column="ONELEVELCLAPK" jdbcType="VARCHAR" property="onelevelclapk" />
+    <result column="TWOLEVELCLAPK" jdbcType="VARCHAR" property="twolevelclapk" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERNO, GOODID, CATEGORYNAME, ONELEVELCLANAME, TWOLEVELCLANAME, PRODUCTNAME, GOODNO, 
+    MATRLNO, QTY, QTYUNIT, PRICE, NOTAXPRICE, TAX, SPEC, BRAND, REFERDELIVERYDATE, USERNAME, 
+    SUPPLIERNO, SUPPLIERNAME, PICTUREURL, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, 
+    UPDATEDATE, UPDATETIME, SOURCEFROM, PONOPK, SUPPLIERPK, MATRLID, MATRLTM, CATEGORYPK, 
+    ONELEVELCLAPK, TWOLEVELCLAPK, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434Key" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ434
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and GOODID = #{goodid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434Key">
+    delete from YGMALLUSER.TBMQQ434
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and GOODID = #{goodid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434">
+    insert into YGMALLUSER.TBMQQ434 (USERNO, GOODID, CATEGORYNAME, 
+      ONELEVELCLANAME, TWOLEVELCLANAME, PRODUCTNAME, 
+      GOODNO, MATRLNO, QTY, 
+      QTYUNIT, PRICE, NOTAXPRICE, 
+      TAX, SPEC, BRAND, REFERDELIVERYDATE, 
+      USERNAME, SUPPLIERNO, SUPPLIERNAME, 
+      PICTUREURL, CREATEUSER, CREATEDATE, 
+      CREATETIME, UPDATEUSER, UPDATEDATE, 
+      UPDATETIME, SOURCEFROM, PONOPK, 
+      SUPPLIERPK, MATRLID, MATRLTM, 
+      CATEGORYPK, ONELEVELCLAPK, TWOLEVELCLAPK, 
+      REMARK)
+    values (#{userno,jdbcType=VARCHAR}, #{goodid,jdbcType=VARCHAR}, #{categoryname,jdbcType=VARCHAR}, 
+      #{onelevelclaname,jdbcType=VARCHAR}, #{twolevelclaname,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, 
+      #{goodno,jdbcType=VARCHAR}, #{matrlno,jdbcType=VARCHAR}, #{qty,jdbcType=DECIMAL}, 
+      #{qtyunit,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{notaxprice,jdbcType=DECIMAL}, 
+      #{tax,jdbcType=DECIMAL}, #{spec,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, #{referdeliverydate,jdbcType=DECIMAL}, 
+      #{username,jdbcType=VARCHAR}, #{supplierno,jdbcType=VARCHAR}, #{suppliername,jdbcType=VARCHAR}, 
+      #{pictureurl,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{sourcefrom,jdbcType=VARCHAR}, #{ponopk,jdbcType=VARCHAR}, 
+      #{supplierpk,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, #{matrltm,jdbcType=VARCHAR}, 
+      #{categorypk,jdbcType=VARCHAR}, #{onelevelclapk,jdbcType=VARCHAR}, #{twolevelclapk,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434">
+    insert into YGMALLUSER.TBMQQ434
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        USERNO,
+      </if>
+      <if test="goodid != null">
+        GOODID,
+      </if>
+      <if test="categoryname != null">
+        CATEGORYNAME,
+      </if>
+      <if test="onelevelclaname != null">
+        ONELEVELCLANAME,
+      </if>
+      <if test="twolevelclaname != null">
+        TWOLEVELCLANAME,
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME,
+      </if>
+      <if test="goodno != null">
+        GOODNO,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="qty != null">
+        QTY,
+      </if>
+      <if test="qtyunit != null">
+        QTYUNIT,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="notaxprice != null">
+        NOTAXPRICE,
+      </if>
+      <if test="tax != null">
+        TAX,
+      </if>
+      <if test="spec != null">
+        SPEC,
+      </if>
+      <if test="brand != null">
+        BRAND,
+      </if>
+      <if test="referdeliverydate != null">
+        REFERDELIVERYDATE,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME,
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM,
+      </if>
+      <if test="ponopk != null">
+        PONOPK,
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+      <if test="categorypk != null">
+        CATEGORYPK,
+      </if>
+      <if test="onelevelclapk != null">
+        ONELEVELCLAPK,
+      </if>
+      <if test="twolevelclapk != null">
+        TWOLEVELCLAPK,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="goodid != null">
+        #{goodid,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null">
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclaname != null">
+        #{onelevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclaname != null">
+        #{twolevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyunit != null">
+        #{qtyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxprice != null">
+        #{notaxprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="spec != null">
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="referdeliverydate != null">
+        #{referdeliverydate,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="categorypk != null">
+        #{categorypk,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclapk != null">
+        #{onelevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclapk != null">
+        #{twolevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434">
+    update YGMALLUSER.TBMQQ434
+    <set>
+      <if test="categoryname != null">
+        CATEGORYNAME = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclaname != null">
+        ONELEVELCLANAME = #{onelevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclaname != null">
+        TWOLEVELCLANAME = #{twolevelclaname,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodno != null">
+        GOODNO = #{goodno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="qty != null">
+        QTY = #{qty,jdbcType=DECIMAL},
+      </if>
+      <if test="qtyunit != null">
+        QTYUNIT = #{qtyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxprice != null">
+        NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null">
+        TAX = #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="spec != null">
+        SPEC = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null">
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="referdeliverydate != null">
+        REFERDELIVERYDATE = #{referdeliverydate,jdbcType=DECIMAL},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        PONOPK = #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        MATRLID = #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="categorypk != null">
+        CATEGORYPK = #{categorypk,jdbcType=VARCHAR},
+      </if>
+      <if test="onelevelclapk != null">
+        ONELEVELCLAPK = #{onelevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="twolevelclapk != null">
+        TWOLEVELCLAPK = #{twolevelclapk,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and GOODID = #{goodid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq434">
+    update YGMALLUSER.TBMQQ434
+    set CATEGORYNAME = #{categoryname,jdbcType=VARCHAR},
+      ONELEVELCLANAME = #{onelevelclaname,jdbcType=VARCHAR},
+      TWOLEVELCLANAME = #{twolevelclaname,jdbcType=VARCHAR},
+      PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      GOODNO = #{goodno,jdbcType=VARCHAR},
+      MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      QTY = #{qty,jdbcType=DECIMAL},
+      QTYUNIT = #{qtyunit,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+      TAX = #{tax,jdbcType=DECIMAL},
+      SPEC = #{spec,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      REFERDELIVERYDATE = #{referdeliverydate,jdbcType=DECIMAL},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      PONOPK = #{ponopk,jdbcType=VARCHAR},
+      SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      MATRLID = #{matrlid,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      CATEGORYPK = #{categorypk,jdbcType=VARCHAR},
+      ONELEVELCLAPK = #{onelevelclapk,jdbcType=VARCHAR},
+      TWOLEVELCLAPK = #{twolevelclapk,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and GOODID = #{goodid,jdbcType=VARCHAR}
+  </update></mapper>

@@ -1,0 +1,24 @@
+server:
+  port: 20002
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-portal-web
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-portal-web
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-portal-web
+
+
+

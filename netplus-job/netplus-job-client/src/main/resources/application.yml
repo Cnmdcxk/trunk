@@ -1,0 +1,56 @@
+server:
+  port: 20045
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-job-client
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:20018/
+    executor:
+      appname: netplus-job-client-yg
+      ip: 
+      port: 20019
+      logpath: /app/deploy/logs/jobhandler
+      logretentiondays: 1
+    accessToken: netplusYg
+
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-job-client
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:20018/
+    executor:
+      appname: netplus-job-client-yg
+      ip: 
+      port: 20019
+      logpath: /app/deploy/logs/jobhandler
+      logretentiondays: 1
+    accessToken: netplusYg
+  
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-job-client
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:20018/
+    executor:
+      appname: netplus-job-client-yg
+      ip: 
+      port: 20019
+      logpath: /app/deploy/log/jobhandler
+      logretentiondays: 1
+    accessToken: netplusYg
+

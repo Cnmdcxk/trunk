@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq407Mapper">
+
+    <sql id="BasicPicLib">
+        select *
+        from ygmalluser.TBMQQ407
+         <where>
+         <if test="matrlNo!=null and matrlNo!=''">
+             and matrlno=#{matrlNo}
+         </if>
+             <if test="matrlTm!=null and matrlTm!=''">
+                 and matrltm=#{matrlTm}
+             </if>
+         <if test="pictureNum!=null and pictureNum!=''">
+             and picturenum=#{pictureNum}
+         </if>
+         <if test="searchKey!=null and searchKey!=''">
+              and (
+             matrlno like '%'||#{searchKey}||'%'
+             or matrlTm like '%'||#{searchKey}||'%'
+             or createuser like '%'||#{searchKey}||'%'
+             or updateuser like '%'||#{searchKey}||'%'
+             )
+         </if>
+         </where>
+
+          <include refid="Common.orderBy" />
+
+    </sql>
+    <select id="selectBasicPicLib" parameterType="map" resultType="netplus.mall.api.vo.Tbmqq407Vo">
+        select tt.* from (
+        select t.*,rownum rn
+        from(<include refid="BasicPicLib"/>)t
+        )tt
+        where tt.rn<include refid="Common.gte"/> and tt.rn <include refid="Common.lte"/>
+
+    </select>
+    <select id="getBasicPicLib" parameterType="map" resultType="netplus.mall.api.vo.Tbmqq407Vo">
+        select t.* from (<include refid="BasicPicLib"/>)t
+
+    </select>
+    <select id="selectPicCount" parameterType="map" resultType="int">
+        select count(1) from (<include refid="BasicPicLib"/>)
+    </select>
+
+
+    <select id="getPicByMatrlTm" parameterType="java.util.ArrayList" resultType="netplus.mall.api.vo.Tbmqq407Vo">
+
+        select * from ygmalluser.tbmqq407
+        where
+            matrltm in
+            <foreach collection="matrlTmList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        order by picturenum
+
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.tbmqq407
+        (
+             matrltm, picturenum, matrlno,
+             pictureurl, picturename, createuser,
+             createdate, createtime, updateuser,
+             updatedate, updatetime, matrlid
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+                #{item.matrltm,jdbcType=VARCHAR}, #{item.picturenum,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR},
+                #{item.pictureurl,jdbcType=VARCHAR}, #{item.picturename,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR},
+                #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR},
+                #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+</mapper>

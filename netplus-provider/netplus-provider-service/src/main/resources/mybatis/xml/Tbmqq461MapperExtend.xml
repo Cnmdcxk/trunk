@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq461Mapper">
+
+    <sql id="getListCore">
+        select *
+        from ygmalluser.tbmqq461
+        <where>
+            <if test="searchService !=null and searchService !=''">
+                code like '%'||#{searchService}||'%'
+                or name like '%'||#{searchService}||'%'
+            </if>
+        </where>
+        order by code,createtime
+    </sql>
+
+    <select id="getAll" parameterType="map" resultType="netplus.provider.api.vo.Tbmqq461Vo">
+        select tt.*
+        from (
+        select t.*, rownum as r
+        from (<include refid="getListCore" />) t
+        ) tt
+        where tt.r <include refid="Common.gte" />and tt.r <include refid="Common.lte" />
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        select count(1) from (<include refid="getListCore" />)
+    </select>
+
+    <select id="getByCode" parameterType="Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ygmalluser.tbmqq461
+        where code = #{code}
+    </select>
+
+
+</mapper>

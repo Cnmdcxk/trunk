@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>netplus</groupId>
+        <artifactId>netplus-parent</artifactId>
+        <version>1.31</version>
+    </parent>
+
+    <artifactId>netplus-component-freemarker-web</artifactId>
+    <version>1.0.YG-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.rapid-framework</groupId>
+            <artifactId>rapid-core</artifactId>
+            <version>4.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-provider-api</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-common</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>yidu-snapshots</id>
+            <name>yidu-snapshots</name>
+            <url>http://yidu-dev.com:8092/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <id>yidu-releases</id>
+            <name>yidu-releases</name>
+            <url>http://yidu-dev.com:8092/nexus/content/repositories/releases/</url>
+        </repository>
+    </distributionManagement>
+</project>

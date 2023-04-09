@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.messaging.service.dao.MessagingMapper">
+
+    <select id="getAllCount" parameterType="java.util.Map" resultType="netplus.messaging.api.vo.NumCountVo">
+    select
+      count(1) as sum1
+    from ygmalluser.messaging
+    where trim(receiveuserno) = #{userid} and isread = 0
+    </select>
+
+    <select id="getCountWithGroup" parameterType="java.util.Map" resultType="netplus.component.entity.data.KeyValue">
+        select
+            messagegroup as key,
+            count(1) as value
+        from ygmalluser.messaging
+        where trim(receiveuserno) = #{userid} and isread = 0
+        GROUP BY messagegroup
+    </select>
+
+    <select id="querPage" parameterType="java.util.Map" resultType="netplus.messaging.api.vo.MessagingVo">
+    select *
+    from (
+          select t.*,rownum
+          from (
+                select *
+                from ygmalluser.messaging
+                where receiveuserno = #{userid}
+                <if test="typeList !=null and typeList.size>0">
+                  and trim(messagegroup) in
+                  <foreach collection="typeList" item="item" open="(" separator="," close=")">#{item}</foreach>
+                </if>
+                order by isread,receivetime desc
+          ) t
+    ) where rownum <![CDATA[ <= ]]> #{pageSize} * #{pageIndex}
+    </select>
+
+    <select id="listPageCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) from ygmalluser.messaging where receiveuserno = #{userid}
+        <if test="typeList !=null and typeList.size>0">
+            and trim(messagegroup) in
+                <foreach collection="typeList" item="item" open="(" separator="," close=")">#{item}</foreach>
+        </if>
+    </select>
+
+    <update id="updateState" parameterType="java.util.Map">
+        update ygmalluser.messaging
+        set isread = 1
+        where id = #{id}
+          and receiveuserno = #{userid}
+          and isread=0
+    </update>
+
+    <update id="updateAllState">
+        update ygmalluser.messaging
+        set isread = 1
+        where receiveuserno = #{userid}
+          and isread=0
+    </update>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into ygmalluser.messaging
+        (
+            id, senduserno, receiveuserno,
+            messagetype, messagegroup, isread,
+            messagecontent, receivetime, url
+        )
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.id,jdbcType=VARCHAR}, #{item.senduserno,jdbcType=VARCHAR}, #{item.receiveuserno,jdbcType=VARCHAR},
+                    #{item.messagetype,jdbcType=DECIMAL}, #{item.messagegroup,jdbcType=VARCHAR}, #{item.isread,jdbcType=DECIMAL},
+                    #{item.messagecontent,jdbcType=VARCHAR}, #{item.receivetime,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR}
+                from dual
+            </foreach>
+         )
+    </insert>
+
+    <select id="getMsgGroupByUserId" parameterType="string" resultType="string">
+        select messagegroup
+        from ygmalluser.messaging
+        where receiveuserno = #{userid}
+        group by messagegroup
+    </select>
+</mapper>

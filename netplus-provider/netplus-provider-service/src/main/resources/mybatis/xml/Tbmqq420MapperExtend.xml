@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq420Mapper">
+
+    <sql id="getListCore">
+        select tb.*
+        from ygmalluser.TBMQQ420 tb
+        <where>
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+                  tb.rolename like '%'||#{searchKey}||'%' or
+                  tb.rolecode like '%'||#{searchKey}||'%'
+                )
+            </if>
+        </where>
+    </sql>
+
+    <select id="getall" resultType="netplus.provider.api.vo.Tbmqq420Vo" parameterType="map">
+        select
+        tt.*
+        from (select t.*,rownum r
+        from
+        (<include refid="getListCore" />)
+         t
+        where rownum &lt;=
+        <choose>
+            <when test="pageIndex > 0 and pageSize > 0">${pageIndex * pageSize}</when>
+            <otherwise>0</otherwise>
+        </choose>) tt
+        where tt.r &gt;=
+        <choose>
+            <when test="pageIndex > 0 and pageSize > 0">${(pageIndex - 1) * pageSize + 1}</when>
+            <otherwise>10</otherwise>
+        </choose>
+
+        </select>
+    <select id="getallCount" resultType="java.lang.Integer" parameterType="map">
+        select count(1) from (<include refid="getListCore" />)
+    </select>
+    <delete id="deleteByRolecode" parameterType="string" >
+        delete from ygmalluser.TBMQQ420 where rolecode=#{roleCode}
+    </delete>
+    <select id="getRoleByParam" parameterType="Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ygmalluser.TBMQQ420
+        where 1 = 1
+        <if test="code != null and code != ''">
+            and rolecode = #{code}
+        </if>
+    </select>
+
+    <update id="modifyRole" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq420">
+        update ygmalluser.TBMQQ420
+        set
+        <if test="roledesc != null">
+            roledesc = #{roledesc,jdbcType=VARCHAR},
+        </if>
+        <if test="rolename != null">
+            rolename = #{rolename,jdbcType=VARCHAR}
+        </if>
+        where rolecode = #{rolecode}
+    </update>
+
+    <select id="islist" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq420"  resultMap="BaseResultMap">
+        select t.rolepermission
+        from
+        ygmalluser.TBMQQ420 t
+        where rolecode=#{rolecode}
+    </select>
+
+
+    <select id="getUserOwnRoleByUserNo" resultType="netplus.provider.api.vo.Tbmqq420Vo">
+
+        select
+          t1.rolename,
+          t1.rolecode,
+          case when t2.rolecode is not null then 'Y' else 'N' end as isOwn
+        from ygmalluser.tbmqq420 t1
+        left join ygmalluser.tbmqq422 t2 on t1.rolecode=t2.rolecode and t2.userno=#{userNo}
+
+
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.GoodscommentMapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Goodscomment">
+    <id column="ORDERNO" jdbcType="VARCHAR" property="orderno" />
+    <id column="ORDERDETAILNO" jdbcType="VARCHAR" property="orderdetailno" />
+    <result column="MATRLID" jdbcType="VARCHAR" property="matrlid" />
+    <result column="MATRLTM" jdbcType="VARCHAR" property="matrltm" />
+    <result column="MATRLNO" jdbcType="VARCHAR" property="matrlno" />
+    <result column="PRODUCTNAME" jdbcType="VARCHAR" property="productname" />
+    <result column="PICTUREURL" jdbcType="VARCHAR" property="pictureurl" />
+    <result column="SCORE" jdbcType="DECIMAL" property="score" />
+    <result column="COMMENTLEVEL" jdbcType="DECIMAL" property="commentlevel" />
+    <result column="COMMENTCONTENT" jdbcType="VARCHAR" property="commentcontent" />
+    <result column="COMMENTUSERNO" jdbcType="VARCHAR" property="commentuserno" />
+    <result column="COMMENTUSERNAME" jdbcType="VARCHAR" property="commentusername" />
+    <result column="COMMENTDATE" jdbcType="VARCHAR" property="commentdate" />
+    <result column="COMMENTTIME" jdbcType="VARCHAR" property="commenttime" />
+    <result column="GOODID" jdbcType="VARCHAR" property="goodid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDERNO, ORDERDETAILNO, MATRLID, MATRLTM, MATRLNO, PRODUCTNAME, PICTUREURL, SCORE, 
+    COMMENTLEVEL, COMMENTCONTENT, COMMENTUSERNO, COMMENTUSERNAME, COMMENTDATE, COMMENTTIME, 
+    GOODID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.GoodscommentKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.GOODSCOMMENT
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+      and ORDERDETAILNO = #{orderdetailno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.GoodscommentKey">
+    delete from YGMALLUSER.GOODSCOMMENT
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+      and ORDERDETAILNO = #{orderdetailno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscomment">
+    insert into YGMALLUSER.GOODSCOMMENT (ORDERNO, ORDERDETAILNO, MATRLID, 
+      MATRLTM, MATRLNO, PRODUCTNAME, 
+      PICTUREURL, SCORE, COMMENTLEVEL, 
+      COMMENTCONTENT, COMMENTUSERNO, COMMENTUSERNAME, 
+      COMMENTDATE, COMMENTTIME, GOODID
+      )
+    values (#{orderno,jdbcType=VARCHAR}, #{orderdetailno,jdbcType=VARCHAR}, #{matrlid,jdbcType=VARCHAR}, 
+      #{matrltm,jdbcType=VARCHAR}, #{matrlno,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, 
+      #{pictureurl,jdbcType=VARCHAR}, #{score,jdbcType=DECIMAL}, #{commentlevel,jdbcType=DECIMAL}, 
+      #{commentcontent,jdbcType=VARCHAR}, #{commentuserno,jdbcType=VARCHAR}, #{commentusername,jdbcType=VARCHAR}, 
+      #{commentdate,jdbcType=VARCHAR}, #{commenttime,jdbcType=VARCHAR}, #{goodid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscomment">
+    insert into YGMALLUSER.GOODSCOMMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        ORDERNO,
+      </if>
+      <if test="orderdetailno != null">
+        ORDERDETAILNO,
+      </if>
+      <if test="matrlid != null">
+        MATRLID,
+      </if>
+      <if test="matrltm != null">
+        MATRLTM,
+      </if>
+      <if test="matrlno != null">
+        MATRLNO,
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME,
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+      <if test="commentlevel != null">
+        COMMENTLEVEL,
+      </if>
+      <if test="commentcontent != null">
+        COMMENTCONTENT,
+      </if>
+      <if test="commentuserno != null">
+        COMMENTUSERNO,
+      </if>
+      <if test="commentusername != null">
+        COMMENTUSERNAME,
+      </if>
+      <if test="commentdate != null">
+        COMMENTDATE,
+      </if>
+      <if test="commenttime != null">
+        COMMENTTIME,
+      </if>
+      <if test="goodid != null">
+        GOODID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailno != null">
+        #{orderdetailno,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlid != null">
+        #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="commentlevel != null">
+        #{commentlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="commentcontent != null">
+        #{commentcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentuserno != null">
+        #{commentuserno,jdbcType=VARCHAR},
+      </if>
+      <if test="commentusername != null">
+        #{commentusername,jdbcType=VARCHAR},
+      </if>
+      <if test="commentdate != null">
+        #{commentdate,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        #{commenttime,jdbcType=VARCHAR},
+      </if>
+      <if test="goodid != null">
+        #{goodid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscomment">
+    update YGMALLUSER.GOODSCOMMENT
+    <set>
+      <if test="matrlid != null">
+        MATRLID = #{matrlid,jdbcType=VARCHAR},
+      </if>
+      <if test="matrltm != null">
+        MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      </if>
+      <if test="matrlno != null">
+        MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null">
+        PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureurl != null">
+        PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=DECIMAL},
+      </if>
+      <if test="commentlevel != null">
+        COMMENTLEVEL = #{commentlevel,jdbcType=DECIMAL},
+      </if>
+      <if test="commentcontent != null">
+        COMMENTCONTENT = #{commentcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentuserno != null">
+        COMMENTUSERNO = #{commentuserno,jdbcType=VARCHAR},
+      </if>
+      <if test="commentusername != null">
+        COMMENTUSERNAME = #{commentusername,jdbcType=VARCHAR},
+      </if>
+      <if test="commentdate != null">
+        COMMENTDATE = #{commentdate,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        COMMENTTIME = #{commenttime,jdbcType=VARCHAR},
+      </if>
+      <if test="goodid != null">
+        GOODID = #{goodid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+      and ORDERDETAILNO = #{orderdetailno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Goodscomment">
+    update YGMALLUSER.GOODSCOMMENT
+    set MATRLID = #{matrlid,jdbcType=VARCHAR},
+      MATRLTM = #{matrltm,jdbcType=VARCHAR},
+      MATRLNO = #{matrlno,jdbcType=VARCHAR},
+      PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=DECIMAL},
+      COMMENTLEVEL = #{commentlevel,jdbcType=DECIMAL},
+      COMMENTCONTENT = #{commentcontent,jdbcType=VARCHAR},
+      COMMENTUSERNO = #{commentuserno,jdbcType=VARCHAR},
+      COMMENTUSERNAME = #{commentusername,jdbcType=VARCHAR},
+      COMMENTDATE = #{commentdate,jdbcType=VARCHAR},
+      COMMENTTIME = #{commenttime,jdbcType=VARCHAR},
+      GOODID = #{goodid,jdbcType=VARCHAR}
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+      and ORDERDETAILNO = #{orderdetailno,jdbcType=VARCHAR}
+  </update>
+</mapper>

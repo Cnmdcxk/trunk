@@ -1,0 +1,63 @@
+
+.pwd_btn_color .el-input-group__append  {
+    color: #FFF !important;
+    background-color: #67C23A !important;
+    border-color: #67C23A !important;
+}
+.el-form-item__label {
+    font-size:14px;
+    color: #999;
+}
+.el-input__inner {
+    height: 40px;
+    font-size: 14px;
+    text-indent: 6px !important;
+}
+.next_btn, .login_btn{
+    width: 120px;
+    height: 40px;
+}
+.next_btn {
+    background-color: #fff;
+}
+.img_code {
+    width:100px;
+    height:38px;
+}
+.w720 {
+    width: 720px;
+}
+.w820 {
+    width: 820px;
+}
+.pwdcheck{
+    margin-left: 10px;
+    display: flex;
+    display: -webkit-flex;
+    height: 40px;
+    align-items:center;
+    flex-wrap: nowrap;
+}
+
+.pwdcheck span {
+    display:inline-block;
+    width: 50px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin-right:2px;
+    background:#fad8a4;
+    color:#fff;
+}
+/* 密码强度改变的样式 */
+
+.pwdcheck span.co1 {
+    background:#f3981c;
+}
+.pwdcheck span.co2 {
+    background:#f3981c;
+}
+
+.pwdcheck span.co3 {
+    background:#f3981c;
+}

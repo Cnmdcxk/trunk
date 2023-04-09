@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Common">
+    <sql id="lte">
+        &lt;=
+        <choose>
+            <when test="pageIndex > 0 and pageSize > 0">${pageIndex * pageSize}</when>
+            <otherwise>0</otherwise>
+        </choose>
+    </sql>
+
+    <sql id="gte">
+
+        &gt;=
+        <choose>
+            <when test="pageIndex > 0 and pageSize > 0">${(pageIndex - 1) * pageSize + 1}</when>
+            <otherwise>10</otherwise>
+        </choose>
+    </sql>
+
+    <sql id="orderBy">
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy} <if test="!asc">desc</if>
+        </if>
+    </sql>
+</mapper>

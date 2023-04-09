@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.excel.service.dao.ExportTemplateMapper">
+  <resultMap id="BaseResultMap" type="netplus.excel.api.pojo.ExportTemplate">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_active" jdbcType="CHAR" property="isActive" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="display_format" jdbcType="VARCHAR" property="displayFormat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, app_id, template_name, create_time, field_name, title, remark, is_active, sort, 
+    display_format
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from export_template
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from export_template
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="netplus.excel.api.pojo.ExportTemplate">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into export_template (app_id, template_name, create_time, 
+      field_name, title, remark, 
+      is_active, sort, display_format
+      )
+    values (#{appId,jdbcType=VARCHAR}, #{templateName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{fieldName,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{isActive,jdbcType=CHAR}, #{sort,jdbcType=INTEGER}, #{displayFormat,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.excel.api.pojo.ExportTemplate">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT EXCEL_TEMP_DATA_SEQ.nextval from DUAL
+    </selectKey>
+    insert into export_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isActive != null">
+        is_active,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="displayFormat != null">
+        display_format,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null">
+        #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=CHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="displayFormat != null">
+        #{displayFormat,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.excel.api.pojo.ExportTemplate">
+    update export_template
+    <set>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="templateName != null">
+        template_name = #{templateName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fieldName != null">
+        field_name = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        is_active = #{isActive,jdbcType=CHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="displayFormat != null">
+        display_format = #{displayFormat,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.excel.api.pojo.ExportTemplate">
+    update export_template
+    set app_id = #{appId,jdbcType=VARCHAR},
+      template_name = #{templateName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      field_name = #{fieldName,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_active = #{isActive,jdbcType=CHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      display_format = #{displayFormat,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq439Mapper">
+    <!--根据条件搜索后的收货表-->
+    <sql id="getInformation">
+        select * from ygmalluser.tbmqq439
+        <where>
+            <if test="searchKey !=null and searchKey!=''">
+                or province like '%'||#{searchKey}||'%'
+                or city like '%'||#{searchKey}||'%'
+                or consigneeaddr like '%'||#{searchKey}||'%'
+
+            </if>
+            <if test="addrtype !=null and addrtype!=''">
+                and addrtype = #{addrtype}
+            </if>
+
+
+            <if test="createDate != null">
+                <if test="createDate.max !=null and createDate.max !=''">
+                    and createdate &lt;= replace(#{createDate.max,jdbcType=VARCHAR},'-','')
+                </if>
+                <if test="createDate.min !=null and createDate.min !=''">
+                    and createdate &gt;= replace(#{createDate.min,jdbcType=VARCHAR},'-','')
+                </if>
+            </if>
+        </where>
+        order by createdate desc
+    </sql>
+
+    <!--查询所有收货地址数据-->
+    <select id="getAllList" parameterType="map" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq439">
+        select tt.* from (
+            select t439.*,rownum r from ( <include refid="getInformation"/>)t439
+            where rownum &lt;=
+            <choose>
+                <when test="pageIndex > 0 and pageSize > 0">${pageIndex * pageSize}</when>
+                <otherwise>0</otherwise>
+            </choose>
+        ) tt
+        where tt.r &gt;=
+        <choose>
+            <when test="pageIndex > 0 and pageSize > 0">${(pageIndex - 1) * pageSize + 1}</when>
+            <otherwise>10</otherwise>
+        </choose>
+    </select>
+
+    <!--查询收货地址总数-->
+    <select id="getCount" resultType="Integer">
+        select count(*) from(<include refid="getInformation"/>)
+    </select>
+
+    <!--查询code是否存在-->
+    <select id="getByCode" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq439" parameterType="String">
+        select * from ygmalluser.tbmqq439 where
+        <if test="code !=null and code!=''">
+          CODE = #{code}
+        </if>
+    </select>
+
+    <!--根据code删除-->
+    <delete id="deleteByCode" parameterType="String" >
+        delete from ygmalluser.tbmqq439 where CODE = #{code}
+    </delete>
+</mapper>

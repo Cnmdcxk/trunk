@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.ApproveMapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Approve">
+    <id column="APPROVECODE" jdbcType="VARCHAR" property="approvecode" />
+    <result column="REMAINBUDGET" jdbcType="DECIMAL" property="remainbudget" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="APPROVEAMT" jdbcType="DECIMAL" property="approveamt" />
+    <result column="LINEORDERAMT" jdbcType="DECIMAL" property="lineorderamt" />
+    <result column="APPROVEDATE" jdbcType="VARCHAR" property="approvedate" />
+    <result column="APPROVETIME" jdbcType="VARCHAR" property="approvetime" />
+    <result column="ISNEEDAPPROVE" jdbcType="VARCHAR" property="isneedapprove" />
+    <result column="SPRCODEONE" jdbcType="VARCHAR" property="sprcodeone" />
+    <result column="SPRNAMEONE" jdbcType="VARCHAR" property="sprnameone" />
+    <result column="SPRCODETWO" jdbcType="VARCHAR" property="sprcodetwo" />
+    <result column="SPRNAMETWO" jdbcType="VARCHAR" property="sprnametwo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    APPROVECODE, REMAINBUDGET, CREATEDATE, CREATETIME, APPROVEAMT, LINEORDERAMT, APPROVEDATE, 
+    APPROVETIME, ISNEEDAPPROVE, SPRCODEONE, SPRNAMEONE, SPRCODETWO, SPRNAMETWO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.APPROVE
+    where APPROVECODE = #{approvecode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.APPROVE
+    where APPROVECODE = #{approvecode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Approve">
+    insert into YGMALLUSER.APPROVE (APPROVECODE, REMAINBUDGET, CREATEDATE, 
+      CREATETIME, APPROVEAMT, LINEORDERAMT, 
+      APPROVEDATE, APPROVETIME, ISNEEDAPPROVE, 
+      SPRCODEONE, SPRNAMEONE, SPRCODETWO, 
+      SPRNAMETWO)
+    values (#{approvecode,jdbcType=VARCHAR}, #{remainbudget,jdbcType=DECIMAL}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{approveamt,jdbcType=DECIMAL}, #{lineorderamt,jdbcType=DECIMAL}, 
+      #{approvedate,jdbcType=VARCHAR}, #{approvetime,jdbcType=VARCHAR}, #{isneedapprove,jdbcType=VARCHAR}, 
+      #{sprcodeone,jdbcType=VARCHAR}, #{sprnameone,jdbcType=VARCHAR}, #{sprcodetwo,jdbcType=VARCHAR}, 
+      #{sprnametwo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Approve">
+    insert into YGMALLUSER.APPROVE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="approvecode != null">
+        APPROVECODE,
+      </if>
+      <if test="remainbudget != null">
+        REMAINBUDGET,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="approveamt != null">
+        APPROVEAMT,
+      </if>
+      <if test="lineorderamt != null">
+        LINEORDERAMT,
+      </if>
+      <if test="approvedate != null">
+        APPROVEDATE,
+      </if>
+      <if test="approvetime != null">
+        APPROVETIME,
+      </if>
+      <if test="isneedapprove != null">
+        ISNEEDAPPROVE,
+      </if>
+      <if test="sprcodeone != null">
+        SPRCODEONE,
+      </if>
+      <if test="sprnameone != null">
+        SPRNAMEONE,
+      </if>
+      <if test="sprcodetwo != null">
+        SPRCODETWO,
+      </if>
+      <if test="sprnametwo != null">
+        SPRNAMETWO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="approvecode != null">
+        #{approvecode,jdbcType=VARCHAR},
+      </if>
+      <if test="remainbudget != null">
+        #{remainbudget,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveamt != null">
+        #{approveamt,jdbcType=DECIMAL},
+      </if>
+      <if test="lineorderamt != null">
+        #{lineorderamt,jdbcType=DECIMAL},
+      </if>
+      <if test="approvedate != null">
+        #{approvedate,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null">
+        #{approvetime,jdbcType=VARCHAR},
+      </if>
+      <if test="isneedapprove != null">
+        #{isneedapprove,jdbcType=VARCHAR},
+      </if>
+      <if test="sprcodeone != null">
+        #{sprcodeone,jdbcType=VARCHAR},
+      </if>
+      <if test="sprnameone != null">
+        #{sprnameone,jdbcType=VARCHAR},
+      </if>
+      <if test="sprcodetwo != null">
+        #{sprcodetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="sprnametwo != null">
+        #{sprnametwo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Approve">
+    update YGMALLUSER.APPROVE
+    <set>
+      <if test="remainbudget != null">
+        REMAINBUDGET = #{remainbudget,jdbcType=DECIMAL},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="approveamt != null">
+        APPROVEAMT = #{approveamt,jdbcType=DECIMAL},
+      </if>
+      <if test="lineorderamt != null">
+        LINEORDERAMT = #{lineorderamt,jdbcType=DECIMAL},
+      </if>
+      <if test="approvedate != null">
+        APPROVEDATE = #{approvedate,jdbcType=VARCHAR},
+      </if>
+      <if test="approvetime != null">
+        APPROVETIME = #{approvetime,jdbcType=VARCHAR},
+      </if>
+      <if test="isneedapprove != null">
+        ISNEEDAPPROVE = #{isneedapprove,jdbcType=VARCHAR},
+      </if>
+      <if test="sprcodeone != null">
+        SPRCODEONE = #{sprcodeone,jdbcType=VARCHAR},
+      </if>
+      <if test="sprnameone != null">
+        SPRNAMEONE = #{sprnameone,jdbcType=VARCHAR},
+      </if>
+      <if test="sprcodetwo != null">
+        SPRCODETWO = #{sprcodetwo,jdbcType=VARCHAR},
+      </if>
+      <if test="sprnametwo != null">
+        SPRNAMETWO = #{sprnametwo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where APPROVECODE = #{approvecode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Approve">
+    update YGMALLUSER.APPROVE
+    set REMAINBUDGET = #{remainbudget,jdbcType=DECIMAL},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      APPROVEAMT = #{approveamt,jdbcType=DECIMAL},
+      LINEORDERAMT = #{lineorderamt,jdbcType=DECIMAL},
+      APPROVEDATE = #{approvedate,jdbcType=VARCHAR},
+      APPROVETIME = #{approvetime,jdbcType=VARCHAR},
+      ISNEEDAPPROVE = #{isneedapprove,jdbcType=VARCHAR},
+      SPRCODEONE = #{sprcodeone,jdbcType=VARCHAR},
+      SPRNAMEONE = #{sprnameone,jdbcType=VARCHAR},
+      SPRCODETWO = #{sprcodetwo,jdbcType=VARCHAR},
+      SPRNAMETWO = #{sprnametwo,jdbcType=VARCHAR}
+    where APPROVECODE = #{approvecode,jdbcType=VARCHAR}
+  </update></mapper>

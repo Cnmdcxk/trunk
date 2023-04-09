@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq439Mapper">
+
+    <select id="getList" parameterType="map" resultType="netplus.provider.api.pojo.ygmalluser.Tbmqq439">
+        select * from ygmalluser.Tbmqq439
+
+        <where>
+            <if test="code !=null and code !=''">
+                code=#{code}
+            </if>
+        </where>
+
+    </select>
+
+</mapper>

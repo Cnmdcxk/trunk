@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.excel.service.dao.ExcelTempDataMapper">
+  <resultMap id="BaseResultMap" type="netplus.excel.api.pojo.ExcelTempData">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="BATCH_CODE" jdbcType="VARCHAR" property="batchCode" />
+    <result column="APP_ID" jdbcType="VARCHAR" property="appId" />
+    <result column="FIELD1" jdbcType="VARCHAR" property="field1" />
+    <result column="FIELD2" jdbcType="VARCHAR" property="field2" />
+    <result column="FIELD3" jdbcType="VARCHAR" property="field3" />
+    <result column="FIELD4" jdbcType="VARCHAR" property="field4" />
+    <result column="FIELD5" jdbcType="VARCHAR" property="field5" />
+    <result column="FIELD6" jdbcType="VARCHAR" property="field6" />
+    <result column="FIELD7" jdbcType="VARCHAR" property="field7" />
+    <result column="FIELD8" jdbcType="VARCHAR" property="field8" />
+    <result column="FIELD9" jdbcType="VARCHAR" property="field9" />
+    <result column="FIELD10" jdbcType="VARCHAR" property="field10" />
+    <result column="FIELD11" jdbcType="VARCHAR" property="field11" />
+    <result column="FIELD12" jdbcType="VARCHAR" property="field12" />
+    <result column="FIELD13" jdbcType="VARCHAR" property="field13" />
+    <result column="FIELD14" jdbcType="VARCHAR" property="field14" />
+    <result column="FIELD15" jdbcType="VARCHAR" property="field15" />
+    <result column="FIELD16" jdbcType="VARCHAR" property="field16" />
+    <result column="FIELD17" jdbcType="VARCHAR" property="field17" />
+    <result column="FIELD18" jdbcType="VARCHAR" property="field18" />
+    <result column="FIELD19" jdbcType="VARCHAR" property="field19" />
+    <result column="FIELD20" jdbcType="VARCHAR" property="field20" />
+    <result column="FIELD21" jdbcType="VARCHAR" property="field21" />
+    <result column="FIELD22" jdbcType="VARCHAR" property="field22" />
+    <result column="FIELD23" jdbcType="VARCHAR" property="field23" />
+    <result column="FIELD24" jdbcType="VARCHAR" property="field24" />
+    <result column="FIELD25" jdbcType="VARCHAR" property="field25" />
+    <result column="FIELD26" jdbcType="VARCHAR" property="field26" />
+    <result column="FIELD27" jdbcType="VARCHAR" property="field27" />
+    <result column="FIELD28" jdbcType="VARCHAR" property="field28" />
+    <result column="FIELD29" jdbcType="VARCHAR" property="field29" />
+    <result column="FIELD30" jdbcType="VARCHAR" property="field30" />
+    <result column="FIELD31" jdbcType="VARCHAR" property="field31" />
+    <result column="FIELD32" jdbcType="VARCHAR" property="field32" />
+    <result column="FIELD33" jdbcType="VARCHAR" property="field33" />
+    <result column="FIELD34" jdbcType="VARCHAR" property="field34" />
+    <result column="FIELD35" jdbcType="VARCHAR" property="field35" />
+    <result column="FIELD36" jdbcType="VARCHAR" property="field36" />
+    <result column="FIELD37" jdbcType="VARCHAR" property="field37" />
+    <result column="FIELD38" jdbcType="VARCHAR" property="field38" />
+    <result column="FIELD39" jdbcType="VARCHAR" property="field39" />
+    <result column="FIELD40" jdbcType="VARCHAR" property="field40" />
+    <result column="FIELD41" jdbcType="VARCHAR" property="field41" />
+    <result column="FIELD42" jdbcType="VARCHAR" property="field42" />
+    <result column="FIELD43" jdbcType="VARCHAR" property="field43" />
+    <result column="FIELD44" jdbcType="VARCHAR" property="field44" />
+    <result column="FIELD45" jdbcType="VARCHAR" property="field45" />
+    <result column="FIELD46" jdbcType="VARCHAR" property="field46" />
+    <result column="FIELD47" jdbcType="VARCHAR" property="field47" />
+    <result column="FIELD48" jdbcType="VARCHAR" property="field48" />
+    <result column="FIELD49" jdbcType="VARCHAR" property="field49" />
+    <result column="FIELD50" jdbcType="VARCHAR" property="field50" />
+    <result column="FIELD51" jdbcType="VARCHAR" property="field51" />
+    <result column="FIELD52" jdbcType="VARCHAR" property="field52" />
+    <result column="FIELD53" jdbcType="VARCHAR" property="field53" />
+    <result column="FIELD54" jdbcType="VARCHAR" property="field54" />
+    <result column="FIELD55" jdbcType="VARCHAR" property="field55" />
+    <result column="FIELD56" jdbcType="VARCHAR" property="field56" />
+    <result column="FIELD57" jdbcType="VARCHAR" property="field57" />
+    <result column="FIELD58" jdbcType="VARCHAR" property="field58" />
+    <result column="FIELD59" jdbcType="VARCHAR" property="field59" />
+    <result column="FIELD60" jdbcType="VARCHAR" property="field60" />
+    <result column="FIELD61" jdbcType="VARCHAR" property="field61" />
+    <result column="FIELD62" jdbcType="VARCHAR" property="field62" />
+    <result column="FIELD63" jdbcType="VARCHAR" property="field63" />
+    <result column="FIELD64" jdbcType="VARCHAR" property="field64" />
+    <result column="FIELD65" jdbcType="VARCHAR" property="field65" />
+    <result column="FIELD66" jdbcType="VARCHAR" property="field66" />
+    <result column="FIELD67" jdbcType="VARCHAR" property="field67" />
+    <result column="FIELD68" jdbcType="VARCHAR" property="field68" />
+    <result column="FIELD69" jdbcType="VARCHAR" property="field69" />
+    <result column="FIELD70" jdbcType="VARCHAR" property="field70" />
+    <result column="FIELD71" jdbcType="VARCHAR" property="field71" />
+    <result column="FIELD72" jdbcType="VARCHAR" property="field72" />
+    <result column="FIELD73" jdbcType="VARCHAR" property="field73" />
+    <result column="FIELD74" jdbcType="VARCHAR" property="field74" />
+    <result column="FIELD75" jdbcType="VARCHAR" property="field75" />
+    <result column="FIELD76" jdbcType="VARCHAR" property="field76" />
+    <result column="FIELD77" jdbcType="VARCHAR" property="field77" />
+    <result column="FIELD78" jdbcType="VARCHAR" property="field78" />
+    <result column="FIELD79" jdbcType="VARCHAR" property="field79" />
+    <result column="FIELD80" jdbcType="VARCHAR" property="field80" />
+    <result column="CREATE_PERSON" jdbcType="VARCHAR" property="createPerson" />
+    <result column="CREATE_DATETIME" jdbcType="TIMESTAMP" property="createDatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, BATCH_CODE, APP_ID, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, 
+    FIELD9, FIELD10, FIELD11, FIELD12, FIELD13, FIELD14, FIELD15, FIELD16, FIELD17, FIELD18, 
+    FIELD19, FIELD20, FIELD21, FIELD22, FIELD23, FIELD24, FIELD25, FIELD26, FIELD27, 
+    FIELD28, FIELD29, FIELD30, FIELD31, FIELD32, FIELD33, FIELD34, FIELD35, FIELD36, 
+    FIELD37, FIELD38, FIELD39, FIELD40, FIELD41, FIELD42, FIELD43, FIELD44, FIELD45, 
+    FIELD46, FIELD47, FIELD48, FIELD49, FIELD50, FIELD51, FIELD52, FIELD53, FIELD54, 
+    FIELD55, FIELD56, FIELD57, FIELD58, FIELD59, FIELD60, FIELD61, FIELD62, FIELD63, 
+    FIELD64, FIELD65, FIELD66, FIELD67, FIELD68, FIELD69, FIELD70, FIELD71, FIELD72, 
+    FIELD73, FIELD74, FIELD75, FIELD76, FIELD77, FIELD78, FIELD79, FIELD80, CREATE_PERSON, 
+    CREATE_DATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from excel_temp_data
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from excel_temp_data
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="netplus.excel.api.pojo.ExcelTempData">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into excel_temp_data (ID, BATCH_CODE, APP_ID, FIELD1,
+      FIELD2, FIELD3, FIELD4, 
+      FIELD5, FIELD6, FIELD7, 
+      FIELD8, FIELD9, FIELD10, 
+      FIELD11, FIELD12, FIELD13, 
+      FIELD14, FIELD15, FIELD16, 
+      FIELD17, FIELD18, FIELD19, 
+      FIELD20, FIELD21, FIELD22, 
+      FIELD23, FIELD24, FIELD25, 
+      FIELD26, FIELD27, FIELD28, 
+      FIELD29, FIELD30, FIELD31, 
+      FIELD32, FIELD33, FIELD34, 
+      FIELD35, FIELD36, FIELD37, 
+      FIELD38, FIELD39, FIELD40, 
+      FIELD41, FIELD42, FIELD43, 
+      FIELD44, FIELD45, FIELD46, 
+      FIELD47, FIELD48, FIELD49, 
+      FIELD50, FIELD51, FIELD52, 
+      FIELD53, FIELD54, FIELD55, 
+      FIELD56, FIELD57, FIELD58, 
+      FIELD59, FIELD60, FIELD61, 
+      FIELD62, FIELD63, FIELD64, 
+      FIELD65, FIELD66, FIELD67, 
+      FIELD68, FIELD69, FIELD70, 
+      FIELD71, FIELD72, FIELD73, 
+      FIELD74, FIELD75, FIELD76, 
+      FIELD77, FIELD78, FIELD79, 
+      FIELD80, CREATE_PERSON, CREATE_DATETIME
+      )
+    values (EXCEL_TEMP_DATA_SEQ.nextval, #{batchCode,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR},
+      #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, 
+      #{field5,jdbcType=VARCHAR}, #{field6,jdbcType=VARCHAR}, #{field7,jdbcType=VARCHAR}, 
+      #{field8,jdbcType=VARCHAR}, #{field9,jdbcType=VARCHAR}, #{field10,jdbcType=VARCHAR}, 
+      #{field11,jdbcType=VARCHAR}, #{field12,jdbcType=VARCHAR}, #{field13,jdbcType=VARCHAR}, 
+      #{field14,jdbcType=VARCHAR}, #{field15,jdbcType=VARCHAR}, #{field16,jdbcType=VARCHAR}, 
+      #{field17,jdbcType=VARCHAR}, #{field18,jdbcType=VARCHAR}, #{field19,jdbcType=VARCHAR}, 
+      #{field20,jdbcType=VARCHAR}, #{field21,jdbcType=VARCHAR}, #{field22,jdbcType=VARCHAR}, 
+      #{field23,jdbcType=VARCHAR}, #{field24,jdbcType=VARCHAR}, #{field25,jdbcType=VARCHAR}, 
+      #{field26,jdbcType=VARCHAR}, #{field27,jdbcType=VARCHAR}, #{field28,jdbcType=VARCHAR}, 
+      #{field29,jdbcType=VARCHAR}, #{field30,jdbcType=VARCHAR}, #{field31,jdbcType=VARCHAR}, 
+      #{field32,jdbcType=VARCHAR}, #{field33,jdbcType=VARCHAR}, #{field34,jdbcType=VARCHAR}, 
+      #{field35,jdbcType=VARCHAR}, #{field36,jdbcType=VARCHAR}, #{field37,jdbcType=VARCHAR}, 
+      #{field38,jdbcType=VARCHAR}, #{field39,jdbcType=VARCHAR}, #{field40,jdbcType=VARCHAR}, 
+      #{field41,jdbcType=VARCHAR}, #{field42,jdbcType=VARCHAR}, #{field43,jdbcType=VARCHAR}, 
+      #{field44,jdbcType=VARCHAR}, #{field45,jdbcType=VARCHAR}, #{field46,jdbcType=VARCHAR}, 
+      #{field47,jdbcType=VARCHAR}, #{field48,jdbcType=VARCHAR}, #{field49,jdbcType=VARCHAR}, 
+      #{field50,jdbcType=VARCHAR}, #{field51,jdbcType=VARCHAR}, #{field52,jdbcType=VARCHAR}, 
+      #{field53,jdbcType=VARCHAR}, #{field54,jdbcType=VARCHAR}, #{field55,jdbcType=VARCHAR}, 
+      #{field56,jdbcType=VARCHAR}, #{field57,jdbcType=VARCHAR}, #{field58,jdbcType=VARCHAR}, 
+      #{field59,jdbcType=VARCHAR}, #{field60,jdbcType=VARCHAR}, #{field61,jdbcType=VARCHAR}, 
+      #{field62,jdbcType=VARCHAR}, #{field63,jdbcType=VARCHAR}, #{field64,jdbcType=VARCHAR}, 
+      #{field65,jdbcType=VARCHAR}, #{field66,jdbcType=VARCHAR}, #{field67,jdbcType=VARCHAR}, 
+      #{field68,jdbcType=VARCHAR}, #{field69,jdbcType=VARCHAR}, #{field70,jdbcType=VARCHAR}, 
+      #{field71,jdbcType=VARCHAR}, #{field72,jdbcType=VARCHAR}, #{field73,jdbcType=VARCHAR}, 
+      #{field74,jdbcType=VARCHAR}, #{field75,jdbcType=VARCHAR}, #{field76,jdbcType=VARCHAR}, 
+      #{field77,jdbcType=VARCHAR}, #{field78,jdbcType=VARCHAR}, #{field79,jdbcType=VARCHAR}, 
+      #{field80,jdbcType=VARCHAR}, #{createPerson,jdbcType=VARCHAR}, #{createDatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.excel.api.pojo.ExcelTempData">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into excel_temp_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchCode != null">
+        BATCH_CODE,
+      </if>
+      <if test="appId != null">
+        APP_ID,
+      </if>
+      <if test="field1 != null">
+        FIELD1,
+      </if>
+      <if test="field2 != null">
+        FIELD2,
+      </if>
+      <if test="field3 != null">
+        FIELD3,
+      </if>
+      <if test="field4 != null">
+        FIELD4,
+      </if>
+      <if test="field5 != null">
+        FIELD5,
+      </if>
+      <if test="field6 != null">
+        FIELD6,
+      </if>
+      <if test="field7 != null">
+        FIELD7,
+      </if>
+      <if test="field8 != null">
+        FIELD8,
+      </if>
+      <if test="field9 != null">
+        FIELD9,
+      </if>
+      <if test="field10 != null">
+        FIELD10,
+      </if>
+      <if test="field11 != null">
+        FIELD11,
+      </if>
+      <if test="field12 != null">
+        FIELD12,
+      </if>
+      <if test="field13 != null">
+        FIELD13,
+      </if>
+      <if test="field14 != null">
+        FIELD14,
+      </if>
+      <if test="field15 != null">
+        FIELD15,
+      </if>
+      <if test="field16 != null">
+        FIELD16,
+      </if>
+      <if test="field17 != null">
+        FIELD17,
+      </if>
+      <if test="field18 != null">
+        FIELD18,
+      </if>
+      <if test="field19 != null">
+        FIELD19,
+      </if>
+      <if test="field20 != null">
+        FIELD20,
+      </if>
+      <if test="field21 != null">
+        FIELD21,
+      </if>
+      <if test="field22 != null">
+        FIELD22,
+      </if>
+      <if test="field23 != null">
+        FIELD23,
+      </if>
+      <if test="field24 != null">
+        FIELD24,
+      </if>
+      <if test="field25 != null">
+        FIELD25,
+      </if>
+      <if test="field26 != null">
+        FIELD26,
+      </if>
+      <if test="field27 != null">
+        FIELD27,
+      </if>
+      <if test="field28 != null">
+        FIELD28,
+      </if>
+      <if test="field29 != null">
+        FIELD29,
+      </if>
+      <if test="field30 != null">
+        FIELD30,
+      </if>
+      <if test="field31 != null">
+        FIELD31,
+      </if>
+      <if test="field32 != null">
+        FIELD32,
+      </if>
+      <if test="field33 != null">
+        FIELD33,
+      </if>
+      <if test="field34 != null">
+        FIELD34,
+      </if>
+      <if test="field35 != null">
+        FIELD35,
+      </if>
+      <if test="field36 != null">
+        FIELD36,
+      </if>
+      <if test="field37 != null">
+        FIELD37,
+      </if>
+      <if test="field38 != null">
+        FIELD38,
+      </if>
+      <if test="field39 != null">
+        FIELD39,
+      </if>
+      <if test="field40 != null">
+        FIELD40,
+      </if>
+      <if test="field41 != null">
+        FIELD41,
+      </if>
+      <if test="field42 != null">
+        FIELD42,
+      </if>
+      <if test="field43 != null">
+        FIELD43,
+      </if>
+      <if test="field44 != null">
+        FIELD44,
+      </if>
+      <if test="field45 != null">
+        FIELD45,
+      </if>
+      <if test="field46 != null">
+        FIELD46,
+      </if>
+      <if test="field47 != null">
+        FIELD47,
+      </if>
+      <if test="field48 != null">
+        FIELD48,
+      </if>
+      <if test="field49 != null">
+        FIELD49,
+      </if>
+      <if test="field50 != null">
+        FIELD50,
+      </if>
+      <if test="field51 != null">
+        FIELD51,
+      </if>
+      <if test="field52 != null">
+        FIELD52,
+      </if>
+      <if test="field53 != null">
+        FIELD53,
+      </if>
+      <if test="field54 != null">
+        FIELD54,
+      </if>
+      <if test="field55 != null">
+        FIELD55,
+      </if>
+      <if test="field56 != null">
+        FIELD56,
+      </if>
+      <if test="field57 != null">
+        FIELD57,
+      </if>
+      <if test="field58 != null">
+        FIELD58,
+      </if>
+      <if test="field59 != null">
+        FIELD59,
+      </if>
+      <if test="field60 != null">
+        FIELD60,
+      </if>
+      <if test="field61 != null">
+        FIELD61,
+      </if>
+      <if test="field62 != null">
+        FIELD62,
+      </if>
+      <if test="field63 != null">
+        FIELD63,
+      </if>
+      <if test="field64 != null">
+        FIELD64,
+      </if>
+      <if test="field65 != null">
+        FIELD65,
+      </if>
+      <if test="field66 != null">
+        FIELD66,
+      </if>
+      <if test="field67 != null">
+        FIELD67,
+      </if>
+      <if test="field68 != null">
+        FIELD68,
+      </if>
+      <if test="field69 != null">
+        FIELD69,
+      </if>
+      <if test="field70 != null">
+        FIELD70,
+      </if>
+      <if test="field71 != null">
+        FIELD71,
+      </if>
+      <if test="field72 != null">
+        FIELD72,
+      </if>
+      <if test="field73 != null">
+        FIELD73,
+      </if>
+      <if test="field74 != null">
+        FIELD74,
+      </if>
+      <if test="field75 != null">
+        FIELD75,
+      </if>
+      <if test="field76 != null">
+        FIELD76,
+      </if>
+      <if test="field77 != null">
+        FIELD77,
+      </if>
+      <if test="field78 != null">
+        FIELD78,
+      </if>
+      <if test="field79 != null">
+        FIELD79,
+      </if>
+      <if test="field80 != null">
+        FIELD80,
+      </if>
+      <if test="createPerson != null">
+        CREATE_PERSON,
+      </if>
+      <if test="createDatetime != null">
+        CREATE_DATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="field6 != null">
+        #{field6,jdbcType=VARCHAR},
+      </if>
+      <if test="field7 != null">
+        #{field7,jdbcType=VARCHAR},
+      </if>
+      <if test="field8 != null">
+        #{field8,jdbcType=VARCHAR},
+      </if>
+      <if test="field9 != null">
+        #{field9,jdbcType=VARCHAR},
+      </if>
+      <if test="field10 != null">
+        #{field10,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="field12 != null">
+        #{field12,jdbcType=VARCHAR},
+      </if>
+      <if test="field13 != null">
+        #{field13,jdbcType=VARCHAR},
+      </if>
+      <if test="field14 != null">
+        #{field14,jdbcType=VARCHAR},
+      </if>
+      <if test="field15 != null">
+        #{field15,jdbcType=VARCHAR},
+      </if>
+      <if test="field16 != null">
+        #{field16,jdbcType=VARCHAR},
+      </if>
+      <if test="field17 != null">
+        #{field17,jdbcType=VARCHAR},
+      </if>
+      <if test="field18 != null">
+        #{field18,jdbcType=VARCHAR},
+      </if>
+      <if test="field19 != null">
+        #{field19,jdbcType=VARCHAR},
+      </if>
+      <if test="field20 != null">
+        #{field20,jdbcType=VARCHAR},
+      </if>
+      <if test="field21 != null">
+        #{field21,jdbcType=VARCHAR},
+      </if>
+      <if test="field22 != null">
+        #{field22,jdbcType=VARCHAR},
+      </if>
+      <if test="field23 != null">
+        #{field23,jdbcType=VARCHAR},
+      </if>
+      <if test="field24 != null">
+        #{field24,jdbcType=VARCHAR},
+      </if>
+      <if test="field25 != null">
+        #{field25,jdbcType=VARCHAR},
+      </if>
+      <if test="field26 != null">
+        #{field26,jdbcType=VARCHAR},
+      </if>
+      <if test="field27 != null">
+        #{field27,jdbcType=VARCHAR},
+      </if>
+      <if test="field28 != null">
+        #{field28,jdbcType=VARCHAR},
+      </if>
+      <if test="field29 != null">
+        #{field29,jdbcType=VARCHAR},
+      </if>
+      <if test="field30 != null">
+        #{field30,jdbcType=VARCHAR},
+      </if>
+      <if test="field31 != null">
+        #{field31,jdbcType=VARCHAR},
+      </if>
+      <if test="field32 != null">
+        #{field32,jdbcType=VARCHAR},
+      </if>
+      <if test="field33 != null">
+        #{field33,jdbcType=VARCHAR},
+      </if>
+      <if test="field34 != null">
+        #{field34,jdbcType=VARCHAR},
+      </if>
+      <if test="field35 != null">
+        #{field35,jdbcType=VARCHAR},
+      </if>
+      <if test="field36 != null">
+        #{field36,jdbcType=VARCHAR},
+      </if>
+      <if test="field37 != null">
+        #{field37,jdbcType=VARCHAR},
+      </if>
+      <if test="field38 != null">
+        #{field38,jdbcType=VARCHAR},
+      </if>
+      <if test="field39 != null">
+        #{field39,jdbcType=VARCHAR},
+      </if>
+      <if test="field40 != null">
+        #{field40,jdbcType=VARCHAR},
+      </if>
+      <if test="field41 != null">
+        #{field41,jdbcType=VARCHAR},
+      </if>
+      <if test="field42 != null">
+        #{field42,jdbcType=VARCHAR},
+      </if>
+      <if test="field43 != null">
+        #{field43,jdbcType=VARCHAR},
+      </if>
+      <if test="field44 != null">
+        #{field44,jdbcType=VARCHAR},
+      </if>
+      <if test="field45 != null">
+        #{field45,jdbcType=VARCHAR},
+      </if>
+      <if test="field46 != null">
+        #{field46,jdbcType=VARCHAR},
+      </if>
+      <if test="field47 != null">
+        #{field47,jdbcType=VARCHAR},
+      </if>
+      <if test="field48 != null">
+        #{field48,jdbcType=VARCHAR},
+      </if>
+      <if test="field49 != null">
+        #{field49,jdbcType=VARCHAR},
+      </if>
+      <if test="field50 != null">
+        #{field50,jdbcType=VARCHAR},
+      </if>
+      <if test="field51 != null">
+        #{field51,jdbcType=VARCHAR},
+      </if>
+      <if test="field52 != null">
+        #{field52,jdbcType=VARCHAR},
+      </if>
+      <if test="field53 != null">
+        #{field53,jdbcType=VARCHAR},
+      </if>
+      <if test="field54 != null">
+        #{field54,jdbcType=VARCHAR},
+      </if>
+      <if test="field55 != null">
+        #{field55,jdbcType=VARCHAR},
+      </if>
+      <if test="field56 != null">
+        #{field56,jdbcType=VARCHAR},
+      </if>
+      <if test="field57 != null">
+        #{field57,jdbcType=VARCHAR},
+      </if>
+      <if test="field58 != null">
+        #{field58,jdbcType=VARCHAR},
+      </if>
+      <if test="field59 != null">
+        #{field59,jdbcType=VARCHAR},
+      </if>
+      <if test="field60 != null">
+        #{field60,jdbcType=VARCHAR},
+      </if>
+      <if test="field61 != null">
+        #{field61,jdbcType=VARCHAR},
+      </if>
+      <if test="field62 != null">
+        #{field62,jdbcType=VARCHAR},
+      </if>
+      <if test="field63 != null">
+        #{field63,jdbcType=VARCHAR},
+      </if>
+      <if test="field64 != null">
+        #{field64,jdbcType=VARCHAR},
+      </if>
+      <if test="field65 != null">
+        #{field65,jdbcType=VARCHAR},
+      </if>
+      <if test="field66 != null">
+        #{field66,jdbcType=VARCHAR},
+      </if>
+      <if test="field67 != null">
+        #{field67,jdbcType=VARCHAR},
+      </if>
+      <if test="field68 != null">
+        #{field68,jdbcType=VARCHAR},
+      </if>
+      <if test="field69 != null">
+        #{field69,jdbcType=VARCHAR},
+      </if>
+      <if test="field70 != null">
+        #{field70,jdbcType=VARCHAR},
+      </if>
+      <if test="field71 != null">
+        #{field71,jdbcType=VARCHAR},
+      </if>
+      <if test="field72 != null">
+        #{field72,jdbcType=VARCHAR},
+      </if>
+      <if test="field73 != null">
+        #{field73,jdbcType=VARCHAR},
+      </if>
+      <if test="field74 != null">
+        #{field74,jdbcType=VARCHAR},
+      </if>
+      <if test="field75 != null">
+        #{field75,jdbcType=VARCHAR},
+      </if>
+      <if test="field76 != null">
+        #{field76,jdbcType=VARCHAR},
+      </if>
+      <if test="field77 != null">
+        #{field77,jdbcType=VARCHAR},
+      </if>
+      <if test="field78 != null">
+        #{field78,jdbcType=VARCHAR},
+      </if>
+      <if test="field79 != null">
+        #{field79,jdbcType=VARCHAR},
+      </if>
+      <if test="field80 != null">
+        #{field80,jdbcType=VARCHAR},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null">
+        #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.excel.api.pojo.ExcelTempData">
+    update excel_temp_data
+    <set>
+      <if test="batchCode != null">
+        BATCH_CODE = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        APP_ID = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        FIELD1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        FIELD2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        FIELD3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        FIELD4 = #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        FIELD5 = #{field5,jdbcType=VARCHAR},
+      </if>
+      <if test="field6 != null">
+        FIELD6 = #{field6,jdbcType=VARCHAR},
+      </if>
+      <if test="field7 != null">
+        FIELD7 = #{field7,jdbcType=VARCHAR},
+      </if>
+      <if test="field8 != null">
+        FIELD8 = #{field8,jdbcType=VARCHAR},
+      </if>
+      <if test="field9 != null">
+        FIELD9 = #{field9,jdbcType=VARCHAR},
+      </if>
+      <if test="field10 != null">
+        FIELD10 = #{field10,jdbcType=VARCHAR},
+      </if>
+      <if test="field11 != null">
+        FIELD11 = #{field11,jdbcType=VARCHAR},
+      </if>
+      <if test="field12 != null">
+        FIELD12 = #{field12,jdbcType=VARCHAR},
+      </if>
+      <if test="field13 != null">
+        FIELD13 = #{field13,jdbcType=VARCHAR},
+      </if>
+      <if test="field14 != null">
+        FIELD14 = #{field14,jdbcType=VARCHAR},
+      </if>
+      <if test="field15 != null">
+        FIELD15 = #{field15,jdbcType=VARCHAR},
+      </if>
+      <if test="field16 != null">
+        FIELD16 = #{field16,jdbcType=VARCHAR},
+      </if>
+      <if test="field17 != null">
+        FIELD17 = #{field17,jdbcType=VARCHAR},
+      </if>
+      <if test="field18 != null">
+        FIELD18 = #{field18,jdbcType=VARCHAR},
+      </if>
+      <if test="field19 != null">
+        FIELD19 = #{field19,jdbcType=VARCHAR},
+      </if>
+      <if test="field20 != null">
+        FIELD20 = #{field20,jdbcType=VARCHAR},
+      </if>
+      <if test="field21 != null">
+        FIELD21 = #{field21,jdbcType=VARCHAR},
+      </if>
+      <if test="field22 != null">
+        FIELD22 = #{field22,jdbcType=VARCHAR},
+      </if>
+      <if test="field23 != null">
+        FIELD23 = #{field23,jdbcType=VARCHAR},
+      </if>
+      <if test="field24 != null">
+        FIELD24 = #{field24,jdbcType=VARCHAR},
+      </if>
+      <if test="field25 != null">
+        FIELD25 = #{field25,jdbcType=VARCHAR},
+      </if>
+      <if test="field26 != null">
+        FIELD26 = #{field26,jdbcType=VARCHAR},
+      </if>
+      <if test="field27 != null">
+        FIELD27 = #{field27,jdbcType=VARCHAR},
+      </if>
+      <if test="field28 != null">
+        FIELD28 = #{field28,jdbcType=VARCHAR},
+      </if>
+      <if test="field29 != null">
+        FIELD29 = #{field29,jdbcType=VARCHAR},
+      </if>
+      <if test="field30 != null">
+        FIELD30 = #{field30,jdbcType=VARCHAR},
+      </if>
+      <if test="field31 != null">
+        FIELD31 = #{field31,jdbcType=VARCHAR},
+      </if>
+      <if test="field32 != null">
+        FIELD32 = #{field32,jdbcType=VARCHAR},
+      </if>
+      <if test="field33 != null">
+        FIELD33 = #{field33,jdbcType=VARCHAR},
+      </if>
+      <if test="field34 != null">
+        FIELD34 = #{field34,jdbcType=VARCHAR},
+      </if>
+      <if test="field35 != null">
+        FIELD35 = #{field35,jdbcType=VARCHAR},
+      </if>
+      <if test="field36 != null">
+        FIELD36 = #{field36,jdbcType=VARCHAR},
+      </if>
+      <if test="field37 != null">
+        FIELD37 = #{field37,jdbcType=VARCHAR},
+      </if>
+      <if test="field38 != null">
+        FIELD38 = #{field38,jdbcType=VARCHAR},
+      </if>
+      <if test="field39 != null">
+        FIELD39 = #{field39,jdbcType=VARCHAR},
+      </if>
+      <if test="field40 != null">
+        FIELD40 = #{field40,jdbcType=VARCHAR},
+      </if>
+      <if test="field41 != null">
+        FIELD41 = #{field41,jdbcType=VARCHAR},
+      </if>
+      <if test="field42 != null">
+        FIELD42 = #{field42,jdbcType=VARCHAR},
+      </if>
+      <if test="field43 != null">
+        FIELD43 = #{field43,jdbcType=VARCHAR},
+      </if>
+      <if test="field44 != null">
+        FIELD44 = #{field44,jdbcType=VARCHAR},
+      </if>
+      <if test="field45 != null">
+        FIELD45 = #{field45,jdbcType=VARCHAR},
+      </if>
+      <if test="field46 != null">
+        FIELD46 = #{field46,jdbcType=VARCHAR},
+      </if>
+      <if test="field47 != null">
+        FIELD47 = #{field47,jdbcType=VARCHAR},
+      </if>
+      <if test="field48 != null">
+        FIELD48 = #{field48,jdbcType=VARCHAR},
+      </if>
+      <if test="field49 != null">
+        FIELD49 = #{field49,jdbcType=VARCHAR},
+      </if>
+      <if test="field50 != null">
+        FIELD50 = #{field50,jdbcType=VARCHAR},
+      </if>
+      <if test="field51 != null">
+        FIELD51 = #{field51,jdbcType=VARCHAR},
+      </if>
+      <if test="field52 != null">
+        FIELD52 = #{field52,jdbcType=VARCHAR},
+      </if>
+      <if test="field53 != null">
+        FIELD53 = #{field53,jdbcType=VARCHAR},
+      </if>
+      <if test="field54 != null">
+        FIELD54 = #{field54,jdbcType=VARCHAR},
+      </if>
+      <if test="field55 != null">
+        FIELD55 = #{field55,jdbcType=VARCHAR},
+      </if>
+      <if test="field56 != null">
+        FIELD56 = #{field56,jdbcType=VARCHAR},
+      </if>
+      <if test="field57 != null">
+        FIELD57 = #{field57,jdbcType=VARCHAR},
+      </if>
+      <if test="field58 != null">
+        FIELD58 = #{field58,jdbcType=VARCHAR},
+      </if>
+      <if test="field59 != null">
+        FIELD59 = #{field59,jdbcType=VARCHAR},
+      </if>
+      <if test="field60 != null">
+        FIELD60 = #{field60,jdbcType=VARCHAR},
+      </if>
+      <if test="field61 != null">
+        FIELD61 = #{field61,jdbcType=VARCHAR},
+      </if>
+      <if test="field62 != null">
+        FIELD62 = #{field62,jdbcType=VARCHAR},
+      </if>
+      <if test="field63 != null">
+        FIELD63 = #{field63,jdbcType=VARCHAR},
+      </if>
+      <if test="field64 != null">
+        FIELD64 = #{field64,jdbcType=VARCHAR},
+      </if>
+      <if test="field65 != null">
+        FIELD65 = #{field65,jdbcType=VARCHAR},
+      </if>
+      <if test="field66 != null">
+        FIELD66 = #{field66,jdbcType=VARCHAR},
+      </if>
+      <if test="field67 != null">
+        FIELD67 = #{field67,jdbcType=VARCHAR},
+      </if>
+      <if test="field68 != null">
+        FIELD68 = #{field68,jdbcType=VARCHAR},
+      </if>
+      <if test="field69 != null">
+        FIELD69 = #{field69,jdbcType=VARCHAR},
+      </if>
+      <if test="field70 != null">
+        FIELD70 = #{field70,jdbcType=VARCHAR},
+      </if>
+      <if test="field71 != null">
+        FIELD71 = #{field71,jdbcType=VARCHAR},
+      </if>
+      <if test="field72 != null">
+        FIELD72 = #{field72,jdbcType=VARCHAR},
+      </if>
+      <if test="field73 != null">
+        FIELD73 = #{field73,jdbcType=VARCHAR},
+      </if>
+      <if test="field74 != null">
+        FIELD74 = #{field74,jdbcType=VARCHAR},
+      </if>
+      <if test="field75 != null">
+        FIELD75 = #{field75,jdbcType=VARCHAR},
+      </if>
+      <if test="field76 != null">
+        FIELD76 = #{field76,jdbcType=VARCHAR},
+      </if>
+      <if test="field77 != null">
+        FIELD77 = #{field77,jdbcType=VARCHAR},
+      </if>
+      <if test="field78 != null">
+        FIELD78 = #{field78,jdbcType=VARCHAR},
+      </if>
+      <if test="field79 != null">
+        FIELD79 = #{field79,jdbcType=VARCHAR},
+      </if>
+      <if test="field80 != null">
+        FIELD80 = #{field80,jdbcType=VARCHAR},
+      </if>
+      <if test="createPerson != null">
+        CREATE_PERSON = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createDatetime != null">
+        CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.excel.api.pojo.ExcelTempData">
+    update excel_temp_data
+    set BATCH_CODE = #{batchCode,jdbcType=VARCHAR},
+      APP_ID = #{appId,jdbcType=VARCHAR},
+      FIELD1 = #{field1,jdbcType=VARCHAR},
+      FIELD2 = #{field2,jdbcType=VARCHAR},
+      FIELD3 = #{field3,jdbcType=VARCHAR},
+      FIELD4 = #{field4,jdbcType=VARCHAR},
+      FIELD5 = #{field5,jdbcType=VARCHAR},
+      FIELD6 = #{field6,jdbcType=VARCHAR},
+      FIELD7 = #{field7,jdbcType=VARCHAR},
+      FIELD8 = #{field8,jdbcType=VARCHAR},
+      FIELD9 = #{field9,jdbcType=VARCHAR},
+      FIELD10 = #{field10,jdbcType=VARCHAR},
+      FIELD11 = #{field11,jdbcType=VARCHAR},
+      FIELD12 = #{field12,jdbcType=VARCHAR},
+      FIELD13 = #{field13,jdbcType=VARCHAR},
+      FIELD14 = #{field14,jdbcType=VARCHAR},
+      FIELD15 = #{field15,jdbcType=VARCHAR},
+      FIELD16 = #{field16,jdbcType=VARCHAR},
+      FIELD17 = #{field17,jdbcType=VARCHAR},
+      FIELD18 = #{field18,jdbcType=VARCHAR},
+      FIELD19 = #{field19,jdbcType=VARCHAR},
+      FIELD20 = #{field20,jdbcType=VARCHAR},
+      FIELD21 = #{field21,jdbcType=VARCHAR},
+      FIELD22 = #{field22,jdbcType=VARCHAR},
+      FIELD23 = #{field23,jdbcType=VARCHAR},
+      FIELD24 = #{field24,jdbcType=VARCHAR},
+      FIELD25 = #{field25,jdbcType=VARCHAR},
+      FIELD26 = #{field26,jdbcType=VARCHAR},
+      FIELD27 = #{field27,jdbcType=VARCHAR},
+      FIELD28 = #{field28,jdbcType=VARCHAR},
+      FIELD29 = #{field29,jdbcType=VARCHAR},
+      FIELD30 = #{field30,jdbcType=VARCHAR},
+      FIELD31 = #{field31,jdbcType=VARCHAR},
+      FIELD32 = #{field32,jdbcType=VARCHAR},
+      FIELD33 = #{field33,jdbcType=VARCHAR},
+      FIELD34 = #{field34,jdbcType=VARCHAR},
+      FIELD35 = #{field35,jdbcType=VARCHAR},
+      FIELD36 = #{field36,jdbcType=VARCHAR},
+      FIELD37 = #{field37,jdbcType=VARCHAR},
+      FIELD38 = #{field38,jdbcType=VARCHAR},
+      FIELD39 = #{field39,jdbcType=VARCHAR},
+      FIELD40 = #{field40,jdbcType=VARCHAR},
+      FIELD41 = #{field41,jdbcType=VARCHAR},
+      FIELD42 = #{field42,jdbcType=VARCHAR},
+      FIELD43 = #{field43,jdbcType=VARCHAR},
+      FIELD44 = #{field44,jdbcType=VARCHAR},
+      FIELD45 = #{field45,jdbcType=VARCHAR},
+      FIELD46 = #{field46,jdbcType=VARCHAR},
+      FIELD47 = #{field47,jdbcType=VARCHAR},
+      FIELD48 = #{field48,jdbcType=VARCHAR},
+      FIELD49 = #{field49,jdbcType=VARCHAR},
+      FIELD50 = #{field50,jdbcType=VARCHAR},
+      FIELD51 = #{field51,jdbcType=VARCHAR},
+      FIELD52 = #{field52,jdbcType=VARCHAR},
+      FIELD53 = #{field53,jdbcType=VARCHAR},
+      FIELD54 = #{field54,jdbcType=VARCHAR},
+      FIELD55 = #{field55,jdbcType=VARCHAR},
+      FIELD56 = #{field56,jdbcType=VARCHAR},
+      FIELD57 = #{field57,jdbcType=VARCHAR},
+      FIELD58 = #{field58,jdbcType=VARCHAR},
+      FIELD59 = #{field59,jdbcType=VARCHAR},
+      FIELD60 = #{field60,jdbcType=VARCHAR},
+      FIELD61 = #{field61,jdbcType=VARCHAR},
+      FIELD62 = #{field62,jdbcType=VARCHAR},
+      FIELD63 = #{field63,jdbcType=VARCHAR},
+      FIELD64 = #{field64,jdbcType=VARCHAR},
+      FIELD65 = #{field65,jdbcType=VARCHAR},
+      FIELD66 = #{field66,jdbcType=VARCHAR},
+      FIELD67 = #{field67,jdbcType=VARCHAR},
+      FIELD68 = #{field68,jdbcType=VARCHAR},
+      FIELD69 = #{field69,jdbcType=VARCHAR},
+      FIELD70 = #{field70,jdbcType=VARCHAR},
+      FIELD71 = #{field71,jdbcType=VARCHAR},
+      FIELD72 = #{field72,jdbcType=VARCHAR},
+      FIELD73 = #{field73,jdbcType=VARCHAR},
+      FIELD74 = #{field74,jdbcType=VARCHAR},
+      FIELD75 = #{field75,jdbcType=VARCHAR},
+      FIELD76 = #{field76,jdbcType=VARCHAR},
+      FIELD77 = #{field77,jdbcType=VARCHAR},
+      FIELD78 = #{field78,jdbcType=VARCHAR},
+      FIELD79 = #{field79,jdbcType=VARCHAR},
+      FIELD80 = #{field80,jdbcType=VARCHAR},
+      CREATE_PERSON = #{createPerson,jdbcType=VARCHAR},
+      CREATE_DATETIME = #{createDatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

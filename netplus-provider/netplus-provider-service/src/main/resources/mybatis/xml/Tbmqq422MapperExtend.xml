@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq422Mapper">
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.tbmqq422
+        (
+            userno, rolecode, createuser,
+            createdate, createtime, updateuser,
+            updatedate, updatetime
+        )
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                #{item.userno},
+                #{item.rolecode},
+                #{item.createuser},
+                #{item.createdate},
+                #{item.createtime},
+                #{item.updateuser},
+                #{item.updatedate},
+                #{item.updatetime}
+                from dual
+            </foreach>
+        )
+    </insert>
+
+    <select id="islist" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422"  resultMap="BaseResultMap">
+        select t.*
+        from
+        ygmalluser.TBMQQ422 t
+        where rolecode=#{rolecode}
+    </select>
+
+    <delete id="deleteByUserNo">
+        delete from ygmalluser.TBMQQ422 t where t.userno=#{userNo}
+    </delete>
+
+    <select id="selectRoleList" parameterType="map" resultType="java.lang.String">
+        select t.rolecode
+        from (
+        select * from ygmalluser.TBMQQ422 where USERNO = #{userno}
+            ) t
+        group by t.rolecode
+    </select>
+
+    <select id="selectSupplyInfo" parameterType="map"  resultType="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+        select * from ygmalluser.TBMQQ422
+        where userno=#{usercode}
+
+    </select>
+
+    <update id="initRole" parameterType="java.util.ArrayList">
+        update ygmalluser.TBMQQ422
+        set ROLECODE=#{rolecode}
+        where USERNO =#{usercode}
+    </update>
+
+    <select id="getRoleList" resultType="java.lang.String">
+        select rolecode from ygmalluser.TBMQQ422 group by rolecode
+    </select>
+
+
+    <select id="getUserRoleByUserNo" resultType="netplus.provider.api.vo.Tbmqq422Vo">
+
+        select t1.userno, t1.rolecode, t2.rolename
+        from ygmalluser.tbmqq422 t1
+        join ygmalluser.tbmqq420 t2 on t1.rolecode=t2.rolecode
+        where
+        t1.userno in
+        <foreach collection="userNoList" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+
+    </select>
+
+
+    <select id="getUserRoleList" resultType="String">
+        select t1.rolecode
+        from ygmalluser.tbmqq422 t1
+        where userno=#{userNo}
+    </select>
+
+
+
+
+</mapper>

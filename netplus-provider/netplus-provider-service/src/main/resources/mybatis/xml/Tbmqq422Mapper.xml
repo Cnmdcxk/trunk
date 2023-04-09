@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq422Mapper">
+  <resultMap id="BaseResultMap" type="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+    <id column="USERNO" jdbcType="VARCHAR" property="userno" />
+    <id column="ROLECODE" jdbcType="VARCHAR" property="rolecode" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USERNO, ROLECODE, CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, UPDATEDATE, UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422Key" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ422
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and ROLECODE = #{rolecode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422Key">
+    delete from YGMALLUSER.TBMQQ422
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and ROLECODE = #{rolecode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+    insert into YGMALLUSER.TBMQQ422 (USERNO, ROLECODE, CREATEUSER, 
+      CREATEDATE, CREATETIME, UPDATEUSER, 
+      UPDATEDATE, UPDATETIME)
+    values (#{userno,jdbcType=VARCHAR}, #{rolecode,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=VARCHAR}, #{updatetime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+    insert into YGMALLUSER.TBMQQ422
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        USERNO,
+      </if>
+      <if test="rolecode != null">
+        ROLECODE,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userno != null">
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="rolecode != null">
+        #{rolecode,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+    update YGMALLUSER.TBMQQ422
+    <set>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and ROLECODE = #{rolecode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.Tbmqq422">
+    update YGMALLUSER.TBMQQ422
+    set CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR}
+    where USERNO = #{userno,jdbcType=VARCHAR}
+      and ROLECODE = #{rolecode,jdbcType=VARCHAR}
+  </update></mapper>

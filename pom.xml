@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>yonggang</groupId>
+  <artifactId>ygmall</artifactId>
+  
+  <version>1.0.YG-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>netplus-common</module>
+    <module>netplus-commonservice-eureka</module>
+    <module>netplus-component</module>
+    <module>netplus-component-freemarker-web</module>
+    <module>netplus-config</module>
+    <module>netplus-excel</module>
+    <module>netplus-job</module>
+    <module>netplus-messaging</module>
+    <module>netplus-portal</module>
+    <module>netplus-provider</module>
+    <module>netplus-static</module>
+    <module>netplus-interface-monitor</module>
+    <module>netplus-mall</module>
+    <module>netplus-joint-zkh</module>
+    <module>netplus-joint-erp</module>
+  </modules>
+  
+</project>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.FuturegoodMapper">
+
+  <delete id="deleteFutureGoodByPoNoPk">
+    delete YGMALLUSER.FUTUREGOOD where ponopk = #{poNo}
+  </delete>
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into YGMALLUSER.FUTUREGOOD (
+    GOODID, PONO, POITEMNO,
+    CATEGORYNAME, ONELEVELCLANAME, TWOLEVELCLANAME,
+    PRODUCTNAME, GOODNO, MATRLNO,
+    UNITMETHOD, QTY, QTYUNIT,
+    MINBUYQTY, PRICE, NOTAXPRICE,
+    ORIGINPRICE, TAX, SPEC,
+    BRAND, WEIGHT, WEIGHTUNIT,
+    PACKTHICK, PACKWIDTH, PACKHEIGHT,
+    PACKUNIT, REFERDELIVERYDATE, SUPPLIERNO,
+    SUPPLIERNAME, REQNO, REQITEMNO,
+    POPRICEDATE, POPRICETIME, QLTY,
+    GROUPNO, PICTUREURL, SHELVESDATE,
+    SHELVESTIME, AUDITUSER, REJECTREASON,
+    ISINTTIMEPURCHASE, ISDECIMALPURCHASE, STATUS,
+    DELETED, CREATEUSER, CREATEDATE,
+    CREATETIME, UPDATEUSER, UPDATEDATE,
+    UPDATETIME, SOURCEFROM, ISTAXEXCEPTION,
+    AGENT, APPLYREASON, PAYTYPE,
+    PAYTYPENAME, PAYMETHOD, PAYMETHODNAME,
+    PONOPK, SUPPLIERPK, MATRLID,
+    MATRLTM, CATEGORYPK, ONELEVELCLAPK,
+    TWOLEVELCLAPK, HASPIC, POPRICESTARTDATE,
+    POPRICESTARTTIME, LEADTIMENUM, AGENTNO,
+    AGENTPHONE
+    )
+    (
+    <foreach collection="list" item="item" separator="union all">
+      select
+      #{item.goodid,jdbcType=VARCHAR}, #{item.pono,jdbcType=VARCHAR}, #{item.poitemno,jdbcType=VARCHAR},
+      #{item.categoryname,jdbcType=VARCHAR}, #{item.onelevelclaname,jdbcType=VARCHAR}, #{item.twolevelclaname,jdbcType=VARCHAR},
+      #{item.productname,jdbcType=VARCHAR}, #{item.goodno,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR},
+      #{item.unitmethod,jdbcType=VARCHAR}, #{item.qty,jdbcType=DECIMAL}, #{item.qtyunit,jdbcType=VARCHAR},
+      #{item.minbuyqty,jdbcType=DECIMAL}, #{item.price,jdbcType=DECIMAL}, #{item.notaxprice,jdbcType=DECIMAL},
+      #{item.originprice,jdbcType=DECIMAL}, #{item.tax,jdbcType=DECIMAL}, #{item.spec,jdbcType=VARCHAR},
+      #{item.brand,jdbcType=VARCHAR}, #{item.weight,jdbcType=DECIMAL}, #{item.weightunit,jdbcType=VARCHAR},
+      #{item.packthick,jdbcType=DECIMAL}, #{item.packwidth,jdbcType=DECIMAL}, #{item.packheight,jdbcType=DECIMAL},
+      #{item.packunit,jdbcType=VARCHAR}, #{item.referdeliverydate,jdbcType=DECIMAL}, #{item.supplierno,jdbcType=VARCHAR},
+      #{item.suppliername,jdbcType=VARCHAR}, #{item.reqno,jdbcType=VARCHAR}, #{item.reqitemno,jdbcType=VARCHAR},
+      #{item.popricedate,jdbcType=VARCHAR}, #{item.popricetime,jdbcType=VARCHAR}, #{item.qlty,jdbcType=VARCHAR},
+      #{item.groupno,jdbcType=VARCHAR}, #{item.pictureurl,jdbcType=VARCHAR}, #{item.shelvesdate,jdbcType=VARCHAR},
+      #{item.shelvestime,jdbcType=VARCHAR}, #{item.audituser,jdbcType=VARCHAR}, #{item.rejectreason,jdbcType=VARCHAR},
+      #{item.isinttimepurchase,jdbcType=VARCHAR}, #{item.isdecimalpurchase,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR},
+      #{item.deleted,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR},
+      #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR},
+      #{item.updatetime,jdbcType=VARCHAR}, #{item.sourcefrom,jdbcType=VARCHAR}, #{item.istaxexception,jdbcType=VARCHAR},
+      #{item.agent,jdbcType=VARCHAR}, #{item.applyreason,jdbcType=VARCHAR}, #{item.paytype,jdbcType=VARCHAR},
+      #{item.paytypename,jdbcType=VARCHAR}, #{item.paymethod,jdbcType=VARCHAR}, #{item.paymethodname,jdbcType=VARCHAR},
+      #{item.ponopk,jdbcType=VARCHAR}, #{item.supplierpk,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR},
+      #{item.matrltm,jdbcType=VARCHAR}, #{item.categorypk,jdbcType=VARCHAR}, #{item.onelevelclapk,jdbcType=VARCHAR},
+      #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.haspic,jdbcType=VARCHAR}, #{item.popricestartdate,jdbcType=VARCHAR},
+      #{item.popricestarttime,jdbcType=VARCHAR}, #{item.leadtimenum,jdbcType=DECIMAL}, #{item.agentno,jdbcType=VARCHAR},
+      #{item.agentphone,jdbcType=VARCHAR}
+      from dual
+    </foreach>
+    )
+  </insert>
+
+</mapper>

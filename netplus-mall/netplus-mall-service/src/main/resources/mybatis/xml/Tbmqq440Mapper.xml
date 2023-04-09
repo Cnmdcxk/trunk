@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq440Mapper">
+  <resultMap id="BaseResultMap" type="netplus.mall.api.pojo.ygmalluser.Tbmqq440">
+    <id column="ORDERNO" jdbcType="VARCHAR" property="orderno" />
+    <result column="PONO" jdbcType="VARCHAR" property="pono" />
+    <result column="ORDERTYPE" jdbcType="VARCHAR" property="ordertype" />
+    <result column="TOTALAMT" jdbcType="DECIMAL" property="totalamt" />
+    <result column="NOTAXTOTALAMT" jdbcType="DECIMAL" property="notaxtotalamt" />
+    <result column="BUYERNAME" jdbcType="VARCHAR" property="buyername" />
+    <result column="BUYERNO" jdbcType="VARCHAR" property="buyerno" />
+    <result column="USERNO" jdbcType="VARCHAR" property="userno" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="DEPTNO" jdbcType="VARCHAR" property="deptno" />
+    <result column="DEPTNAME" jdbcType="VARCHAR" property="deptname" />
+    <result column="SUPPLIERNO" jdbcType="VARCHAR" property="supplierno" />
+    <result column="SUPPLIERNAME" jdbcType="VARCHAR" property="suppliername" />
+    <result column="REQDELIDATE" jdbcType="VARCHAR" property="reqdelidate" />
+    <result column="PAYTYPE" jdbcType="VARCHAR" property="paytype" />
+    <result column="PAYMETHOD" jdbcType="VARCHAR" property="paymethod" />
+    <result column="BUYERNOTE" jdbcType="VARCHAR" property="buyernote" />
+    <result column="CONSIGNEENAME" jdbcType="VARCHAR" property="consigneename" />
+    <result column="CONSIGNEEPHONE" jdbcType="VARCHAR" property="consigneephone" />
+    <result column="CONSIGNEEADDR" jdbcType="VARCHAR" property="consigneeaddr" />
+    <result column="TICKRECEIVERNAME" jdbcType="VARCHAR" property="tickreceivername" />
+    <result column="TICKRECEIVERPHONE" jdbcType="VARCHAR" property="tickreceiverphone" />
+    <result column="TICKRECEIVERADDR" jdbcType="VARCHAR" property="tickreceiveraddr" />
+    <result column="INVOICETITLE" jdbcType="VARCHAR" property="invoicetitle" />
+    <result column="SUPPLIERTAXNO" jdbcType="VARCHAR" property="suppliertaxno" />
+    <result column="SUPPLIERADDR" jdbcType="VARCHAR" property="supplieraddr" />
+    <result column="SUPPLIERPHONE" jdbcType="VARCHAR" property="supplierphone" />
+    <result column="SUPPLIERBANKNAME" jdbcType="VARCHAR" property="supplierbankname" />
+    <result column="SUPPLIERCARDNO" jdbcType="VARCHAR" property="suppliercardno" />
+    <result column="TOTALQTY" jdbcType="DECIMAL" property="totalqty" />
+    <result column="DELITOTALQTY" jdbcType="DECIMAL" property="delitotalqty" />
+    <result column="TAKEDELITOTALQTY" jdbcType="DECIMAL" property="takedelitotalqty" />
+    <result column="INVOICEDTOTALQTY" jdbcType="DECIMAL" property="invoicedtotalqty" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+    <result column="UPDATEUSER" jdbcType="VARCHAR" property="updateuser" />
+    <result column="UPDATEDATE" jdbcType="VARCHAR" property="updatedate" />
+    <result column="UPDATETIME" jdbcType="VARCHAR" property="updatetime" />
+    <result column="SOURCEFROM" jdbcType="VARCHAR" property="sourcefrom" />
+    <result column="ERPORDERNO" jdbcType="VARCHAR" property="erporderno" />
+    <result column="THRPLATORDERNO" jdbcType="VARCHAR" property="thrplatorderno" />
+    <result column="APPROVECODE" jdbcType="VARCHAR" property="approvecode" />
+    <result column="PAYTYPENAME" jdbcType="VARCHAR" property="paytypename" />
+    <result column="PAYMETHODNAME" jdbcType="VARCHAR" property="paymethodname" />
+    <result column="AGENT" jdbcType="VARCHAR" property="agent" />
+    <result column="DEPTNUM" jdbcType="VARCHAR" property="deptnum" />
+    <result column="PONOPK" jdbcType="VARCHAR" property="ponopk" />
+    <result column="SUPPLIERPK" jdbcType="VARCHAR" property="supplierpk" />
+    <result column="LINEPK" jdbcType="VARCHAR" property="linepk" />
+    <result column="LINENAME" jdbcType="VARCHAR" property="linename" />
+    <result column="RECEIVINGDATE" jdbcType="VARCHAR" property="receivingdate" />
+    <result column="RECEIVINGTIME" jdbcType="VARCHAR" property="receivingtime" />
+    <result column="CONSIGNEENO" jdbcType="VARCHAR" property="consigneeno" />
+    <result column="CONSIGNEEFULLADDR" jdbcType="VARCHAR" property="consigneefulladdr" />
+    <result column="CONSIGNEEADDRTYPE" jdbcType="VARCHAR" property="consigneeaddrtype" />
+    <result column="COSTDEPTPK" jdbcType="VARCHAR" property="costdeptpk" />
+    <result column="COSTDEPTNAME" jdbcType="VARCHAR" property="costdeptname" />
+    <result column="COSTDEPTNUM" jdbcType="VARCHAR" property="costdeptnum" />
+    <result column="INVALIDREASON" jdbcType="VARCHAR" property="invalidreason" />
+    <result column="INVALIDUSER" jdbcType="VARCHAR" property="invaliduser" />
+    <result column="INVALIDUSERNAME" jdbcType="VARCHAR" property="invalidusername" />
+    <result column="INVALIDDATE" jdbcType="VARCHAR" property="invaliddate" />
+    <result column="INVALIDTIME" jdbcType="VARCHAR" property="invalidtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDERNO, PONO, ORDERTYPE, TOTALAMT, NOTAXTOTALAMT, BUYERNAME, BUYERNO, USERNO, USERNAME, 
+    DEPTNO, DEPTNAME, SUPPLIERNO, SUPPLIERNAME, REQDELIDATE, PAYTYPE, PAYMETHOD, BUYERNOTE, 
+    CONSIGNEENAME, CONSIGNEEPHONE, CONSIGNEEADDR, TICKRECEIVERNAME, TICKRECEIVERPHONE, 
+    TICKRECEIVERADDR, INVOICETITLE, SUPPLIERTAXNO, SUPPLIERADDR, SUPPLIERPHONE, SUPPLIERBANKNAME, 
+    SUPPLIERCARDNO, TOTALQTY, DELITOTALQTY, TAKEDELITOTALQTY, INVOICEDTOTALQTY, STATUS, 
+    CREATEUSER, CREATEDATE, CREATETIME, UPDATEUSER, UPDATEDATE, UPDATETIME, SOURCEFROM, 
+    ERPORDERNO, THRPLATORDERNO, APPROVECODE, PAYTYPENAME, PAYMETHODNAME, AGENT, DEPTNUM, 
+    PONOPK, SUPPLIERPK, LINEPK, LINENAME, RECEIVINGDATE, RECEIVINGTIME, CONSIGNEENO, 
+    CONSIGNEEFULLADDR, CONSIGNEEADDRTYPE, COSTDEPTPK, COSTDEPTNAME, COSTDEPTNUM, INVALIDREASON, 
+    INVALIDUSER, INVALIDUSERNAME, INVALIDDATE, INVALIDTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.TBMQQ440
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.TBMQQ440
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq440">
+    insert into YGMALLUSER.TBMQQ440 (ORDERNO, PONO, ORDERTYPE, 
+      TOTALAMT, NOTAXTOTALAMT, BUYERNAME, 
+      BUYERNO, USERNO, USERNAME, 
+      DEPTNO, DEPTNAME, SUPPLIERNO, 
+      SUPPLIERNAME, REQDELIDATE, PAYTYPE, 
+      PAYMETHOD, BUYERNOTE, CONSIGNEENAME, 
+      CONSIGNEEPHONE, CONSIGNEEADDR, TICKRECEIVERNAME, 
+      TICKRECEIVERPHONE, TICKRECEIVERADDR, INVOICETITLE, 
+      SUPPLIERTAXNO, SUPPLIERADDR, SUPPLIERPHONE, 
+      SUPPLIERBANKNAME, SUPPLIERCARDNO, TOTALQTY, 
+      DELITOTALQTY, TAKEDELITOTALQTY, INVOICEDTOTALQTY, 
+      STATUS, CREATEUSER, CREATEDATE, 
+      CREATETIME, UPDATEUSER, UPDATEDATE, 
+      UPDATETIME, SOURCEFROM, ERPORDERNO, 
+      THRPLATORDERNO, APPROVECODE, PAYTYPENAME, 
+      PAYMETHODNAME, AGENT, DEPTNUM, 
+      PONOPK, SUPPLIERPK, LINEPK, 
+      LINENAME, RECEIVINGDATE, RECEIVINGTIME, 
+      CONSIGNEENO, CONSIGNEEFULLADDR, CONSIGNEEADDRTYPE, 
+      COSTDEPTPK, COSTDEPTNAME, COSTDEPTNUM, 
+      INVALIDREASON, INVALIDUSER, INVALIDUSERNAME, 
+      INVALIDDATE, INVALIDTIME)
+    values (#{orderno,jdbcType=VARCHAR}, #{pono,jdbcType=VARCHAR}, #{ordertype,jdbcType=VARCHAR}, 
+      #{totalamt,jdbcType=DECIMAL}, #{notaxtotalamt,jdbcType=DECIMAL}, #{buyername,jdbcType=VARCHAR}, 
+      #{buyerno,jdbcType=VARCHAR}, #{userno,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{deptno,jdbcType=VARCHAR}, #{deptname,jdbcType=VARCHAR}, #{supplierno,jdbcType=VARCHAR}, 
+      #{suppliername,jdbcType=VARCHAR}, #{reqdelidate,jdbcType=VARCHAR}, #{paytype,jdbcType=VARCHAR}, 
+      #{paymethod,jdbcType=VARCHAR}, #{buyernote,jdbcType=VARCHAR}, #{consigneename,jdbcType=VARCHAR}, 
+      #{consigneephone,jdbcType=VARCHAR}, #{consigneeaddr,jdbcType=VARCHAR}, #{tickreceivername,jdbcType=VARCHAR}, 
+      #{tickreceiverphone,jdbcType=VARCHAR}, #{tickreceiveraddr,jdbcType=VARCHAR}, #{invoicetitle,jdbcType=VARCHAR}, 
+      #{suppliertaxno,jdbcType=VARCHAR}, #{supplieraddr,jdbcType=VARCHAR}, #{supplierphone,jdbcType=VARCHAR}, 
+      #{supplierbankname,jdbcType=VARCHAR}, #{suppliercardno,jdbcType=VARCHAR}, #{totalqty,jdbcType=DECIMAL}, 
+      #{delitotalqty,jdbcType=DECIMAL}, #{takedelitotalqty,jdbcType=DECIMAL}, #{invoicedtotalqty,jdbcType=DECIMAL}, 
+      #{status,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, #{updatedate,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=VARCHAR}, #{sourcefrom,jdbcType=VARCHAR}, #{erporderno,jdbcType=VARCHAR}, 
+      #{thrplatorderno,jdbcType=VARCHAR}, #{approvecode,jdbcType=VARCHAR}, #{paytypename,jdbcType=VARCHAR}, 
+      #{paymethodname,jdbcType=VARCHAR}, #{agent,jdbcType=VARCHAR}, #{deptnum,jdbcType=VARCHAR}, 
+      #{ponopk,jdbcType=VARCHAR}, #{supplierpk,jdbcType=VARCHAR}, #{linepk,jdbcType=VARCHAR}, 
+      #{linename,jdbcType=VARCHAR}, #{receivingdate,jdbcType=VARCHAR}, #{receivingtime,jdbcType=VARCHAR}, 
+      #{consigneeno,jdbcType=VARCHAR}, #{consigneefulladdr,jdbcType=VARCHAR}, #{consigneeaddrtype,jdbcType=VARCHAR}, 
+      #{costdeptpk,jdbcType=VARCHAR}, #{costdeptname,jdbcType=VARCHAR}, #{costdeptnum,jdbcType=VARCHAR}, 
+      #{invalidreason,jdbcType=VARCHAR}, #{invaliduser,jdbcType=VARCHAR}, #{invalidusername,jdbcType=VARCHAR}, 
+      #{invaliddate,jdbcType=VARCHAR}, #{invalidtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq440">
+    insert into YGMALLUSER.TBMQQ440
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        ORDERNO,
+      </if>
+      <if test="pono != null">
+        PONO,
+      </if>
+      <if test="ordertype != null">
+        ORDERTYPE,
+      </if>
+      <if test="totalamt != null">
+        TOTALAMT,
+      </if>
+      <if test="notaxtotalamt != null">
+        NOTAXTOTALAMT,
+      </if>
+      <if test="buyername != null">
+        BUYERNAME,
+      </if>
+      <if test="buyerno != null">
+        BUYERNO,
+      </if>
+      <if test="userno != null">
+        USERNO,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="deptno != null">
+        DEPTNO,
+      </if>
+      <if test="deptname != null">
+        DEPTNAME,
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO,
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME,
+      </if>
+      <if test="reqdelidate != null">
+        REQDELIDATE,
+      </if>
+      <if test="paytype != null">
+        PAYTYPE,
+      </if>
+      <if test="paymethod != null">
+        PAYMETHOD,
+      </if>
+      <if test="buyernote != null">
+        BUYERNOTE,
+      </if>
+      <if test="consigneename != null">
+        CONSIGNEENAME,
+      </if>
+      <if test="consigneephone != null">
+        CONSIGNEEPHONE,
+      </if>
+      <if test="consigneeaddr != null">
+        CONSIGNEEADDR,
+      </if>
+      <if test="tickreceivername != null">
+        TICKRECEIVERNAME,
+      </if>
+      <if test="tickreceiverphone != null">
+        TICKRECEIVERPHONE,
+      </if>
+      <if test="tickreceiveraddr != null">
+        TICKRECEIVERADDR,
+      </if>
+      <if test="invoicetitle != null">
+        INVOICETITLE,
+      </if>
+      <if test="suppliertaxno != null">
+        SUPPLIERTAXNO,
+      </if>
+      <if test="supplieraddr != null">
+        SUPPLIERADDR,
+      </if>
+      <if test="supplierphone != null">
+        SUPPLIERPHONE,
+      </if>
+      <if test="supplierbankname != null">
+        SUPPLIERBANKNAME,
+      </if>
+      <if test="suppliercardno != null">
+        SUPPLIERCARDNO,
+      </if>
+      <if test="totalqty != null">
+        TOTALQTY,
+      </if>
+      <if test="delitotalqty != null">
+        DELITOTALQTY,
+      </if>
+      <if test="takedelitotalqty != null">
+        TAKEDELITOTALQTY,
+      </if>
+      <if test="invoicedtotalqty != null">
+        INVOICEDTOTALQTY,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="createuser != null">
+        CREATEUSER,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM,
+      </if>
+      <if test="erporderno != null">
+        ERPORDERNO,
+      </if>
+      <if test="thrplatorderno != null">
+        THRPLATORDERNO,
+      </if>
+      <if test="approvecode != null">
+        APPROVECODE,
+      </if>
+      <if test="paytypename != null">
+        PAYTYPENAME,
+      </if>
+      <if test="paymethodname != null">
+        PAYMETHODNAME,
+      </if>
+      <if test="agent != null">
+        AGENT,
+      </if>
+      <if test="deptnum != null">
+        DEPTNUM,
+      </if>
+      <if test="ponopk != null">
+        PONOPK,
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK,
+      </if>
+      <if test="linepk != null">
+        LINEPK,
+      </if>
+      <if test="linename != null">
+        LINENAME,
+      </if>
+      <if test="receivingdate != null">
+        RECEIVINGDATE,
+      </if>
+      <if test="receivingtime != null">
+        RECEIVINGTIME,
+      </if>
+      <if test="consigneeno != null">
+        CONSIGNEENO,
+      </if>
+      <if test="consigneefulladdr != null">
+        CONSIGNEEFULLADDR,
+      </if>
+      <if test="consigneeaddrtype != null">
+        CONSIGNEEADDRTYPE,
+      </if>
+      <if test="costdeptpk != null">
+        COSTDEPTPK,
+      </if>
+      <if test="costdeptname != null">
+        COSTDEPTNAME,
+      </if>
+      <if test="costdeptnum != null">
+        COSTDEPTNUM,
+      </if>
+      <if test="invalidreason != null">
+        INVALIDREASON,
+      </if>
+      <if test="invaliduser != null">
+        INVALIDUSER,
+      </if>
+      <if test="invalidusername != null">
+        INVALIDUSERNAME,
+      </if>
+      <if test="invaliddate != null">
+        INVALIDDATE,
+      </if>
+      <if test="invalidtime != null">
+        INVALIDTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="pono != null">
+        #{pono,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null">
+        #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="totalamt != null">
+        #{totalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxtotalamt != null">
+        #{notaxtotalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="buyername != null">
+        #{buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerno != null">
+        #{buyerno,jdbcType=VARCHAR},
+      </if>
+      <if test="userno != null">
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="deptno != null">
+        #{deptno,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null">
+        #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierno != null">
+        #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="reqdelidate != null">
+        #{reqdelidate,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethod != null">
+        #{paymethod,jdbcType=VARCHAR},
+      </if>
+      <if test="buyernote != null">
+        #{buyernote,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null">
+        #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneephone != null">
+        #{consigneephone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddr != null">
+        #{consigneeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceivername != null">
+        #{tickreceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceiverphone != null">
+        #{tickreceiverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceiveraddr != null">
+        #{tickreceiveraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicetitle != null">
+        #{invoicetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliertaxno != null">
+        #{suppliertaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraddr != null">
+        #{supplieraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null">
+        #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierbankname != null">
+        #{supplierbankname,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliercardno != null">
+        #{suppliercardno,jdbcType=VARCHAR},
+      </if>
+      <if test="totalqty != null">
+        #{totalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="delitotalqty != null">
+        #{delitotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="takedelitotalqty != null">
+        #{takedelitotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="invoicedtotalqty != null">
+        #{invoicedtotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="erporderno != null">
+        #{erporderno,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatorderno != null">
+        #{thrplatorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="approvecode != null">
+        #{approvecode,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypename != null">
+        #{paytypename,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethodname != null">
+        #{paymethodname,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="deptnum != null">
+        #{deptnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="linepk != null">
+        #{linepk,jdbcType=VARCHAR},
+      </if>
+      <if test="linename != null">
+        #{linename,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingdate != null">
+        #{receivingdate,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingtime != null">
+        #{receivingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeno != null">
+        #{consigneeno,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneefulladdr != null">
+        #{consigneefulladdr,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddrtype != null">
+        #{consigneeaddrtype,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptpk != null">
+        #{costdeptpk,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptname != null">
+        #{costdeptname,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptnum != null">
+        #{costdeptnum,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidreason != null">
+        #{invalidreason,jdbcType=VARCHAR},
+      </if>
+      <if test="invaliduser != null">
+        #{invaliduser,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidusername != null">
+        #{invalidusername,jdbcType=VARCHAR},
+      </if>
+      <if test="invaliddate != null">
+        #{invaliddate,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidtime != null">
+        #{invalidtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq440">
+    update YGMALLUSER.TBMQQ440
+    <set>
+      <if test="pono != null">
+        PONO = #{pono,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null">
+        ORDERTYPE = #{ordertype,jdbcType=VARCHAR},
+      </if>
+      <if test="totalamt != null">
+        TOTALAMT = #{totalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="notaxtotalamt != null">
+        NOTAXTOTALAMT = #{notaxtotalamt,jdbcType=DECIMAL},
+      </if>
+      <if test="buyername != null">
+        BUYERNAME = #{buyername,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerno != null">
+        BUYERNO = #{buyerno,jdbcType=VARCHAR},
+      </if>
+      <if test="userno != null">
+        USERNO = #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="deptno != null">
+        DEPTNO = #{deptno,jdbcType=VARCHAR},
+      </if>
+      <if test="deptname != null">
+        DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierno != null">
+        SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliername != null">
+        SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="reqdelidate != null">
+        REQDELIDATE = #{reqdelidate,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null">
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethod != null">
+        PAYMETHOD = #{paymethod,jdbcType=VARCHAR},
+      </if>
+      <if test="buyernote != null">
+        BUYERNOTE = #{buyernote,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null">
+        CONSIGNEENAME = #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneephone != null">
+        CONSIGNEEPHONE = #{consigneephone,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddr != null">
+        CONSIGNEEADDR = #{consigneeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceivername != null">
+        TICKRECEIVERNAME = #{tickreceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceiverphone != null">
+        TICKRECEIVERPHONE = #{tickreceiverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="tickreceiveraddr != null">
+        TICKRECEIVERADDR = #{tickreceiveraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicetitle != null">
+        INVOICETITLE = #{invoicetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliertaxno != null">
+        SUPPLIERTAXNO = #{suppliertaxno,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraddr != null">
+        SUPPLIERADDR = #{supplieraddr,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierphone != null">
+        SUPPLIERPHONE = #{supplierphone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierbankname != null">
+        SUPPLIERBANKNAME = #{supplierbankname,jdbcType=VARCHAR},
+      </if>
+      <if test="suppliercardno != null">
+        SUPPLIERCARDNO = #{suppliercardno,jdbcType=VARCHAR},
+      </if>
+      <if test="totalqty != null">
+        TOTALQTY = #{totalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="delitotalqty != null">
+        DELITOTALQTY = #{delitotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="takedelitotalqty != null">
+        TAKEDELITOTALQTY = #{takedelitotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="invoicedtotalqty != null">
+        INVOICEDTOTALQTY = #{invoicedtotalqty,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null">
+        CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null">
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcefrom != null">
+        SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      </if>
+      <if test="erporderno != null">
+        ERPORDERNO = #{erporderno,jdbcType=VARCHAR},
+      </if>
+      <if test="thrplatorderno != null">
+        THRPLATORDERNO = #{thrplatorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="approvecode != null">
+        APPROVECODE = #{approvecode,jdbcType=VARCHAR},
+      </if>
+      <if test="paytypename != null">
+        PAYTYPENAME = #{paytypename,jdbcType=VARCHAR},
+      </if>
+      <if test="paymethodname != null">
+        PAYMETHODNAME = #{paymethodname,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null">
+        AGENT = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="deptnum != null">
+        DEPTNUM = #{deptnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ponopk != null">
+        PONOPK = #{ponopk,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierpk != null">
+        SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      </if>
+      <if test="linepk != null">
+        LINEPK = #{linepk,jdbcType=VARCHAR},
+      </if>
+      <if test="linename != null">
+        LINENAME = #{linename,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingdate != null">
+        RECEIVINGDATE = #{receivingdate,jdbcType=VARCHAR},
+      </if>
+      <if test="receivingtime != null">
+        RECEIVINGTIME = #{receivingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeno != null">
+        CONSIGNEENO = #{consigneeno,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneefulladdr != null">
+        CONSIGNEEFULLADDR = #{consigneefulladdr,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneeaddrtype != null">
+        CONSIGNEEADDRTYPE = #{consigneeaddrtype,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptpk != null">
+        COSTDEPTPK = #{costdeptpk,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptname != null">
+        COSTDEPTNAME = #{costdeptname,jdbcType=VARCHAR},
+      </if>
+      <if test="costdeptnum != null">
+        COSTDEPTNUM = #{costdeptnum,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidreason != null">
+        INVALIDREASON = #{invalidreason,jdbcType=VARCHAR},
+      </if>
+      <if test="invaliduser != null">
+        INVALIDUSER = #{invaliduser,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidusername != null">
+        INVALIDUSERNAME = #{invalidusername,jdbcType=VARCHAR},
+      </if>
+      <if test="invaliddate != null">
+        INVALIDDATE = #{invaliddate,jdbcType=VARCHAR},
+      </if>
+      <if test="invalidtime != null">
+        INVALIDTIME = #{invalidtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.mall.api.pojo.ygmalluser.Tbmqq440">
+    update YGMALLUSER.TBMQQ440
+    set PONO = #{pono,jdbcType=VARCHAR},
+      ORDERTYPE = #{ordertype,jdbcType=VARCHAR},
+      TOTALAMT = #{totalamt,jdbcType=DECIMAL},
+      NOTAXTOTALAMT = #{notaxtotalamt,jdbcType=DECIMAL},
+      BUYERNAME = #{buyername,jdbcType=VARCHAR},
+      BUYERNO = #{buyerno,jdbcType=VARCHAR},
+      USERNO = #{userno,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      DEPTNO = #{deptno,jdbcType=VARCHAR},
+      DEPTNAME = #{deptname,jdbcType=VARCHAR},
+      SUPPLIERNO = #{supplierno,jdbcType=VARCHAR},
+      SUPPLIERNAME = #{suppliername,jdbcType=VARCHAR},
+      REQDELIDATE = #{reqdelidate,jdbcType=VARCHAR},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      PAYMETHOD = #{paymethod,jdbcType=VARCHAR},
+      BUYERNOTE = #{buyernote,jdbcType=VARCHAR},
+      CONSIGNEENAME = #{consigneename,jdbcType=VARCHAR},
+      CONSIGNEEPHONE = #{consigneephone,jdbcType=VARCHAR},
+      CONSIGNEEADDR = #{consigneeaddr,jdbcType=VARCHAR},
+      TICKRECEIVERNAME = #{tickreceivername,jdbcType=VARCHAR},
+      TICKRECEIVERPHONE = #{tickreceiverphone,jdbcType=VARCHAR},
+      TICKRECEIVERADDR = #{tickreceiveraddr,jdbcType=VARCHAR},
+      INVOICETITLE = #{invoicetitle,jdbcType=VARCHAR},
+      SUPPLIERTAXNO = #{suppliertaxno,jdbcType=VARCHAR},
+      SUPPLIERADDR = #{supplieraddr,jdbcType=VARCHAR},
+      SUPPLIERPHONE = #{supplierphone,jdbcType=VARCHAR},
+      SUPPLIERBANKNAME = #{supplierbankname,jdbcType=VARCHAR},
+      SUPPLIERCARDNO = #{suppliercardno,jdbcType=VARCHAR},
+      TOTALQTY = #{totalqty,jdbcType=DECIMAL},
+      DELITOTALQTY = #{delitotalqty,jdbcType=DECIMAL},
+      TAKEDELITOTALQTY = #{takedelitotalqty,jdbcType=DECIMAL},
+      INVOICEDTOTALQTY = #{invoicedtotalqty,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREATEUSER = #{createuser,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+      UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+      SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+      ERPORDERNO = #{erporderno,jdbcType=VARCHAR},
+      THRPLATORDERNO = #{thrplatorderno,jdbcType=VARCHAR},
+      APPROVECODE = #{approvecode,jdbcType=VARCHAR},
+      PAYTYPENAME = #{paytypename,jdbcType=VARCHAR},
+      PAYMETHODNAME = #{paymethodname,jdbcType=VARCHAR},
+      AGENT = #{agent,jdbcType=VARCHAR},
+      DEPTNUM = #{deptnum,jdbcType=VARCHAR},
+      PONOPK = #{ponopk,jdbcType=VARCHAR},
+      SUPPLIERPK = #{supplierpk,jdbcType=VARCHAR},
+      LINEPK = #{linepk,jdbcType=VARCHAR},
+      LINENAME = #{linename,jdbcType=VARCHAR},
+      RECEIVINGDATE = #{receivingdate,jdbcType=VARCHAR},
+      RECEIVINGTIME = #{receivingtime,jdbcType=VARCHAR},
+      CONSIGNEENO = #{consigneeno,jdbcType=VARCHAR},
+      CONSIGNEEFULLADDR = #{consigneefulladdr,jdbcType=VARCHAR},
+      CONSIGNEEADDRTYPE = #{consigneeaddrtype,jdbcType=VARCHAR},
+      COSTDEPTPK = #{costdeptpk,jdbcType=VARCHAR},
+      COSTDEPTNAME = #{costdeptname,jdbcType=VARCHAR},
+      COSTDEPTNUM = #{costdeptnum,jdbcType=VARCHAR},
+      INVALIDREASON = #{invalidreason,jdbcType=VARCHAR},
+      INVALIDUSER = #{invaliduser,jdbcType=VARCHAR},
+      INVALIDUSERNAME = #{invalidusername,jdbcType=VARCHAR},
+      INVALIDDATE = #{invaliddate,jdbcType=VARCHAR},
+      INVALIDTIME = #{invalidtime,jdbcType=VARCHAR}
+    where ORDERNO = #{orderno,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

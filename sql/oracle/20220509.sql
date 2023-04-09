@@ -1,0 +1,149 @@
+CREATE TABLE "YGMALLUSER"."FUTUREGOOD" (
+                                           "GOODID" VARCHAR2(32 BYTE) NOT NULL,
+                                           "PONO" VARCHAR2(50 BYTE) NOT NULL,
+                                           "POITEMNO" VARCHAR2(10 BYTE),
+                                           "CATEGORYNAME" VARCHAR2(30 BYTE) NOT NULL,
+                                           "ONELEVELCLANAME" VARCHAR2(30 BYTE) NOT NULL,
+                                           "TWOLEVELCLANAME" VARCHAR2(30 BYTE) NOT NULL,
+                                           "PRODUCTNAME" VARCHAR2(200 BYTE) NOT NULL,
+                                           "GOODNO" VARCHAR2(30 BYTE),
+                                           "MATRLNO" VARCHAR2(30 BYTE) NOT NULL,
+                                           "UNITMETHOD" VARCHAR2(4 BYTE),
+                                           "QTY" NUMBER(16,4) DEFAULT 0,
+                                           "QTYUNIT" VARCHAR2(8 BYTE) NOT NULL,
+                                           "MINBUYQTY" NUMBER(16,4),
+                                           "PRICE" NUMBER(16,4),
+                                           "NOTAXPRICE" NUMBER(16,4),
+                                           "ORIGINPRICE" NUMBER(16,4),
+                                           "TAX" NUMBER(10,4) NOT NULL,
+                                           "SPEC" VARCHAR2(800 BYTE) NOT NULL,
+                                           "BRAND" VARCHAR2(50 BYTE),
+                                           "WEIGHT" NUMBER(16,4),
+                                           "WEIGHTUNIT" VARCHAR2(10 BYTE),
+                                           "PACKTHICK" NUMBER(16,0),
+                                           "PACKWIDTH" NUMBER(16,0),
+                                           "PACKHEIGHT" NUMBER(16,0),
+                                           "PACKUNIT" VARCHAR2(8 BYTE),
+                                           "REFERDELIVERYDATE" NUMBER(16,0),
+                                           "SUPPLIERNO" VARCHAR2(16 BYTE) NOT NULL,
+                                           "SUPPLIERNAME" VARCHAR2(64 BYTE) NOT NULL,
+                                           "REQNO" VARCHAR2(20 BYTE),
+                                           "REQITEMNO" VARCHAR2(10 BYTE),
+                                           "POPRICEDATE" VARCHAR2(8 BYTE) NOT NULL,
+                                           "POPRICETIME" VARCHAR2(6 BYTE) NOT NULL,
+                                           "QLTY" VARCHAR2(50 BYTE),
+                                           "GROUPNO" VARCHAR2(8 BYTE),
+                                           "PICTUREURL" VARCHAR2(500 BYTE),
+                                           "SHELVESDATE" VARCHAR2(8 BYTE),
+                                           "SHELVESTIME" VARCHAR2(6 BYTE),
+                                           "AUDITUSER" VARCHAR2(30 BYTE),
+                                           "REJECTREASON" VARCHAR2(500 BYTE),
+                                           "ISINTTIMEPURCHASE" VARCHAR2(1 BYTE),
+                                           "ISDECIMALPURCHASE" VARCHAR2(1 BYTE),
+                                           "STATUS" VARCHAR2(10 BYTE) NOT NULL,
+                                           "DELETED" VARCHAR2(1 BYTE) NOT NULL,
+                                           "CREATEUSER" VARCHAR2(30 BYTE) NOT NULL,
+                                           "CREATEDATE" VARCHAR2(8 BYTE) NOT NULL,
+                                           "CREATETIME" VARCHAR2(6 BYTE) NOT NULL,
+                                           "UPDATEUSER" VARCHAR2(30 BYTE) NOT NULL,
+                                           "UPDATEDATE" VARCHAR2(8 BYTE) NOT NULL,
+                                           "UPDATETIME" VARCHAR2(6 BYTE) NOT NULL,
+                                           "SOURCEFROM" VARCHAR2(8 BYTE) NOT NULL,
+                                           "ISTAXEXCEPTION" VARCHAR2(2 BYTE) NOT NULL,
+                                           "AGENT" VARCHAR2(30 BYTE),
+                                           "APPLYREASON" VARCHAR2(500 BYTE),
+                                           "PAYTYPE" VARCHAR2(10 BYTE),
+                                           "PAYTYPENAME" VARCHAR2(128 BYTE),
+                                           "PAYMETHOD" VARCHAR2(10 BYTE),
+                                           "PAYMETHODNAME" VARCHAR2(128 BYTE),
+                                           "PONOPK" VARCHAR2(64 BYTE) NOT NULL,
+                                           "SUPPLIERPK" VARCHAR2(64 BYTE) NOT NULL,
+                                           "MATRLID" VARCHAR2(64 BYTE) NOT NULL,
+                                           "MATRLTM" VARCHAR2(64 BYTE) NOT NULL,
+                                           "CATEGORYPK" VARCHAR2(64 BYTE) NOT NULL,
+                                           "ONELEVELCLAPK" VARCHAR2(64 BYTE) NOT NULL,
+                                           "TWOLEVELCLAPK" VARCHAR2(64 BYTE) NOT NULL,
+                                           "HASPIC" VARCHAR2(2 BYTE) NOT NULL,
+                                           "POPRICESTARTDATE" VARCHAR2(8 BYTE) NOT NULL,
+                                           "POPRICESTARTTIME" VARCHAR2(6 BYTE) NOT NULL,
+                                           "LEADTIMENUM" NUMBER(16,0) NOT NULL,
+                                           "AGENTNO" VARCHAR2(16 BYTE),
+                                           "AGENTPHONE" VARCHAR2(11 BYTE)
+);
+
+
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."GOODID" IS '货物id：唯一值';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PONO" IS '协议号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."POITEMNO" IS '协议项次号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."CATEGORYNAME" IS '大类';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ONELEVELCLANAME" IS '一级分类';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."TWOLEVELCLANAME" IS '二级分类';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PRODUCTNAME" IS '商品名称';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."GOODNO" IS '货号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."MATRLNO" IS '物料号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."UNITMETHOD" IS '计量方式';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."QTY" IS '数量';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."QTYUNIT" IS '数量单位';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."MINBUYQTY" IS '最小购买量';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PRICE" IS '挂牌价（含税）';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."NOTAXPRICE" IS '挂牌价（不含税）';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ORIGINPRICE" IS '常协合同价';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."TAX" IS '税率';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SPEC" IS '规格';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."BRAND" IS '品牌';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."WEIGHT" IS '重量';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."WEIGHTUNIT" IS '重量单位';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PACKTHICK" IS '包装厚度';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PACKWIDTH" IS '包装宽度';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PACKHEIGHT" IS '包装高度';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PACKUNIT" IS '包装单位';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."REFERDELIVERYDATE" IS '参考发货日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SUPPLIERNO" IS '供应商代码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SUPPLIERNAME" IS '供应商名称';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."REQNO" IS '请购序号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."REQITEMNO" IS '请购项次';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."POPRICEDATE" IS '常协合同有效日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."POPRICETIME" IS '常协合同有效时间';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."QLTY" IS '材质';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."GROUPNO" IS '商品组号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PICTUREURL" IS '图片路径';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SHELVESDATE" IS '上架日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SHELVESTIME" IS '上架时间';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."AUDITUSER" IS '审核人';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."REJECTREASON" IS '驳回原因';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ISINTTIMEPURCHASE" IS '是否按整数倍购买:Y是，N否';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ISDECIMALPURCHASE" IS '是否支持小数购买:Y是，N否';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."STATUS" IS '状态';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."DELETED" IS '是否删除';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."CREATEUSER" IS '创建人';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."CREATEDATE" IS '创建日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."CREATETIME" IS '创建时间';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."UPDATEUSER" IS '修改人';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."UPDATEDATE" IS '修改日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."UPDATETIME" IS '修改时间';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SOURCEFROM" IS '商品来源: CK:仓库系统 ZKH:震坤行';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ISTAXEXCEPTION" IS '是否价税异常(YC:异常，ZC:正常)';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."AGENT" IS '采购员(即经办人)';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."APPLYREASON" IS '审核原因';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PAYTYPE" IS '付款类型代码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PAYTYPENAME" IS '付款类型名称';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PAYMETHOD" IS '付款方式代码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PAYMETHODNAME" IS '付款方式名称';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."PONOPK" IS '协议号外部主键';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."SUPPLIERPK" IS '供应商外部主键';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."MATRLID" IS '物料外部id';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."MATRLTM" IS '物料外部条码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."CATEGORYPK" IS '大类编码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."ONELEVELCLAPK" IS '一级分类编码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."TWOLEVELCLAPK" IS '二级分类编码';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."HASPIC" IS '是否有图纸';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."POPRICESTARTDATE" IS '常协合同开始有效日期';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."POPRICESTARTTIME" IS '常协合同开始有效时间';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."LEADTIMENUM" IS '买方要求交货周期（接单时才确定日期）';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."AGENTNO" IS '物资采购人工号';
+COMMENT ON COLUMN "YGMALLUSER"."FUTUREGOOD"."AGENTPHONE" IS '物资采购人联系电话';
+COMMENT ON TABLE "YGMALLUSER"."FUTUREGOOD" IS '签订但未执行的协议商品表';
+
+
+ALTER TABLE "YGMALLUSER"."FUTUREGOOD" ADD CONSTRAINT "FUTUREGOOD_PK" PRIMARY KEY ("GOODID");
+ALTER TABLE "YGMALLUSER"."FUTUREGOOD" ADD CONSTRAINT "FUTUREGOOD_UQ_MS" UNIQUE ("MATRLID", "SUPPLIERNO") NOT DEFERRABLE INITIALLY IMMEDIATE NORELY VALIDATE;

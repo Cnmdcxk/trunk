@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/netplus-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-commonservice-eureka/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-commonservice-eureka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component-freemarker-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component-freemarker-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component/netplus-component-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component/netplus-component-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component/netplus-component-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-component/netplus-component-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-excel/netplus-excel-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-excel/netplus-excel-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-excel/netplus-excel-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-job/netplus-job-admin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-job/netplus-job-admin/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-job/netplus-job-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-job/netplus-job-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-job/netplus-job-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-in-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-in-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-out-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-out-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-in-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-in-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-out-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-out-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-mall/netplus-mall-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-mall/netplus-mall-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-mall/netplus-mall-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-mall/netplus-mall-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-mall/netplus-mall-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-portal/netplus-portal-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-portal/netplus-portal-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/netplus-provider/netplus-provider-web/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

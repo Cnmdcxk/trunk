@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq437Mapper">
+
+    <select id="getUserViewHistory" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq437">
+
+        select *
+        from ygmalluser.tbmqq437
+        where userno=#{userNo} and rownum &lt;= 10
+        order by createdate desc, createtime desc
+
+    </select>
+
+    <select id="getViewHistoryCountByGoodId" resultType="int">
+
+        select count(1)
+        from ygmalluser.tbmqq437
+        where userno=#{userNo} and goodid=#{goodId}
+    </select>
+</mapper>

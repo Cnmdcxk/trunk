@@ -1,0 +1,139 @@
+server:
+  port: 20034
+
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-joint-erp-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+yg:
+  jk0001: http://ygcas.yong-gang.cn:8080/ids/casHttpServlet
+  jk0002: http://10.36.8.33:8081/api/v1/basic/JK0002
+  jk0003: http://10.36.8.33:8081/api/v1/basic/JK0003
+  jk0004: http://10.36.8.33:8081/api/v1/basic/JK0004
+  jk0005: http://10.36.8.33:8081/api/v1/basic/JK0005
+  jk0006: http://10.36.8.33:8081/api/v1/basic/JK0006
+  jk0007: http://10.36.8.33:8081/api/v1/basic/JK0007
+  jk0009: http://10.36.8.33:8081/api/v1/basic/JK0009
+  jk0010: http://10.36.8.33:8081/api/v1/basic/JK0010
+  jk0011: http://10.36.8.33:8081/api/v1/business/JK0011
+  jk0012: http://10.36.8.33:8081/api/v1/basic/JK0012
+  jk0013: http://192.168.2.142:7890/message-server/sendSms
+  jk0015: http://10.36.8.33:8081/api/v1/basic/JK0015
+  jk0016: http://10.36.8.33:8081/api/v1/basic/JK0016
+  jk0017: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/findApprovalById?processId=LC20211108002
+  jk0018: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/saveApproval
+  jk0019: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/commitApproval
+  jk0022: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/loadApproveHistory?businessId=
+  jk0024: http://10.36.8.33:8082/app/appLogin
+  jk0027: http://testoa.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getToken
+  jk0028: http://testoa.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getUserInfor
+  jk0030: https://yzks.yong-gang.cn/api/v1/user/get_current_user
+  jk0031: http://10.36.8.33:8081/api/v1/basic/JK0031
+  jk0032: http://10.36.8.33:8081/api/v1/business/JK0032
+  jk0033: http://10.36.8.33:8081/api/v1/basic/JK0033
+  jk0034: https://ygcloud.yong-gang.cn/gateway/oauth2/token/getAccessToken
+  jk0035: https://ygcloud.yong-gang.cn/gateway/ticket/user/acquirecontext
+
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-joint-erp-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+
+yg:
+  jk0001: http://ygcas.yong-gang.cn:8080/ids/casHttpServlet
+  jk0002: http://10.36.8.33:8081/api/v1/basic/JK0002
+  jk0003: http://10.36.8.33:8081/api/v1/basic/JK0003
+  jk0004: http://10.36.8.33:8081/api/v1/basic/JK0004
+  jk0005: http://10.36.8.33:8081/api/v1/basic/JK0005
+  jk0006: http://10.36.8.33:8081/api/v1/basic/JK0006
+  jk0007: http://10.36.8.33:8081/api/v1/basic/JK0007
+  jk0009: http://10.36.8.33:8081/api/v1/basic/JK0009
+  jk0010: http://10.36.8.33:8081/api/v1/basic/JK0010
+  jk0011: http://10.36.8.33:8081/api/v1/business/JK0011
+  jk0012: http://10.36.8.33:8081/api/v1/basic/JK0012
+  jk0013: http://192.168.2.142:7890/message-server/sendSms
+  jk0015: http://10.36.8.33:8081/api/v1/basic/JK0015
+  jk0016: http://10.36.8.33:8081/api/v1/basic/JK0016
+  jk0017: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/findApprovalById?processId=LC20211108002
+  jk0018: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/saveApproval
+  jk0019: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/commitApproval
+  jk0022: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/loadApproveHistory?businessId=
+  jk0024: http://10.36.8.33:8082/app/appLogin
+  jk0027: http://testoa.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getToken
+  jk0028: http://testoa.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getUserInfor
+  jk0030: https://yzks.yong-gang.cn/api/v1/user/get_current_user
+  jk0031: http://10.36.8.33:8081/api/v1/basic/JK0031
+  jk0032: http://10.36.8.33:8081/api/v1/business/JK0032
+  jk0033: http://10.36.8.33:8081/api/v1/basic/JK0033
+
+
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-joint-erp-out-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+
+yg:
+  jk0001: http://ygcas.yong-gang.cn:8080/ids/casHttpServlet
+  jk0002: http://192.168.3.57:8081/api/v1/basic/JK0002
+  jk0003: http://192.168.3.57:8081/api/v1/basic/JK0003
+  jk0004: http://192.168.3.57:8081/api/v1/basic/JK0004
+  jk0005: http://192.168.3.57:8081/api/v1/basic/JK0005
+  jk0006: http://192.168.3.57:8081/api/v1/basic/JK0006
+  jk0007: http://192.168.3.57:8081/api/v1/basic/JK0007
+  jk0009: http://192.168.3.57:8081/api/v1/basic/JK0009
+  jk0010: http://192.168.3.57:8081/api/v1/basic/JK0010
+  jk0011: http://192.168.3.57:8081/api/v1/business/JK0011
+  jk0012: http://192.168.3.57:8081/api/v1/basic/JK0012
+  jk0013: http://192.168.2.142:7890/message-server/sendSms
+  jk0015: http://192.168.3.57:8081/api/v1/basic/JK0015
+  jk0016: http://192.168.3.57:8081/api/v1/basic/JK0016
+  jk0017: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/findApprovalById?processId=LC20211108002
+  jk0018: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/saveApproval
+  jk0019: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/commitApproval
+  jk0022: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oaApproval/loadApproveHistory?businessId=
+  jk0024: http://pmip.yong-gang.cn/app/appLogin
+  jk0027: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getToken
+  jk0028: http://oaapprove.yong-gang.cn/innovate-apiV2/v2/oa/YgCloud/getUserInfor
+  jk0030: https://yzks.yong-gang.cn/api/v1/user/get_current_user
+  jk0031: http://192.168.3.57:8081/api/v1/basic/JK0031
+  jk0032: http://192.168.3.57:8081/api/v1/business/JK0032
+  jk0033: http://192.168.3.57:8081/api/v1/basic/JK0033
+
+

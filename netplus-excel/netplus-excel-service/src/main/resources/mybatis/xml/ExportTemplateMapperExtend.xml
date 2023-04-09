@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="netplus.excel.service.dao.ExportTemplateMapper">
+
+    <select id="selectByTemplateName" parameterType="java.util.Map" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List" />
+        from export_template
+        where app_id = #{appId}
+        and template_name = #{templateName}
+        and is_active = 'Y'
+        order by sort
+
+    </select>
+
+
+</mapper>
+

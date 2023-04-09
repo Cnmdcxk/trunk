@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="netplus.provider.service.dao.Tbdu01Mapper">
+
+    <sql id="getListCore">
+
+        select *
+        from ygmalluser.tbdu01
+        <where>
+
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+                        name like '%'||#{searchKey}||'%'
+                        or phone like '%'||#{searchKey}||'%'
+                        or userno like '%'||#{searchKey}||'%'
+                    )
+            </if>
+
+            <if test="isRole !=null and isRole !=''">
+                and isrole = #{isRole}
+            </if>
+
+
+            <if test="userType !=null and userType !=''">
+                and usertype = #{userType}
+            </if>
+
+
+            <if test="userType !=null and userType !=''">
+                and usertype = #{userType}
+            </if>
+
+
+            <if test="createDate != null">
+                <if test="createDate.max !=null and createDate.max !=''">
+                    and createdate &lt;= concat(replace(#{createDate.max,jdbcType=VARCHAR},'-',''),'246060')
+                </if>
+                <if test="createDate.min !=null and createDate.min !=''">
+                    and createdate &gt;= concat(replace(#{createDate.min,jdbcType=VARCHAR},'-',''),'000000')
+                </if>
+            </if>
+
+        </where>
+
+        order by createdate desc
+
+    </sql>
+
+    <select id="getList" parameterType="map" resultType="netplus.provider.api.vo.Tbdu01Vo">
+        select tt.*
+
+        from (
+                select t.*, rownum as r
+                from (<include refid="getListCore" />) t
+        ) tt
+
+        where tt.r <include refid="Common.gte" /> and tt.r <include refid="Common.lte" />
+
+
+    </select>
+
+    <select id="getCount" parameterType="map" resultType="int">
+        select count(1) from (<include refid="getListCore" />) t
+    </select>
+
+
+    <select id="getActiveUserCount" parameterType="String" resultType="int">
+        select count(1) from ygmalluser.tbdu01 where userno=#{userNo} and isavailable='Y'
+    </select>
+
+
+    <select id="getUserByUserNoAndPassword" parameterType="map" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where userno=#{userNo}
+        and password=#{password}
+        and password is not null
+        and usertype='S'
+
+    </select>
+
+    <select id="getUserByUserNoAndUserType" parameterType="map" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where userno=#{userNo} and usertype=#{userType}
+
+    </select>
+
+
+
+    <select id="selectAllBUserNo"  resultType="java.lang.String">
+        select userno from ygmalluser.tbdu01 where  usertype ='B'
+    </select>
+
+    <select id="getUserByUserNo" parameterType="java.lang.String"  resultType="netplus.provider.api.vo.Tbdu01Vo">
+        select * from ygmalluser.tbdu01 where userno=#{userno}
+    </select>
+
+
+    <update id="updateIsRole">
+        update ygmalluser.tbdu01 set isrole=#{isRole}
+        where userno=#{userNo}
+
+        <if test="oldIsRole !=null and oldIsRole !=''">
+            and isrole = #{oldIsRole}
+        </if>
+    </update>
+
+    <update id="updateIsActive">
+        update ygmalluser.tbdu01 set isavailable=#{isActive}
+        where userno=#{userNo}
+        <if test="oldIsActive !=null and oldIsActive !=''">
+            and isavailable = #{oldIsActive}
+        </if>
+    </update>
+
+
+    <select id="getSupplierByPhone" parameterType="string" resultMap="BaseResultMap">
+        select *
+        from ygmalluser.tbdu01
+        where phone=#{mobile}
+        and phone is not null
+        and usertype='S'
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.tbdu01
+        (
+            compno, userno, depno,
+            name,phone,comppk, compname,
+            usertype, depname, createuser,
+            createdate,modifyuser,modifydate,
+            emptype, depnum, isrole,
+            isavailable, password
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+            #{item.compno,jdbcType=VARCHAR}, #{item.userno,jdbcType=VARCHAR}, #{item.depno,jdbcType=VARCHAR},
+            #{item.name,jdbcType=VARCHAR}, #{item.phone,jdbcType=VARCHAR}, #{item.comppk,jdbcType=VARCHAR},
+            #{item.compname,jdbcType=VARCHAR}, #{item.usertype,jdbcType=VARCHAR}, #{item.depname,jdbcType=VARCHAR},
+            #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR}, #{item.modifyuser,jdbcType=VARCHAR},
+            #{item.modifydate,jdbcType=VARCHAR}, #{item.emptype,jdbcType=VARCHAR}, #{item.depnum,jdbcType=VARCHAR},
+            #{item.isrole,jdbcType=VARCHAR}, #{item.isavailable,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+
+    <delete id="batchDelete" parameterType="java.util.ArrayList">
+
+        delete from  ygmalluser.tbdu01 where userNo in
+        <foreach collection="list" item="userno" open="(" close=")" separator=",">
+            #{userno}
+        </foreach>
+
+    </delete>
+
+    <update id="batchUpdate" parameterType="netplus.provider.api.pojo.ygmalluser.Tbdu01">
+
+            update ygmalluser.tbdu01
+            <trim prefix="set" suffixOverrides=",">
+                <if test="compno != null">compno = #{compno},</if>
+                <if test="depno != null">depno = #{depno},</if>
+                <if test="name != null">name = #{name},</if>
+                <if test="phone != null">phone = #{phone},</if>
+                <if test="comppk != null"> comppk = #{comppk},</if>
+                <if test="compname != null">compname = #{compname},</if>
+                <if test="usertype != null">usertype = #{usertype},</if>
+                <if test="depname != null">depname = #{depname},</if>
+                <if test="modifyuser != null">modifyuser = #{modifyuser},</if>
+                <if test="modifydate != null">modifydate = #{modifydate},</if>
+                <if test="depnum != null">depnum = #{depnum},</if>
+                <if test="emptype != null">emptype = #{emptype},</if>
+            </trim>
+            <where>
+                userno = #{userno}
+            </where>
+
+    </update>
+
+    <update id="updateSupplierPasswordByPhone" parameterType="map">
+        update ygmalluser.tbdu01 set password=#{password} where phone=#{mobile} and usertype='S'
+    </update>
+
+
+    <select id="getSupplierNo" parameterType="String" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where compno = #{supplierNo} and usertype='S'
+
+    </select>
+
+
+    <select id="getSupplierNoList" parameterType="map" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where compno in <foreach collection="supplierNoList" item="item" open="(" separator="," close=")">#{item}</foreach>  and usertype='S'
+
+    </select>
+
+
+    <select id="getSupplierByCompName" parameterType="String" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where compname = #{compName} and usertype='S'
+
+    </select>
+
+
+    <select id="getConsignee" parameterType="String" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where
+          usertype='B'
+          and emptype='2'
+          and depno=#{deptNo}
+
+          <if test="keyword !=null and keyword !=''">
+              and (name like #{keyword}||'%' or userno like #{keyword} || '%')
+          </if>
+
+    </select>
+
+
+    <select id="getConsigneeByUserNo" parameterType="String" resultType="netplus.provider.api.vo.Tbdu01Vo">
+
+        select *
+        from ygmalluser.tbdu01
+        where
+        usertype='B'
+        and emptype='2'
+        and userno=#{userNo}
+
+
+    </select>
+
+    <select id="getSupplierBizContact" parameterType="netplus.provider.api.request.GetSupplierBizContactRequest" resultType="map">
+        select bizcontact,bizcontactphone
+        from ygmalluser.tbdu01
+        where compno=#{supplierNo}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.ApiLogMapper">
+
+  <sql id="getListCore">
+    select *
+    from ygmalluser.api_log
+    <where>
+      <if test="logType != null">
+        and log_type = #{logType}
+      </if>
+
+      <if test="createDate != null">
+        <if test="createDate.max !=null and createDate.max !=''">
+          and create_date &lt;= to_date(concat(#{createDate.max,jdbcType=VARCHAR},' 23:59:59'),'yyyy-MM-dd hh24:mi:ss')
+        </if>
+        <if test="createDate.min !=null and createDate.min !=''">
+          and create_date &gt;= to_date(#{createDate.min,jdbcType=VARCHAR},'yyyy-MM-dd')
+        </if>
+      </if>
+      <if test="searchKey !=null and searchKey !=''">
+        and (
+        description like '%'||#{searchKey}||'%'
+        or create_user like '%'||#{searchKey}||'%'
+        )
+      </if>
+    </where>
+    order by create_date desc
+  </sql>
+
+  <select id="getBusinessLogPageList" resultType="netplus.provider.api.vo.apilog.ApiLogVo">
+    select tt.*
+    from (
+    select t.*, rownum as indexNum
+    from (<include refid="getListCore" />) t
+    ) tt
+    where tt.indexNum <include refid="Common.gte" /> and tt.indexNum <include refid="Common.lte" />
+  </select>
+
+  <select id="getBusinessLogCount" resultType="int">
+    select count(1) from (<include refid="getListCore" />) t
+  </select>
+
+  <select id="getLogTypeList" resultType="integer">
+    select log_type
+    from (<include refid="getListCore" />) t
+    group by log_type
+  </select>
+
+
+</mapper>

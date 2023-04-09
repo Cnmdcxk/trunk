@@ -1,0 +1,1158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq430Mapper">
+
+    <sql id="getMyGoodsListCore">
+        select t1.*, t2.name as username, t3.name as auditusername
+        from ygmalluser.tbmqq430 t1
+        left join ygmalluser.tbdu01 t2 on t1.agent=trim(t2.userno)
+        left join ygmalluser.tbdu01 t3 on t1.audituser=trim(t3.userno)
+
+        <where>
+            and t1.deleted='N'
+
+            <if test="searchKey !=null and searchKey !=''">
+                and (
+
+                t1.productname like '%'||#{searchKey}||'%'
+                or t1.brand like '%'||#{searchKey}||'%'
+                or t1.matrltm like '%'||#{searchKey}||'%'
+                or t1.matrlno like '%'||#{searchKey}||'%'
+                or t1.pono like '%'||#{searchKey}||'%'
+                or t1.suppliername like '%'||#{searchKey}||'%'
+                or t1.spec like '%'||#{searchKey}||'%'
+                or t1.supplierno like '%'||#{searchKey}||'%'
+                or concat(concat(t1.supplierno,' '),t1.suppliername) like '%'||#{searchKey}||'%'
+
+                )
+
+            </if>
+
+            <if test="supplierNo !=null and supplierNo !=''">
+                and t1.supplierno=#{supplierNo}
+            </if>
+
+            <if test="isUpPicture !='' and isUpPicture !=null">
+                <choose>
+                    <when test="isUpPicture!='Y'.toString()">
+                        and t1.pictureurl is null
+                    </when>
+                    <otherwise>
+                        and t1.pictureurl is not null
+                    </otherwise>
+                </choose>
+            </if>
+
+            <if test="taxException != '' and taxException != null">
+                <choose>
+                    <when test= "taxException != 'YC'">
+                        and t1.istaxexception = 'ZC'
+                    </when>
+                    <otherwise>
+                        and t1.istaxexception = 'YC'
+                    </otherwise>
+                </choose>
+            </if>
+
+            <if test="categoryPkList !=null and categoryPkList.size>0">
+                and t1.categorypk in
+                <foreach collection="categoryPkList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="categoryList !=null and categoryList.size>0">
+                and t1.categorypk in
+                <foreach collection="categoryList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="brand !=null and brand!=''">
+                and t1.brand =#{brand}
+            </if>
+
+            <if test="brandList !=null and brandList.size>0">
+                and t1.brand in
+                <foreach collection="brandList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="agentList !=null and agentList.size>0">
+                and t1.agentno in
+                <foreach collection="agentList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+
+            <if test="createDate != null">
+                <if test="createDate.max !=null and createDate.max !=''">
+                    and t1.createdate &lt;= replace(#{createDate.max,jdbcType=VARCHAR}, '-','')
+                </if>
+                <if test="createDate.min !=null and createDate.min !=''">
+                    and t1.createdate &gt;= replace(#{createDate.min,jdbcType=VARCHAR},'-','')
+                </if>
+            </if>
+
+            <if test="updateDate != null">
+                <if test="updateDate.max !=null and updateDate.max !=''">
+                    and t1.updatedate &lt;= replace(#{updateDate.max,jdbcType=VARCHAR}, '-','')
+                </if>
+
+                <if test="updateDate.min !=null and updateDate.min !=''">
+                    and t1.updatedate &gt;= replace(#{updateDate.min,jdbcType=VARCHAR},'-','')
+                </if>
+            </if>
+
+            <if test="hasPic !='' and hasPic !=null">
+                <choose>
+                    <when test="hasPic == 'N'.toString()">
+                        and t1.pictureurl is null
+                    </when>
+                    <otherwise>
+                        and t1.pictureurl is not null
+                    </otherwise>
+                </choose>
+            </if>
+
+            <if test="statusList !=null and statusList.size > 0">
+                and t1.status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="status !=null and status !=''">
+                and t1.status=#{status}
+            </if>
+
+            <if test="tapStatus !=null and tapStatus !=''">
+                and t1.status=#{tapStatus}
+            </if>
+
+            <if test="categoryName!=null and categoryName!=''">
+                and  t1.categoryname=#{categoryName}
+            </if>
+
+            <if test="categoryPk!=null and categoryPk!=''">
+                and  t1.categorypk=#{categoryPk}
+            </if>
+
+            <if test="suppliername!=null and suppliername!=''">
+                and t1.supplierno=#{suppliername}
+            </if>
+
+            <if test="cgStatusList !=null and cgStatusList.size>0">
+                and t1.status in
+                <foreach collection="cgStatusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="dsStatusList !=null and dsStatusList.size>0">
+                and t1.status in
+                <foreach collection="dsStatusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="userNoList !=null and userNoList.size>0">
+                and t1.agent in
+                <foreach collection="userNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="supplierNoList !=null and supplierNoList.size>0">
+                and t1.supplierno in
+                <foreach collection="supplierNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+        order by t1.updatedate desc,t1.updatetime desc
+    </sql>
+
+    <select id="getMyGoodsList" resultType="netplus.mall.api.vo.GoodsVo">
+        select tt.*
+
+        from (
+        select tt.*, rownum r
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        ) tt
+
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+    </select>
+
+    <select id="getMyGoodsCount" resultType="int">
+        select
+        count(1) as totalCount
+        from (<include refid="getMyGoodsListCore" /> ) tt
+
+    </select>
+
+    <select id="getShelfCount" resultType="map">
+        select
+        nvl(sum(case when t.status='20' then 1 else 0 end), 0) as totalCount1,
+        nvl(sum(case when t.status='35' then 1 else 0 end), 0) as totalCount2
+        from (<include refid="getMyGoodsListCore" /> ) t
+    </select>
+
+
+
+    <select id="getTabCount" resultType="map">
+
+        select
+        count(1) as totalCount,
+        nvl(sum(case when tt.status='CG' then 1 else 0 end), 0) as totalCount1,
+        nvl(sum(case when tt.status='YSJ' then 1 else 0 end), 0) as totalCount2,
+        nvl(sum(case when tt.status='WSJ' then 1 else 0 end), 0) as totalCount3,
+
+        nvl(sum(case when tt.status='CGSHZ' then 1 else 0 end), 0) as totalCount4,
+        nvl(sum(case when tt.status in ('CGSHTG', 'CGSHBH', 'YSJ','YBH','CGSHZ') then 1 else 0 end), 0) as totalCount5,
+
+          nvl(sum(case when tt.status in ('CGSHTG') then 1 else 0 end), 0) as totalCount6,
+          nvl(sum(case when tt.status in ('YSJ','YBH','CGSHTG') then 1 else 0 end), 0) as totalCount7,
+
+
+          nvl(sum(case when tt.status in ('ZYSHZ') then 1 else 0 end), 0) as totalCount8,
+          nvl(sum(case when tt.status in ('ZYSHTG','ZYSHBH', 'ZZSHTG', 'ZZSHBH','ZYSHZ') then 1 else 0 end), 0) as totalCount9,
+
+          nvl(sum(case when tt.status in ('ZYSHTG') then 1 else 0 end), 0) as totalCount10,
+          nvl(sum(case when tt.status in ('ZZSHTG', 'ZZSHBH','ZYSHTG') then 1 else 0 end), 0) as totalCount11
+
+        from (<include refid="getMyGoodsListCore" /> ) tt
+
+    </select>
+
+    <select id="getCategoryPkListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+        tt.categorypk as key,
+        tt.categoryname as value
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        group by tt.categoryname, tt.categorypk
+    </select>
+
+    <select id="getBrandListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+        tt.brand as key,
+        tt.brand as value
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        where tt.brand is not null
+        group by tt.brand
+    </select>
+
+    <select id="getSupplierListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+        tt.supplierno as key,
+        tt.suppliername as value
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        group by tt.supplierno, tt.suppliername
+    </select>
+
+    <select id="getAgentListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+        tt.agentno as key,
+        tt.agent as value
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        group by tt.agentno, tt.agent
+    </select>
+
+    <select id="getStatusListKV" resultType="netplus.component.entity.data.KeyValue">
+        select
+        tt.status as key,
+        tt.status as value
+        from (<include refid="getMyGoodsListCore" /> ) tt
+        group by tt.status
+    </select>
+
+
+    <update id="updateGroupNo">
+        update ygmalluser.TBMQQ430 set groupno = '' where groupno = #{groupNo,jdbcType=VARCHAR}
+    </update>
+    <update id="updateGroupNoById">
+        update ygmalluser.TBMQQ430 set groupno = '' where goodid = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="getGoodsById" resultType="netplus.mall.api.vo.GoodsVo">
+        select * from ygmalluser.tbmqq430 where goodid = #{goodid}
+    </select>
+
+    <select id="getIndexGoodsList" resultType="netplus.mall.api.vo.GoodsVo">
+        select *
+        from (select
+        from ygmalluser.TBMQQ430 a left join ygmalluser.TBMQZ002 b on a.status = b.CODENO and b.CODETYPE='Q004'
+        where a.CATEGORYNAME = #{categoryname,jdbcType=VARCHAR} and a.status ='YSJ')
+        where rownum <![CDATA[<=]]> 20
+    </select>
+
+    <select id="getGoodsByGroupNo" resultType="netplus.mall.api.vo.GoodsVo">
+        select *
+        from ygmalluser.tbmqq430
+        where groupno = #{groupNo}
+    </select>
+
+    <select id="getGroupByIds" resultType="string">
+        select
+        distinct groupno
+        from ygmalluser.TBMQQ430 where goodid in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <update id="updateGroupNoByIds">
+        update ygmalluser.TBMQQ430 set GROUPNO = ''
+        where groupno in
+        <foreach collection="list" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+    <select id="countIds" parameterType="map" resultType="int">
+        select count(*) from ygmalluser.tbmqq430
+        where TRIM(groupno)in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getGroupBygroups" resultType="string">
+        SELECT
+        a.groupno
+        FROM
+        ygmalluser.TBMQQ431 a where not exists(select b.GROUPNO from ygmalluser.TBMQQ430 b where a.GROUPNO = b.GROUPNO) and a.groupno in
+        <foreach collection="list" item="groups" open="(" separator="," close=")">
+            #{groups}
+        </foreach>
+    </select>
+
+    <select id="getGoodsDetail" resultType="netplus.mall.api.vo.GoodsVo">
+        select
+            t1.*,
+            t2.content,
+            t6.phone as supplierPhone,
+            case when t3.goodid is not null then 'Y' else 'N' end as isAddCart,
+            case when t4.goodid is not null then 'Y' else 'N' end as isCollect,
+            t5.price as futurePrice,
+            t5.popricestartdate as futurePoPriceStartDate
+
+        from ygmalluser.tbmqq430 t1
+                 left join ygmalluser.tbmqq432 t2 on t1.goodid=t2.goodid
+                 left join ygmalluser.tbmqq433 t3 on t1.goodid=t3.goodid and t3.userno=#{userNo}
+                 left join ygmalluser.tbmqq434 t4 on t1.goodid=t4.goodid and t4.userno=#{userNo}
+                 left join ygmalluser.futuregood t5 on t1.matrlid=t5.matrlid and t1.supplierno=t5.supplierno
+                 left join ygmalluser.tbdu01 t6 on t1.supplierno=t6.compno
+        <where>
+            <if test="goodsId !=null and goodsId!=''">
+                and t1.goodid = #{goodsId}
+            </if>
+             <if test="matrltm !=null and matrltm!=''">
+                 and t1.matrltm=#{matrltm}
+             </if>
+        </where>
+    </select>
+
+
+    <select id="getGoodsByMatrltmList" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+        select * from ygmalluser.tbmqq430
+        <where>
+
+            matrltm in
+            <foreach collection="matrltmList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+
+            <if test="status !=null and status !=''">
+                and status=#{status}
+            </if>
+
+            <if test="statusList !=null and statusList.size>0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+
+            <if test="supplierNo !=null and supplierNo !=''">
+                and supplierno=#{supplierNo}
+            </if>
+
+        </where>
+
+        order by price
+
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into ygmalluser.TBMQQ430 (
+        goodid, pono, poitemno, categoryname, onelevelclaname, twolevelclaname, productname,
+        goodno, matrlno, unitmethod, qty, qtyunit, minbuyqty, price, notaxprice, originprice,
+        tax, spec, brand, weight, weightunit, packthick, packwidth, packheight, packunit,
+        referdeliverydate, supplierno, suppliername, reqno, reqitemno, popricedate, popricetime,
+        qlty, groupno, pictureurl, shelvesdate, shelvestime, audituser, rejectreason, isinttimepurchase,
+        isdecimalpurchase, status, deleted, createuser, createdate, createtime, updateuser,
+        updatedate, updatetime, sourcefrom, istaxexception, agent, applyreason, paytype,
+        paytypename, paymethod, paymethodname, ponopk, supplierpk, matrlid, matrltm, categorypk,
+        onelevelclapk, twolevelclapk, haspic, popricestartdate, popricestarttime,leadtimenum,
+        agentno, agentphone
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+            #{item.goodid,jdbcType=VARCHAR}, #{item.pono,jdbcType=VARCHAR}, #{item.poitemno,jdbcType=VARCHAR},
+            #{item.categoryname,jdbcType=VARCHAR}, #{item.onelevelclaname,jdbcType=VARCHAR}, #{item.twolevelclaname,jdbcType=VARCHAR},
+            #{item.productname,jdbcType=VARCHAR}, #{item.goodno,jdbcType=VARCHAR}, #{item.matrlno,jdbcType=VARCHAR},
+            #{item.unitmethod,jdbcType=VARCHAR}, #{item.qty,jdbcType=DECIMAL}, #{item.qtyunit,jdbcType=VARCHAR},
+            #{item.minbuyqty,jdbcType=DECIMAL}, #{item.price,jdbcType=DECIMAL}, #{item.notaxprice,jdbcType=DECIMAL},
+            #{item.originprice,jdbcType=DECIMAL}, #{item.tax,jdbcType=DECIMAL}, #{item.spec,jdbcType=VARCHAR},
+            #{item.brand,jdbcType=VARCHAR}, #{item.weight,jdbcType=DECIMAL}, #{item.weightunit,jdbcType=VARCHAR},
+            #{item.packthick,jdbcType=DECIMAL}, #{item.packwidth,jdbcType=DECIMAL}, #{item.packheight,jdbcType=DECIMAL},
+            #{item.packunit,jdbcType=VARCHAR}, #{item.referdeliverydate,jdbcType=DECIMAL}, #{item.supplierno,jdbcType=VARCHAR},
+            #{item.suppliername,jdbcType=VARCHAR}, #{item.reqno,jdbcType=VARCHAR}, #{item.reqitemno,jdbcType=VARCHAR},
+            #{item.popricedate,jdbcType=VARCHAR}, #{item.popricetime,jdbcType=VARCHAR}, #{item.qlty,jdbcType=VARCHAR},
+            #{item.groupno,jdbcType=VARCHAR}, #{item.pictureurl,jdbcType=VARCHAR}, #{item.shelvesdate,jdbcType=VARCHAR},
+            #{item.shelvestime,jdbcType=VARCHAR}, #{item.audituser,jdbcType=VARCHAR}, #{item.rejectreason,jdbcType=VARCHAR},
+            #{item.isinttimepurchase,jdbcType=VARCHAR}, #{item.isdecimalpurchase,jdbcType=VARCHAR}, #{item.status,jdbcType=VARCHAR},
+            #{item.deleted,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR},
+            #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR},
+            #{item.updatetime,jdbcType=VARCHAR}, #{item.sourcefrom,jdbcType=VARCHAR}, #{item.istaxexception,jdbcType=VARCHAR},
+            #{item.agent,jdbcType=VARCHAR}, #{item.applyreason,jdbcType=VARCHAR}, #{item.paytype,jdbcType=VARCHAR},
+            #{item.paytypename,jdbcType=VARCHAR}, #{item.paymethod,jdbcType=VARCHAR}, #{item.paymethodname,jdbcType=VARCHAR},
+            #{item.ponopk,jdbcType=VARCHAR}, #{item.supplierpk,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR},
+            #{item.matrltm,jdbcType=VARCHAR}, #{item.categorypk,jdbcType=VARCHAR}, #{item.onelevelclapk,jdbcType=VARCHAR},
+            #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.haspic,jdbcType=VARCHAR}, #{item.popricestartdate,jdbcType=VARCHAR},
+            #{item.popricestarttime,jdbcType=VARCHAR},#{item.leadtimenum,jdbcType=DECIMAL},
+            #{item.agentno,jdbcType=VARCHAR},#{item.agentphone,jdbcType=VARCHAR}
+            from dual
+        </foreach>
+        )
+    </insert>
+
+
+    <select id="getGoodByIds" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+        select *
+        from ygmalluser.tbmqq430 t1
+        <where>
+            goodid in <foreach collection="goodIdList" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+            <if test="status !=null and status !=''">
+                and status=#{status}
+            </if>
+
+            <if test="supplierNo !=null and supplierNo !=''">
+                and supplierno=#{supplierNo}
+            </if>
+
+            <if test="statusList!=null and statusList.size>0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+
+            <if test="sourceFrom !=null and sourceFrom !=''">
+                and sourcefrom=#{sourceFrom}
+            </if>
+
+            <if test="oldStatusList!=null and oldStatusList.size>0">
+                and status in
+                <foreach collection="oldStatusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodByMatrlnos" resultType="netplus.mall.api.vo.GoodsVo">
+        select *
+        from ygmalluser.tbmqq430
+        <where>
+            matrlno in <foreach collection="matrlnos" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+            <if test="status !=null and status !=''">
+                and status=#{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodIdByGoodNo" resultType="netplus.mall.api.vo.GoodsVo">
+        select *
+        from ygmalluser.tbmqq430
+        where
+            goodno=#{goodno}
+          and supplierno=#{supplierno}
+
+    </select>
+
+    <select id="getSupplierGoodById" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select t1.*, t2.content
+        from ygmalluser.tbmqq430 t1
+                 left join ygmalluser.tbmqq432 t2 on t1.goodid=t2.goodid
+        where
+            t1.goodid=#{goodId}
+          and t1.supplierno=#{supplierNo}
+
+    </select>
+
+
+    <update id="updateGoodInfo" parameterType="netplus.mall.api.vo.GoodsVo">
+        update ygmalluser.TBMQQ430
+        <set>
+
+            <if test="goodno != null">
+                GOODNO = #{goodno,jdbcType=VARCHAR},
+            </if>
+
+            <if test="brand != null">
+                brand = #{brand,jdbcType=VARCHAR},
+            </if>
+
+            <if test="qty != null">
+                QTY = #{qty,jdbcType=DECIMAL},
+            </if>
+
+            <if test="minbuyqty != null">
+                MINBUYQTY = #{minbuyqty,jdbcType=DECIMAL},
+            </if>
+
+            <if test="price != null">
+                PRICE = #{price,jdbcType=DECIMAL},
+            </if>
+
+            <if test="notaxprice != null">
+                NOTAXPRICE = #{notaxprice,jdbcType=DECIMAL},
+            </if>
+            <if test="weight != null">
+                WEIGHT = #{weight,jdbcType=DECIMAL},
+            </if>
+            <if test="weightunit != null">
+                WEIGHTUNIT = #{weightunit,jdbcType=VARCHAR},
+            </if>
+            <if test="packthick != null">
+                PACKTHICK = #{packthick,jdbcType=DECIMAL},
+            </if>
+            <if test="packwidth != null">
+                PACKWIDTH = #{packwidth,jdbcType=DECIMAL},
+            </if>
+            <if test="packheight != null">
+                PACKHEIGHT = #{packheight,jdbcType=DECIMAL},
+            </if>
+            <if test="packunit != null">
+                PACKUNIT = #{packunit,jdbcType=VARCHAR},
+            </if>
+            <if test="referdeliverydate != null">
+                REFERDELIVERYDATE = #{referdeliverydate,jdbcType=DECIMAL},
+            </if>
+
+            <if test="groupno != null">
+                GROUPNO = #{groupno,jdbcType=VARCHAR},
+            </if>
+
+            <if test="pictureurl != null">
+                PICTUREURL = #{pictureurl,jdbcType=VARCHAR},
+            </if>
+
+            <if test="shelvesdate != null">
+                SHELVESDATE = #{shelvesdate,jdbcType=VARCHAR},
+            </if>
+            <if test="shelvestime != null">
+                SHELVESTIME = #{shelvestime,jdbcType=VARCHAR},
+            </if>
+            <if test="audituser != null">
+                AUDITUSER = #{audituser,jdbcType=VARCHAR},
+            </if>
+            <if test="rejectreason != null">
+                REJECTREASON = #{rejectreason,jdbcType=VARCHAR},
+            </if>
+            <if test="isinttimepurchase != null">
+                ISINTTIMEPURCHASE = #{isinttimepurchase,jdbcType=VARCHAR},
+            </if>
+            <if test="isdecimalpurchase != null">
+                ISDECIMALPURCHASE = #{isdecimalpurchase,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="deleted != null">
+                DELETED = #{deleted,jdbcType=VARCHAR},
+            </if>
+            <if test="updateuser != null">
+                UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedate != null">
+                UPDATEDATE = #{updatedate,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null">
+                UPDATETIME = #{updatetime,jdbcType=VARCHAR},
+            </if>
+            <if test="sourcefrom != null">
+                SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+            </if>
+            <if test="istaxexception != null">
+                ISTAXEXCEPTION = #{istaxexception,jdbcType=VARCHAR},
+            </if>
+            <if test="applyreason != null">
+                APPLYREASON = #{applyreason,jdbcType=VARCHAR},
+            </if>
+            <if test="originprice !=null">
+                ORIGINPRICE = #{originprice, jdbcType=DECIMAL},
+            </if>
+            <if test="agentno != null">
+                agentno = #{agentno,jdbcType=VARCHAR},
+            </if>
+            <if test="agentphone != null">
+                agentphone = #{agentphone,jdbcType=VARCHAR},
+            </if>
+        </set>
+
+        <where>
+            <!--goodid 和 goodIdList 最少要有一个-->
+            <if test="goodid !=null and goodid !=''">
+                and goodid = #{goodid}
+            </if>
+
+            <if test="goodIdList!=null and goodIdList.size>0">
+                and goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="goodNoList!=null and goodNoList.size>0">
+                and goodno in
+                <foreach collection="goodNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="goodno!=null and goodno !=''">
+                and goodno = #{goodno}
+            </if>
+
+            <if test="oldStatus!=null and oldStatus !=''">
+                and status=#{oldStatus}
+            </if>
+
+            <if test="oldStatusList!=null and oldStatusList.size>0">
+                and status in
+                <foreach collection="oldStatusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="supplierno !=null and supplierno !=''">
+                and supplierno=#{supplierno}
+            </if>
+        </where>
+    </update>
+
+    <select id="getSalesVolumeTop" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select t1.*, nvl(t2.qty, 0) qty
+        from ygmalluser.tbmqq430 t1
+        left join ygmalluser.tbmqq438 t2 on t2.matrlno=t1.matrlno and t2.supplierno=t1.supplierno
+        <where>
+
+            t1.status in（'YSJ', 'ZYSHZ', 'ZYSHTG', 'ZYSHBH', 'ZZSHBH')
+
+            <if test="categoryNameList !=null and categoryNameList.size>0">
+                and t1.categoryname in
+                <foreach collection="categoryNameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+        </where>
+
+        order by t1.categoryname desc,  nvl(t2.qty, 0) desc
+
+    </select>
+
+    <sql id="searchCore">
+
+        select
+        t1.*,
+        t438.qty as saleQty,
+        case when t2.goodid is not null then 'Y' else 'N' end as isAddCart,
+        case when t3.goodid is not null then 'Y' else 'N' end as isCollect
+        from ygmalluser.tbmqq430 t1
+        left join ygmalluser.tbmqq433 t2 on t1.goodid=t2.goodid and t2.userno=#{userNo}
+        left join ygmalluser.tbmqq434 t3 on t1.goodid=t3.goodid and t3.userno=#{userNo}
+        left join ygmalluser.tbmqq438 t438 on t1.matrltm=t438.matrltm and t1.supplierno=t438.supplierno
+
+        <where>
+
+            t1.status in ('25','40','35')
+            and t1.deleted='N'
+
+            <if test="searchKey !=null and searchKey !=''">
+
+                and
+                (
+                    t1.productname like '%'||#{searchKey}||'%'
+                    or t1.matrltm like '%'||#{searchKey}||'%'
+                    or t1.matrlno like '%'||#{searchKey}||'%'
+                    or t1.brand like '%'||#{searchKey}||'%'
+                    or replace(translate(t1.spec,'()','（）'),' ','') like '%'||#{searchKey}||'%'
+                )
+
+
+            </if>
+
+            <if test="twoLevelClaNameList !=null and twoLevelClaNameList.size>0">
+                and t1.twolevelclapk in
+                <foreach collection="twoLevelClaNameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="onelevelClaNameList!=null and onelevelClaNameList.size>0" >
+                and t1.ONELEVELCLAPK in
+                <foreach collection="onelevelClaNameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="productNameList!=null and productNameList.size>0" >
+                and t1.productname in
+                <foreach collection="productNameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+
+            </if>
+
+            <if test="categoryNameList!=null and categoryNameList.size>0" >
+                and t1.categorypk in
+                <foreach collection="categoryNameList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+
+            </if>
+
+            <if test="brandList !=null and brandList.size>0">
+                and t1.brand in
+                <foreach collection="brandList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="price !=null">
+
+                <if test="price.max !=null and price.max !=''">
+                    and t1.price &lt;= #{price.max}
+                </if>
+
+                <if test="price.min !=null and price.min !=''">
+                    and t1.price &gt;= #{price.min}
+                </if>
+
+            </if>
+
+            <if test="groupNo !=null">
+                and t1.groupno=#{groupNo}
+            </if>
+
+            <if test="excludeGoodId !=null and excludeGoodId !=''">
+                and t1.goodid != #{excludeGoodId}
+            </if>
+
+        </where>
+
+        <include refid="Common.orderBy" />
+
+    </sql>
+
+
+    <select id="search" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select t5.*
+
+        from (
+            select t4.*, rownum rn
+            from (
+                select t6.*,t7.PRICE as futurePrice,t7.POPRICESTARTDATE as futurePoPriceStartDate from (<include refid="searchCore" />) t6
+                left join ygmalluser.FUTUREGOOD t7 on t6.MATRLID=t7.MATRLID and t6.SUPPLIERNO=t7.SUPPLIERNO
+            ) t4
+        ) t5
+
+        where t5.rn <include refid="Common.gte" /> and t5.rn <include refid="Common.lte"/>
+
+    </select>
+
+    <select id="searchCount" parameterType="map" resultType="int">
+
+        select count(1)
+        from (<include refid="searchCore" />) t4
+
+    </select>
+
+
+    <select id="searchTwoLevelClaNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+        t4.twolevelclapk as key,
+        t4.twolevelclaname as value
+        from (<include refid="searchCore" />) t4
+        group by t4.twolevelclaname,t4.twolevelclapk
+
+    </select>
+
+    <select id="searchOneLevelClaNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+        t4.ONELEVELCLAPK as key,
+        t4.ONELEVELCLAname as value
+        from (<include refid="searchCore" />) t4
+        group by t4.onelevelclaname,t4.onelevelclapk
+
+    </select>
+
+    <select id="searchCategoryNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+        select
+        t4.categorypk as key,
+        t4.categoryname as value
+        from (<include refid="searchCore" />) t4
+        group by t4.categorypk,t4.categoryname
+
+    </select>
+
+
+    <select id="searchBrandKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+
+
+        select
+            t5.brand as key,
+            t5.brand as value
+        from
+        (
+            select t4.brand
+            from (<include refid="searchCore" />) t4
+        ) t5
+        where t5.brand is not null
+        group by t5.brand
+
+    </select>
+
+    <select id="getGoodUniqueIndexList" resultType="String">
+
+        select matrlno || '-' || pono || '-' || supplierno
+        from ygmalluser.tbmqq430
+        where deleted='N'
+
+    </select>
+
+
+    <select id="getSettleGoodInfo" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+        select
+        t2.*,
+
+        t1.qty as cartQty,
+        t1.projectno,
+        t1.projectname,
+        t1.deviceapplyno,
+        t1.deviceapplypk,
+        t1.isneedpic,
+        t1.devicesimpleno
+
+        from ygmalluser.tbmqq433 t1
+        join ygmalluser.tbmqq430 t2 on t1.goodid=t2.goodid
+
+        <where>
+            t1.userno=#{userno}
+            and t1.goodid in
+            <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+
+            and t2.status  in ('25', '35', '40')
+            and t2.deleted = 'N'
+        </where>
+    </select>
+
+    <update id="updateGoodInvalid" parameterType="map">
+
+        update ygmalluser.tbmqq430
+        set
+            status='SX',
+            updateuser=#{updateUser},
+            updatetime=#{updateTime},
+            updatedate=#{updateDate}
+        where popricedate &lt;= #{currDate}
+
+    </update>
+
+    <delete id="delGoodByGoodNo" parameterType="map">
+
+        delete from ygmalluser.tbmqq430
+        where
+            supplierno=#{supplierNo}
+            and goodno=#{goodNo}
+
+    </delete>
+
+
+    <delete id="delGoodByGoodId" parameterType="map">
+
+        delete from ygmalluser.tbmqq430
+        where
+          supplierno=#{supplierNo}
+
+          and goodId in
+          <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+            #{item}
+          </foreach>
+
+    </delete>
+
+    <select id="getGoodByPonoPk" parameterType="String" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+
+        select *
+        from ygmalluser.tbmqq430
+        where ponopk=#{ponoPk}
+
+    </select>
+
+    <select id="getGoodBySupplierNo" parameterType="String" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select goodno, goodid
+        from ygmalluser.tbmqq430
+        where supplierno=#{supplierNo}
+
+    </select>
+
+
+    <delete id="delInvalidGood">
+
+        begin
+          insert into ygmalluser.tbmqq436
+          (
+              goodid, pono, poitemno,
+              categoryname, onelevelclaname, twolevelclaname,
+              productname, goodno, matrlno,
+              unitmethod, qty, qtyunit,
+              minbuyqty, price, notaxprice,
+              originprice, tax, spec,
+              brand, weight, weightunit,
+              packthick, packwidth, packheight,
+              packunit, referdeliverydate, supplierno,
+              suppliername, reqno, reqitemno,
+              popricedate, popricetime, qlty,
+              groupno, pictureurl, shelvesdate,
+              shelvestime, audituser, rejectreason,
+              isinttimepurchase, isdecimalpurchase, status,
+              deleted, createuser, createdate,
+              createtime, updateuser, updatedate,
+              updatetime, sourcefrom, istaxexception,
+              agent, applyreason, paytype,
+              paytypename, paymethod, paymethodname,
+              ponopk, supplierpk, matrlid,
+              matrltm, categorypk, onelevelclapk,
+              twolevelclapk, haspic, popricestartdate,
+              popricestarttime,leadtimenum,agentphone,
+              agentno
+          )
+          select
+              goodid, pono, poitemno,
+              categoryname, onelevelclaname, twolevelclaname,
+              productname, goodno, matrlno,
+              unitmethod, qty, qtyunit,
+              minbuyqty, price, notaxprice,
+              originprice, tax, spec,
+              brand, weight, weightunit,
+              packthick, packwidth, packheight,
+              packunit, referdeliverydate, supplierno,
+              suppliername, reqno, reqitemno,
+              popricedate, popricetime, qlty,
+              groupno, pictureurl, shelvesdate,
+              shelvestime, audituser, rejectreason,
+              isinttimepurchase, isdecimalpurchase, '45',
+              deleted, createuser, createdate,
+              createtime, updateuser, updatedate,
+              updatetime, sourcefrom, istaxexception,
+              agent, applyreason, paytype,
+              paytypename, paymethod, paymethodname,
+              ponopk, supplierpk, matrlid,
+              matrltm, categorypk, onelevelclapk,
+              twolevelclapk, haspic, popricestartdate,
+              popricestarttime,leadtimenum,agentphone,
+              agentno
+          from ygmalluser.tbmqq430 where popricedate &lt; to_char(sysdate, 'yyyymmdd');
+          delete from ygmalluser.tbmqq430 where popricedate &lt; to_char(sysdate, 'yyyymmdd');
+        end;
+
+    </delete>
+
+
+    <select id="getExpiredGoodIdList" resultType="String">
+        select goodid
+        from ygmalluser.tbmqq430
+        where popricedate &lt; to_char(sysdate, 'yyyymmdd')
+    </select>
+
+
+    <select id="getSupplierOtherPonoGood" parameterType="map" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq430">
+
+        select matrlid, pono
+        from ygmalluser.tbmqq430
+        where ponopk != #{ponoPk} and supplierno=#{supplierNo}
+
+    </select>
+
+    <sql id="getGoodsMatrlInfoCore">
+        select
+        matrlid as key,
+        matrltm as value
+        from ygmalluser.tbmqq430
+        <where>
+            <if test="searchKey !=null and searchKey !=''">and matrltm like '%'||#{searchKey}||'%'
+            </if>
+        </where>
+        group by matrlid,matrltm
+        order by matrltm
+    </sql>
+
+    <select id="getGoodsMatrlInfo" parameterType="netplus.mall.api.request.goodsInventory.GoodsInventoryPageRequest" resultType="netplus.component.entity.data.KeyValue">
+        select tt.* from (
+            select t.*,rownum as r
+            from (<include refid="getGoodsMatrlInfoCore" />) t
+        ) tt
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+    </select>
+
+    <select id="getGoodsMatrlCount" resultType="int">
+        select count(1)
+        from (<include refid="getGoodsMatrlInfoCore" />) t
+    </select>
+
+    <select id="getGoodByMatrlIdList" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+        select * from ygmalluser.tbmqq430
+        <where>
+            matrlid in
+            <foreach collection="matrlIdList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+
+            <if test="statusList !=null and statusList.size>0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">#{item}</foreach>
+            </if>
+        </where>
+        order by price
+    </select>
+
+    <select id="getMatrlStatus" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select t2.matrltm, t2.status from (
+            select matrltm
+            from ygmalluser.tbmqq430
+            where goodid in
+            <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        ) t1 join ygmalluser.tbmqq430 t2 on t1.matrltm=t2.matrltm
+
+    </select>
+
+    <sql id="getCountPonoInfoCore">
+
+        select
+        pono, popricestartdate, popricedate,
+        suppliername, supplierno, agent,
+        agentno
+        from ygmalluser.tbmqq430
+
+        <where>
+            <if test="statusList !=null and statusList.size >0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test='isOverdue !=null and isOverdue="Y"'>
+                and  to_char(sysdate, 'yyyymmdd')  &gt; to_char((to_date(popricedate, 'yyyymmdd') - 40), 'yyyymmdd')
+                and  to_char(sysdate, 'yyyymmdd')  &lt;= popricedate
+            </if>
+
+            <if test="!isAdmin">
+                and agentno=#{agentno}
+            </if>
+        </where>
+
+        group by pono, popricestartdate, popricedate,
+        suppliername, supplierno, agent,
+        agentno
+
+    </sql>
+
+
+    <select id="getCountPonoInfo" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select tt.*
+
+        from (
+        select tt.*, rownum r
+        from (<include refid="getCountPonoInfoCore" /> ) tt
+        ) tt
+
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+
+    </select>
+
+    <select id="getCountPonoCount" resultType="int">
+        select
+        count(1) as totalCount
+        from (<include refid="getCountPonoInfoCore" /> ) tt
+    </select>
+
+
+    <sql id="getPonoDetailInfoCore">
+
+        select *
+        from ygmalluser.tbmqq430
+        <where>
+            <if test="statusList !=null and statusList.size >0">
+                and status in
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="pono !=null and pono !=''">
+                and pono=#{pono}
+            </if>
+
+            <if test="!isAdmin">
+                and agentno=#{agentno}
+            </if>
+        </where>
+
+    </sql>
+
+
+
+    <select id="getPonoDetailInfo" parameterType="map" resultType="netplus.mall.api.vo.GoodsVo">
+
+        select tt.*
+
+        from (
+        select tt.*, rownum r
+        from (<include refid="getPonoDetailInfoCore" /> ) tt
+        ) tt
+
+        where tt.r <include refid="Common.gte"/> and tt.r <include refid="Common.lte"/>
+
+    </select>
+
+    <select id="getPonoDetailInfoCount" resultType="int">
+        select
+        count(1) as totalCount
+        from (<include refid="getPonoDetailInfoCore" /> ) tt
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="netplus.excel.service.dao.ExcelTempDataMapper">
+
+
+    <insert id="bulkInsert" useGeneratedKeys="false" keyProperty="id" parameterType="java.util.List">
+        insert into excel_temp_data
+        (
+            BATCH_CODE, APP_ID,
+            FIELD1, FIELD2, FIELD3,
+            FIELD4, FIELD5, FIELD6,
+            FIELD7, FIELD8, FIELD9,
+            FIELD10, FIELD11, FIELD12,
+            FIELD13, FIELD14, FIELD15,
+            FIELD16, FIELD17, FIELD18,
+            FIELD19, FIELD20, FIELD21,
+            FIELD22, FIELD23, FIELD24,
+            FIELD25, FIELD26, FIELD27,
+            FIELD28, FIELD29, FIELD30,
+            FIELD31, FIELD32, FIELD33,
+            FIELD34, FIELD35, FIELD36,
+            FIELD37, FIELD38, FIELD39,
+            FIELD40, FIELD41, FIELD42,
+            FIELD43, FIELD44, FIELD45,
+            FIELD46, FIELD47, FIELD48,
+            FIELD49, FIELD50, FIELD51,
+            FIELD52, FIELD53, FIELD54,
+            FIELD55, FIELD56, FIELD57,
+            FIELD58, FIELD59, FIELD60,
+            FIELD61, FIELD62, FIELD63,
+            FIELD64, FIELD65, FIELD66,
+            FIELD67, FIELD68, FIELD69,
+            FIELD70, FIELD71, FIELD72,
+            FIELD73, FIELD74, FIELD75,
+            FIELD76, FIELD77, FIELD78,
+            FIELD79, FIELD80, CREATE_PERSON,
+            CREATE_DATETIME
+        )
+        (
+
+            <foreach collection="list" item="item" separator="union all">
+                select
+
+                #{item.batchCode,jdbcType=VARCHAR}, #{item.appId,jdbcType=VARCHAR},
+                #{item.field1,jdbcType=VARCHAR}, #{item.field2,jdbcType=VARCHAR}, #{item.field3,jdbcType=VARCHAR},
+                #{item.field4,jdbcType=VARCHAR}, #{item.field5,jdbcType=VARCHAR}, #{item.field6,jdbcType=VARCHAR},
+                #{item.field7,jdbcType=VARCHAR}, #{item.field8,jdbcType=VARCHAR}, #{item.field9,jdbcType=VARCHAR},
+                #{item.field10,jdbcType=VARCHAR}, #{item.field11,jdbcType=VARCHAR}, #{item.field12,jdbcType=VARCHAR},
+                #{item.field13,jdbcType=VARCHAR}, #{item.field14,jdbcType=VARCHAR}, #{item.field15,jdbcType=VARCHAR},
+                #{item.field16,jdbcType=VARCHAR}, #{item.field17,jdbcType=VARCHAR}, #{item.field18,jdbcType=VARCHAR},
+                #{item.field19,jdbcType=VARCHAR}, #{item.field20,jdbcType=VARCHAR}, #{item.field21,jdbcType=VARCHAR},
+                #{item.field22,jdbcType=VARCHAR}, #{item.field23,jdbcType=VARCHAR}, #{item.field24,jdbcType=VARCHAR},
+                #{item.field25,jdbcType=VARCHAR}, #{item.field26,jdbcType=VARCHAR}, #{item.field27,jdbcType=VARCHAR},
+                #{item.field28,jdbcType=VARCHAR}, #{item.field29,jdbcType=VARCHAR}, #{item.field30,jdbcType=VARCHAR},
+                #{item.field31,jdbcType=VARCHAR}, #{item.field32,jdbcType=VARCHAR}, #{item.field33,jdbcType=VARCHAR},
+                #{item.field34,jdbcType=VARCHAR}, #{item.field35,jdbcType=VARCHAR}, #{item.field36,jdbcType=VARCHAR},
+                #{item.field37,jdbcType=VARCHAR}, #{item.field38,jdbcType=VARCHAR}, #{item.field39,jdbcType=VARCHAR},
+                #{item.field40,jdbcType=VARCHAR}, #{item.field41,jdbcType=VARCHAR}, #{item.field42,jdbcType=VARCHAR},
+                #{item.field43,jdbcType=VARCHAR}, #{item.field44,jdbcType=VARCHAR}, #{item.field45,jdbcType=VARCHAR},
+                #{item.field46,jdbcType=VARCHAR}, #{item.field47,jdbcType=VARCHAR}, #{item.field48,jdbcType=VARCHAR},
+                #{item.field49,jdbcType=VARCHAR}, #{item.field50,jdbcType=VARCHAR}, #{item.field51,jdbcType=VARCHAR},
+                #{item.field52,jdbcType=VARCHAR}, #{item.field53,jdbcType=VARCHAR}, #{item.field54,jdbcType=VARCHAR},
+                #{item.field55,jdbcType=VARCHAR}, #{item.field56,jdbcType=VARCHAR}, #{item.field57,jdbcType=VARCHAR},
+                #{item.field58,jdbcType=VARCHAR}, #{item.field59,jdbcType=VARCHAR}, #{item.field60,jdbcType=VARCHAR},
+                #{item.field61,jdbcType=VARCHAR}, #{item.field62,jdbcType=VARCHAR}, #{item.field63,jdbcType=VARCHAR},
+                #{item.field64,jdbcType=VARCHAR}, #{item.field65,jdbcType=VARCHAR}, #{item.field66,jdbcType=VARCHAR},
+                #{item.field67,jdbcType=VARCHAR}, #{item.field68,jdbcType=VARCHAR}, #{item.field69,jdbcType=VARCHAR},
+                #{item.field70,jdbcType=VARCHAR}, #{item.field71,jdbcType=VARCHAR}, #{item.field72,jdbcType=VARCHAR},
+                #{item.field73,jdbcType=VARCHAR}, #{item.field74,jdbcType=VARCHAR}, #{item.field75,jdbcType=VARCHAR},
+                #{item.field76,jdbcType=VARCHAR}, #{item.field77,jdbcType=VARCHAR}, #{item.field78,jdbcType=VARCHAR},
+                #{item.field79,jdbcType=VARCHAR}, #{item.field80,jdbcType=VARCHAR},
+                #{item.createPerson,jdbcType=VARCHAR},#{item.createDatetime,jdbcType=TIMESTAMP}
+
+                from dual
+            </foreach>
+
+        )
+
+    </insert>
+
+    <select id="selectByDataBatchCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from excel_temp_data
+        where batch_code = #{batchCode,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

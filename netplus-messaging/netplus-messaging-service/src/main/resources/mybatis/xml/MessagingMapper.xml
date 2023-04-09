@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.messaging.service.dao.MessagingMapper">
+  <resultMap id="BaseResultMap" type="netplus.messaging.api.pojo.ygmalluser.Messaging">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="SENDUSERNO" jdbcType="VARCHAR" property="senduserno" />
+    <result column="RECEIVEUSERNO" jdbcType="VARCHAR" property="receiveuserno" />
+    <result column="MESSAGETYPE" jdbcType="DECIMAL" property="messagetype" />
+    <result column="MESSAGEGROUP" jdbcType="VARCHAR" property="messagegroup" />
+    <result column="ISREAD" jdbcType="DECIMAL" property="isread" />
+    <result column="MESSAGECONTENT" jdbcType="VARCHAR" property="messagecontent" />
+    <result column="RECEIVETIME" jdbcType="VARCHAR" property="receivetime" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SENDUSERNO, RECEIVEUSERNO, MESSAGETYPE, MESSAGEGROUP, ISREAD, MESSAGECONTENT, 
+    RECEIVETIME, URL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.MESSAGING
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.MESSAGING
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.messaging.api.pojo.ygmalluser.Messaging">
+    insert into YGMALLUSER.MESSAGING (ID, SENDUSERNO, RECEIVEUSERNO, 
+      MESSAGETYPE, MESSAGEGROUP, ISREAD, 
+      MESSAGECONTENT, RECEIVETIME, URL
+      )
+    values (#{id,jdbcType=VARCHAR}, #{senduserno,jdbcType=VARCHAR}, #{receiveuserno,jdbcType=VARCHAR}, 
+      #{messagetype,jdbcType=DECIMAL}, #{messagegroup,jdbcType=VARCHAR}, #{isread,jdbcType=DECIMAL}, 
+      #{messagecontent,jdbcType=VARCHAR}, #{receivetime,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.messaging.api.pojo.ygmalluser.Messaging">
+    insert into YGMALLUSER.MESSAGING
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="senduserno != null">
+        SENDUSERNO,
+      </if>
+      <if test="receiveuserno != null">
+        RECEIVEUSERNO,
+      </if>
+      <if test="messagetype != null">
+        MESSAGETYPE,
+      </if>
+      <if test="messagegroup != null">
+        MESSAGEGROUP,
+      </if>
+      <if test="isread != null">
+        ISREAD,
+      </if>
+      <if test="messagecontent != null">
+        MESSAGECONTENT,
+      </if>
+      <if test="receivetime != null">
+        RECEIVETIME,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="senduserno != null">
+        #{senduserno,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveuserno != null">
+        #{receiveuserno,jdbcType=VARCHAR},
+      </if>
+      <if test="messagetype != null">
+        #{messagetype,jdbcType=DECIMAL},
+      </if>
+      <if test="messagegroup != null">
+        #{messagegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isread != null">
+        #{isread,jdbcType=DECIMAL},
+      </if>
+      <if test="messagecontent != null">
+        #{messagecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="receivetime != null">
+        #{receivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.messaging.api.pojo.ygmalluser.Messaging">
+    update YGMALLUSER.MESSAGING
+    <set>
+      <if test="senduserno != null">
+        SENDUSERNO = #{senduserno,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveuserno != null">
+        RECEIVEUSERNO = #{receiveuserno,jdbcType=VARCHAR},
+      </if>
+      <if test="messagetype != null">
+        MESSAGETYPE = #{messagetype,jdbcType=DECIMAL},
+      </if>
+      <if test="messagegroup != null">
+        MESSAGEGROUP = #{messagegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="isread != null">
+        ISREAD = #{isread,jdbcType=DECIMAL},
+      </if>
+      <if test="messagecontent != null">
+        MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="receivetime != null">
+        RECEIVETIME = #{receivetime,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.messaging.api.pojo.ygmalluser.Messaging">
+    update YGMALLUSER.MESSAGING
+    set SENDUSERNO = #{senduserno,jdbcType=VARCHAR},
+      RECEIVEUSERNO = #{receiveuserno,jdbcType=VARCHAR},
+      MESSAGETYPE = #{messagetype,jdbcType=DECIMAL},
+      MESSAGEGROUP = #{messagegroup,jdbcType=VARCHAR},
+      ISREAD = #{isread,jdbcType=DECIMAL},
+      MESSAGECONTENT = #{messagecontent,jdbcType=VARCHAR},
+      RECEIVETIME = #{receivetime,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

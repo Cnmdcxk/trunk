@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.excel.service.dao.ExcelTempMemoMapper">
+  <resultMap id="BaseResultMap" type="netplus.excel.api.pojo.ExcelTempMemo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="batch_code" jdbcType="VARCHAR" property="batchCode" />
+    <result column="field" jdbcType="VARCHAR" property="field" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, batch_code, field, value, create_date, create_person
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from excel_temp_memo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from excel_temp_memo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="netplus.excel.api.pojo.ExcelTempMemo">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into excel_temp_memo (batch_code, field, value, 
+      create_date, create_person)
+    values (#{batchCode,jdbcType=VARCHAR}, #{field,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createPerson,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.excel.api.pojo.ExcelTempMemo">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into excel_temp_memo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="batchCode != null">
+        batch_code,
+      </if>
+      <if test="field != null">
+        field,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="batchCode != null">
+        #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        #{field,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.excel.api.pojo.ExcelTempMemo">
+    update excel_temp_memo
+    <set>
+      <if test="batchCode != null">
+        batch_code = #{batchCode,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        field = #{field,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.excel.api.pojo.ExcelTempMemo">
+    update excel_temp_memo
+    set batch_code = #{batchCode,jdbcType=VARCHAR},
+      field = #{field,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_person = #{createPerson,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

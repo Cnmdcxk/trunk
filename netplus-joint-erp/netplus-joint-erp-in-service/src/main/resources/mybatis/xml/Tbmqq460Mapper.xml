@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.component.entity.aspect.Tbmqq460Mapper">
+  <resultMap id="BaseResultMap" type="netplus.component.entity.aspect.Tbmqq460">
+    <id column="REQID" jdbcType="VARCHAR" property="reqid" />
+    <id column="CALLEE" jdbcType="VARCHAR" property="callee" />
+    <id column="CALLER" jdbcType="VARCHAR" property="caller" />
+    <result column="REQNAME" jdbcType="VARCHAR" property="reqname" />
+    <result column="REQTIME" jdbcType="VARCHAR" property="reqtime" />
+    <result column="REQURL" jdbcType="VARCHAR" property="requrl" />
+    <result column="RESPTIME" jdbcType="VARCHAR" property="resptime" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="TIMES" jdbcType="DECIMAL" property="times" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="netplus.component.entity.aspect.Tbmqq460WithBLOBs">
+    <result column="REQDATA" jdbcType="CLOB" property="reqdata" />
+    <result column="RESPDATA" jdbcType="CLOB" property="respdata" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    REQID, CALLEE, CALLER, REQNAME, REQTIME, REQURL, RESPTIME, STATUS, TIMES
+  </sql>
+  <sql id="Blob_Column_List">
+    REQDATA, RESPDATA
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="netplus.component.entity.aspect.Tbmqq460Key" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ygmalluser.TBMQQ460
+    where REQID = #{reqid,jdbcType=VARCHAR}
+    and CALLEE = #{callee,jdbcType=VARCHAR}
+    and CALLER = #{caller,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="netplus.component.entity.aspect.Tbmqq460Key">
+    delete from ygmalluser.TBMQQ460
+    where REQID = #{reqid,jdbcType=VARCHAR}
+    and CALLEE = #{callee,jdbcType=VARCHAR}
+    and CALLER = #{caller,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.component.entity.aspect.Tbmqq460WithBLOBs">
+    insert into ygmalluser.TBMQQ460 (REQID, CALLEE, CALLER,
+    REQNAME, REQTIME, REQURL,
+    RESPTIME, STATUS, TIMES,
+    REQDATA, RESPDATA)
+    values (#{reqid,jdbcType=VARCHAR}, #{callee,jdbcType=VARCHAR}, #{caller,jdbcType=VARCHAR},
+    #{reqname,jdbcType=VARCHAR}, #{reqtime,jdbcType=VARCHAR}, #{requrl,jdbcType=VARCHAR},
+    #{resptime,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{times,jdbcType=DECIMAL},
+    #{reqdata,jdbcType=CLOB}, #{respdata,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.component.entity.aspect.Tbmqq460WithBLOBs">
+    insert into ygmalluser.TBMQQ460
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="reqid != null">
+        REQID,
+      </if>
+      <if test="callee != null">
+        CALLEE,
+      </if>
+      <if test="caller != null">
+        CALLER,
+      </if>
+      <if test="reqname != null">
+        REQNAME,
+      </if>
+      <if test="reqtime != null">
+        REQTIME,
+      </if>
+      <if test="requrl != null">
+        REQURL,
+      </if>
+      <if test="resptime != null">
+        RESPTIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="times != null">
+        TIMES,
+      </if>
+      <if test="reqdata != null">
+        REQDATA,
+      </if>
+      <if test="respdata != null">
+        RESPDATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="reqid != null">
+        #{reqid,jdbcType=VARCHAR},
+      </if>
+      <if test="callee != null">
+        #{callee,jdbcType=VARCHAR},
+      </if>
+      <if test="caller != null">
+        #{caller,jdbcType=VARCHAR},
+      </if>
+      <if test="reqname != null">
+        #{reqname,jdbcType=VARCHAR},
+      </if>
+      <if test="reqtime != null">
+        #{reqtime,jdbcType=VARCHAR},
+      </if>
+      <if test="requrl != null">
+        #{requrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resptime != null">
+        #{resptime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=DECIMAL},
+      </if>
+      <if test="reqdata != null">
+        #{reqdata,jdbcType=CLOB},
+      </if>
+      <if test="respdata != null">
+        #{respdata,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.component.entity.aspect.Tbmqq460WithBLOBs">
+    update ygmalluser.TBMQQ460
+    <set>
+      <if test="reqname != null">
+        REQNAME = #{reqname,jdbcType=VARCHAR},
+      </if>
+      <if test="reqtime != null">
+        REQTIME = #{reqtime,jdbcType=VARCHAR},
+      </if>
+      <if test="requrl != null">
+        REQURL = #{requrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resptime != null">
+        RESPTIME = #{resptime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="times != null">
+        TIMES = #{times,jdbcType=DECIMAL},
+      </if>
+      <if test="reqdata != null">
+        REQDATA = #{reqdata,jdbcType=CLOB},
+      </if>
+      <if test="respdata != null">
+        RESPDATA = #{respdata,jdbcType=CLOB},
+      </if>
+    </set>
+    where REQID = #{reqid,jdbcType=VARCHAR}
+    and CALLEE = #{callee,jdbcType=VARCHAR}
+    and CALLER = #{caller,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="netplus.component.entity.aspect.Tbmqq460WithBLOBs">
+    update ygmalluser.TBMQQ460
+    set REQNAME = #{reqname,jdbcType=VARCHAR},
+    REQTIME = #{reqtime,jdbcType=VARCHAR},
+    REQURL = #{requrl,jdbcType=VARCHAR},
+    RESPTIME = #{resptime,jdbcType=VARCHAR},
+    STATUS = #{status,jdbcType=VARCHAR},
+    TIMES = #{times,jdbcType=DECIMAL},
+    REQDATA = #{reqdata,jdbcType=CLOB},
+    RESPDATA = #{respdata,jdbcType=CLOB}
+    where REQID = #{reqid,jdbcType=VARCHAR}
+    and CALLEE = #{callee,jdbcType=VARCHAR}
+    and CALLER = #{caller,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.component.entity.aspect.Tbmqq460">
+    update ygmalluser.TBMQQ460
+    set REQNAME = #{reqname,jdbcType=VARCHAR},
+    REQTIME = #{reqtime,jdbcType=VARCHAR},
+    REQURL = #{requrl,jdbcType=VARCHAR},
+    RESPTIME = #{resptime,jdbcType=VARCHAR},
+    STATUS = #{status,jdbcType=VARCHAR},
+    TIMES = #{times,jdbcType=DECIMAL}
+    where REQID = #{reqid,jdbcType=VARCHAR}
+    and CALLEE = #{callee,jdbcType=VARCHAR}
+    and CALLER = #{caller,jdbcType=VARCHAR}
+  </update></mapper>

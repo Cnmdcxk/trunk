@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>netplus</groupId>
+        <artifactId>netplus-component</artifactId>
+        <version>1.0.YG-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>netplus-component-api</artifactId>
+    <version>1.0.YG-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-common</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Mybatis-Plus 依赖 -->
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
+<!--            <version>3.4.2</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.4.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>netplus</groupId>-->
+<!--            <artifactId>netplus-component-entity</artifactId>-->
+<!--            <version>1.0.YGM-SNAPSHOT</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>netplus</groupId>-->
+<!--            <artifactId>netplus-component-feignclient</artifactId>-->
+<!--            <version>1.0.YGM-SNAPSHOT</version>-->
+<!--        </dependency>-->
+    </dependencies>
+</project>

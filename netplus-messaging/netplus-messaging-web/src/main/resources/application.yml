@@ -1,0 +1,24 @@
+server:
+  port: 20008
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-messaging-web
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-messaging-web
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-messaging-web
+
+
+

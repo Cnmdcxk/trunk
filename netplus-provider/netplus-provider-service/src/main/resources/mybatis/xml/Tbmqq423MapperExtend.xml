@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.Tbmqq423Mapper">
+  <sql id="getListCode">
+    select
+      t1.code, t1.name, t1.privilegedesc,
+      t1.privilegetype, t1.parentcode,
+      t1.sort, t1.isactive, t1.belongto,
+      t1.isdefault,t1.icon, t1.pagevisible,
+      t1.createuser, t1.createdate, t1.createtime,
+      t1.updateuser, t1.updatedate
+    from ygmalluser.tbmqq423 t1
+
+    <where>
+
+      <if test="code != null and code != ''">
+        and code = #{code}
+      </if>
+      <if test="name != null and name != ''">
+        and name = #{name}
+      </if>
+      <if test="privilegedesc != null and privilegedesc != ''">
+        and privilegedesc = #{privilegedesc}
+      </if>
+      <if test="privilegetype != null and privilegetype != ''">
+        and privilegetype = #{privilegetype}
+      </if>
+      <if test="isActiveList != null and isActiveList.size > 0">
+        and isactive in <foreach collection="isActiveList" item="item" open="(" separator="," close=")">#{item}</foreach>
+      </if>
+      <if test="isDefaultList != null and isDefaultList.size > 0">
+        and isdefault in <foreach collection="isDefaultList" item="item" open="(" separator="," close=")">#{item}</foreach>
+      </if>
+      <if test="parentCodeList != null and parentCodeList.size > 0">
+        and parentcode in <foreach collection="parentCodeList" item="item" open="(" separator="," close=")">#{item}</foreach>
+      </if>
+      <if test="searchKey != null and searchKey != ''">
+        and (code like '%' || #{searchKey} || '%'
+        or name like '%' || #{searchKey} || '%'
+        or privilegedesc like '%' || #{searchKey} || '%'
+        or privilegetype like '%' || #{searchKey} || '%')
+      </if>
+
+    </where>
+
+    order by t1.code desc
+  </sql>
+  
+  <select id="getList" parameterType="Map" resultMap="BaseResultMap">
+    select tt.*
+    from (
+          select t.*, rownum as r
+          from (<include refid="getListCode" />) t
+
+    ) tt
+    where tt.r <include refid="Common.gte" />and tt.r <include refid="Common.lte" />
+  </select>
+
+  <select id="getparentcodeList" parameterType="Map" resultType="netplus.component.entity.data.KeyValue">
+    select distinct a.parentcode as key ,a.parentcode as value
+    from ygmalluser.TBMQQ423 a
+    where a.parentcode is not null
+    order by a.parentcode desc
+  </select>
+
+  <select id="getjurisdictionCount" parameterType="map" resultType="int">
+    select count(1) from (<include refid="getListCode" />) t
+  </select>
+
+  <select id="getPrivilegeInfoByParam" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ygmalluser.TBMQQ423
+    where 1 = 1
+    <if test="code != null and code != ''">
+      and code = #{code}
+    </if>
+    <if test="parentcode != null and parentcode != ''">
+      and PARENTCODE = #{parentcode}
+    </if>
+    <if test="sort != null">
+      and SORT =  #{sort}
+    </if>
+  </select>
+
+
+  <select id="getprivilegetypeList" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+    select distinct CODE as key ,NAME as value
+    from ygmalluser.TBMQQ423 where
+    <if test="privilegetype != null">
+      <choose>
+        <when test="privilegetype == 'MENU'">
+          privilegetype = 'MODULE'
+        </when>
+        <when test="privilegetype == 'PAGE'">
+          privilegetype = 'MENU'
+        </when>
+        <otherwise>
+          privilegetype = 'PAGE'
+        </otherwise>
+      </choose>
+    </if>
+  </select>
+
+ <select id="getListPermissionsParent" resultType="netplus.provider.api.vo.Tbmqq423Parent" parameterType="map">
+    select t.*
+    from ygmalluser.TBMQQ423 t
+    where privilegetype in 'MENU'
+    order by sort
+  </select>
+  <select id="getListPermissionsChildren" resultType="netplus.provider.api.pojo.ygmalluser.Tbmqq423" parameterType="String">
+    select t.*
+    from ygmalluser.TBMQQ423 t
+    where privilegetype in 'PAGE'
+    and parentcode =#{code}
+    order by sort
+  </select>
+
+
+  <select id="getUserPrivileges" parameterType="map" resultType="String">
+
+    select t4.code
+    from ygmalluser.tbdu01 t1
+    join ygmalluser.tbmqq422 t2 on trim(t1.userno)=t2.userno
+    join ygmalluser.tbmqq421 t3 on t2.rolecode=t3.rolecode
+    join ygmalluser.tbmqq423 t4 on t3.privilegecode=t4.code
+    where trim(t1.userno)=#{userno} and t4.isactive='Y'
+    group by t4.code
+
+  </select>
+
+  <select id="getRolePrivileges" parameterType="map" resultType="netplus.provider.api.vo.Tbmqq423Vo">
+
+    select
+      t1.*,
+      t2.name as parentname,
+      case when t3.rolecode is not null then 'Y' else 'N' end as roleisassignment
+    from ygmalluser.tbmqq423 t1
+    join ygmalluser.tbmqq423 t2 on t1.parentcode=t2.code
+    left join ygmalluser.tbmqq421 t3 on t3.privilegecode=t1.code and t3.rolecode=#{rolecode}
+    where t1.isactive='Y' and t1.privilegetype='PAGE'
+
+    order by t2.sort asc, t1.sort asc
+
+  </select>
+
+
+  <select id="getRoleOwnPrivileges" parameterType="map" resultType="netplus.provider.api.vo.Tbmqq423Vo">
+
+    select t1.*
+    from ygmalluser.tbmqq423 t1
+    join ygmalluser.tbmqq423 t2 on t1.parentcode=t2.code
+    join ygmalluser.tbmqq421 t3 on t3.privilegecode=t1.code
+    where t3.rolecode=#{rolecode} and t1.privilegetype='PAGE'
+    order by t2.sort asc, t1.sort asc
+
+  </select>
+
+
+  <select id="getUserMenuList" parameterType="map" resultType="netplus.provider.api.vo.Tbmqq423Vo">
+
+    select t4.*
+    from (
+            select t3.privilegecode
+            from ygmalluser.tbdu01 t1
+            join ygmalluser.tbmqq422 t2 on trim(t1.userno)=t2.userno
+            join ygmalluser.tbmqq421 t3 on t2.rolecode=t3.rolecode
+            where trim(t1.userno)=#{userno}
+            group by t3.privilegecode
+    ) t5
+    join ygmalluser.tbmqq423 t4 on t5.privilegecode=t4.code
+
+    where
+      t4.isactive='Y'
+      <if test="belongto !='' and belongto !=null ">
+        and t4.belongto=#{belongto}
+      </if>
+
+    order by t4.sort
+
+  </select>
+
+  <select id="getPrivilegeListByType" parameterType="map" resultType="netplus.provider.api.vo.Tbmqq423Vo">
+    select * from ygmalluser.tbmqq423 where privilegetype=#{type}
+  </select>
+</mapper>

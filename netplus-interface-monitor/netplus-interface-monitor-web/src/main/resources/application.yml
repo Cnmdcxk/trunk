@@ -1,0 +1,24 @@
+server:
+  port: 20030
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-interface-monitor-web
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-interface-monitor-web
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-interface-monitor-web
+
+
+

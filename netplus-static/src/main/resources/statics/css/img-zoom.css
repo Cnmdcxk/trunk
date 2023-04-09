@@ -1,0 +1,149 @@
+/*
+    css只是针对图片放大器页面 其他页面不需要引入
+*/
+.img_zoom{
+	position: relative;
+	width: 332px;
+	height: 443px;
+}
+.img_zoom .rightImg {
+	display: table-cell;
+	width: 664px;
+	height: 664px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+.img_zoom .rightImg .img{
+	max-width: 664px;
+    max-height: 664px;
+}
+/* 右边的区域图片放大空间 */
+.img_zoom .right {
+	width: 332px;
+	height: 332px;
+	border: 1px solid #DEE0E1;
+	position: relative;
+	overflow: hidden;
+	border-radius: 2px;
+	position: absolute;
+	top: 0;
+	left: 360px;
+	z-index: 1000;
+}
+/* 一个最高层层罩 */
+.img_zoom .maskTop {
+	width: 332px;
+	height: 332px;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+}
+/* 层罩，通过定位将左上角定位到(0,0) */
+.img_zoom .top {
+	width: 165px;
+	height: 165px;
+	background-color: lightcoral;
+	opacity: 0.4;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: move;
+}
+/* 原图的显示 */
+.img_zoom .leftImg {
+	width: 330px;
+	height: 330px;
+	display: table-cell;
+	text-align: center;
+    vertical-align: middle;
+}
+.img_zoom .leftImg .img{
+    max-height: 330px;
+    max-width: 330px;
+}
+/* 原图的容器 */
+.img_zoom .left {
+	width: 332px;
+	height: 332px;
+	border: 1px solid #DEE0E1;
+	float: left;
+	position: relative;
+}
+.img_zoom_bottom{
+	width: 320px;
+	position: relative;
+	clear: both;
+	padding:20px 10px;
+}
+.img_zoom_bottom .swiper-container1{
+	overflow: hidden;
+}
+.img_zoom_bottom .img_zoom_swiper{
+	width: 54px;
+	height: 54px;
+    border: 1px solid #DEE0E1;
+	position: relative;
+}
+.img_zoom_bottom .img_zoom_swiper.curr{
+    border: 1px solid #0F83E6;
+}
+.img_zoom_bottom .img_zoom_swiper .img{
+	width: 100%;
+	height: 100%;
+}
+.img_zoom_bottom .swiper-container-initialized {
+	overflow: hidden;
+	margin-left: 10px;
+}
+	
+.img_zoom_bottom .swiper-wrapper{
+	width: 260px;
+}
+.img_zoom_bottom .swiper-wrapper .swiper-slide{
+	width:54px;
+	height: 54px;
+	margin-left: 10px;
+}
+.img_zoom_bottom .swiper-wrapper .swiper-slide .icon-cuo{
+	border-radius: 50%;
+    background: #fff;
+    font-size: 20px!important;
+    position: absolute;
+    right: -11px;
+    top: -11px;
+	height: 20px;
+}
+.img_zoom_bottom .swiper-button-prev{
+	left: 0;
+	top: 43px;
+	color: #BCBCBC;
+}
+.img_zoom_bottom .swiper-button-next{
+	width: 30px;
+	right: -22px;
+	top: 43px;
+	color: #BCBCBC;
+}
+.img_zoom_bottom .swiper-button-prev{
+	color: #BCBCBC;
+}
+.right_btn{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.right_btn .small_btn_gray{
+	padding: 5px;
+	background: #999999;
+	color: #fff;
+	margin-top: 10px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.img_zoom_bottom .swiper-button-next::after{
+	content: '';
+}

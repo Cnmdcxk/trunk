@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.SysLogMapper">
+  <sql id="getListCore">
+    select *
+    from ygmalluser.sys_log
+    <where>
+      <if test="logTypeList !=null and logTypeList.size >0">
+        and log_type in <foreach collection="logTypeList" item="item" open="(" separator="," close=")">#{item}</foreach>
+      </if>
+    </where>
+    order by enter_time desc
+  </sql>
+
+  <select id="getLoginLogPageList" resultType="netplus.provider.api.vo.apilog.SysLogVo">
+    select tt.*
+    from (
+    select t.*, rownum as indexNum
+    from (<include refid="getListCore" />) t
+    ) tt
+    where tt.indexNum <include refid="Common.gte" /> and tt.indexNum  <include refid="Common.lte" />
+  </select>
+
+  <select id="getLoginLogCount" resultType="int">
+    select count(1) from (<include refid="getListCore" />) t
+  </select>
+
+
+
+
+</mapper>

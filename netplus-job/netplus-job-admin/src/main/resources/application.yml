@@ -1,0 +1,211 @@
+server:
+  port: 20018
+management:
+  server:
+    base-path: /actuator
+  health:
+    mail:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-job-admin
+  mvc:
+    static-path-pattern:  /static/**
+  resources:
+    static-locations: classpath:/static/
+  freemarker:
+    templateLoaderPath: classpath:/templates/
+    suffix: .ftl
+    charset:  UTF-8
+    request-context-attribute:  request
+    settings:
+      number_format:  0.##########
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: xxx@qq.com
+    from: xxx@qq.com
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+xxl:
+  job:
+    login:
+      username: admin
+      password: 123456
+    accessToken: netplusYg
+    i18n: zh_CN
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+    logretentiondays: 30
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-job-admin
+  mvc:
+    static-path-pattern:  /static/**
+  resources:
+    static-locations: classpath:/static/
+  freemarker:
+    templateLoaderPath: classpath:/templates/
+    suffix: .ftl
+    charset:  UTF-8
+    request-context-attribute:  request
+    settings:
+      number_format:  0.##########
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: xxx@qq.com
+    from: xxx@qq.com
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+xxl:
+  job:
+    login:
+      username: admin
+      password: 123456
+    accessToken: netplusYg
+    i18n: zh_CN
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+    logretentiondays: 30
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-job-admin
+  mvc:
+    static-path-pattern:  /static/**
+  resources:
+    static-locations: classpath:/static/
+  freemarker:
+    templateLoaderPath: classpath:/templates/
+    suffix: .ftl
+    charset:  UTF-8
+    request-context-attribute:  request
+    settings:
+      number_format:  0.##########
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: xxx@qq.com
+    from: xxx@qq.com
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+xxl:
+  job:
+    login:
+      username: admin
+      password: ygJobAdmin332W
+    accessToken: netplusYg
+    i18n: zh_CN
+    triggerpool:
+      fast:
+        max: 200
+      slow:
+        max: 100
+    logretentiondays: 30
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

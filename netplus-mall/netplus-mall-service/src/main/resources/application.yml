@@ -1,0 +1,92 @@
+server:
+  port: 20037
+
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-mall-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name: netplus-mall-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name: netplus-mall-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/xml/*.xml
+  global-config:
+    db-config:
+      id-type: id_worker
+      update-strategy: ignored
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+pagehelper:
+  dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
+
+
+
+
+
+
+

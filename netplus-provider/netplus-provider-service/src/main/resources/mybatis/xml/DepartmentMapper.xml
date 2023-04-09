@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.provider.service.dao.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="netplus.provider.api.pojo.ygmalluser.Department">
+    <id column="DEPNO" jdbcType="VARCHAR" property="depno" />
+    <result column="DEPNUM" jdbcType="VARCHAR" property="depnum" />
+    <result column="DEPNAME" jdbcType="VARCHAR" property="depname" />
+    <result column="COMPPK" jdbcType="VARCHAR" property="comppk" />
+    <result column="COMPNAME" jdbcType="VARCHAR" property="compname" />
+    <result column="COMPNO" jdbcType="VARCHAR" property="compno" />
+    <result column="TAX" jdbcType="VARCHAR" property="tax" />
+    <result column="COMPADDR" jdbcType="VARCHAR" property="compaddr" />
+    <result column="COMPPHONE" jdbcType="VARCHAR" property="compphone" />
+    <result column="BANK" jdbcType="VARCHAR" property="bank" />
+    <result column="BANKNUM" jdbcType="VARCHAR" property="banknum" />
+    <result column="CREATEDATE" jdbcType="VARCHAR" property="createdate" />
+    <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEPNO, DEPNUM, DEPNAME, COMPPK, COMPNAME, COMPNO, TAX, COMPADDR, COMPPHONE, BANK, 
+    BANKNUM, CREATEDATE, CREATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from YGMALLUSER.DEPARTMENT
+    where DEPNO = #{depno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from YGMALLUSER.DEPARTMENT
+    where DEPNO = #{depno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="netplus.provider.api.pojo.ygmalluser.Department">
+    insert into YGMALLUSER.DEPARTMENT (DEPNO, DEPNUM, DEPNAME, 
+      COMPPK, COMPNAME, COMPNO, 
+      TAX, COMPADDR, COMPPHONE, 
+      BANK, BANKNUM, CREATEDATE, 
+      CREATETIME)
+    values (#{depno,jdbcType=VARCHAR}, #{depnum,jdbcType=VARCHAR}, #{depname,jdbcType=VARCHAR}, 
+      #{comppk,jdbcType=VARCHAR}, #{compname,jdbcType=VARCHAR}, #{compno,jdbcType=VARCHAR}, 
+      #{tax,jdbcType=VARCHAR}, #{compaddr,jdbcType=VARCHAR}, #{compphone,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{banknum,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="netplus.provider.api.pojo.ygmalluser.Department">
+    insert into YGMALLUSER.DEPARTMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="depno != null">
+        DEPNO,
+      </if>
+      <if test="depnum != null">
+        DEPNUM,
+      </if>
+      <if test="depname != null">
+        DEPNAME,
+      </if>
+      <if test="comppk != null">
+        COMPPK,
+      </if>
+      <if test="compname != null">
+        COMPNAME,
+      </if>
+      <if test="compno != null">
+        COMPNO,
+      </if>
+      <if test="tax != null">
+        TAX,
+      </if>
+      <if test="compaddr != null">
+        COMPADDR,
+      </if>
+      <if test="compphone != null">
+        COMPPHONE,
+      </if>
+      <if test="bank != null">
+        BANK,
+      </if>
+      <if test="banknum != null">
+        BANKNUM,
+      </if>
+      <if test="createdate != null">
+        CREATEDATE,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="depno != null">
+        #{depno,jdbcType=VARCHAR},
+      </if>
+      <if test="depnum != null">
+        #{depnum,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null">
+        #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="comppk != null">
+        #{comppk,jdbcType=VARCHAR},
+      </if>
+      <if test="compname != null">
+        #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="compno != null">
+        #{compno,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null">
+        #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="compaddr != null">
+        #{compaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="compphone != null">
+        #{compphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="banknum != null">
+        #{banknum,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="netplus.provider.api.pojo.ygmalluser.Department">
+    update YGMALLUSER.DEPARTMENT
+    <set>
+      <if test="depnum != null">
+        DEPNUM = #{depnum,jdbcType=VARCHAR},
+      </if>
+      <if test="depname != null">
+        DEPNAME = #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="comppk != null">
+        COMPPK = #{comppk,jdbcType=VARCHAR},
+      </if>
+      <if test="compname != null">
+        COMPNAME = #{compname,jdbcType=VARCHAR},
+      </if>
+      <if test="compno != null">
+        COMPNO = #{compno,jdbcType=VARCHAR},
+      </if>
+      <if test="tax != null">
+        TAX = #{tax,jdbcType=VARCHAR},
+      </if>
+      <if test="compaddr != null">
+        COMPADDR = #{compaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="compphone != null">
+        COMPPHONE = #{compphone,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        BANK = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="banknum != null">
+        BANKNUM = #{banknum,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEPNO = #{depno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="netplus.provider.api.pojo.ygmalluser.Department">
+    update YGMALLUSER.DEPARTMENT
+    set DEPNUM = #{depnum,jdbcType=VARCHAR},
+      DEPNAME = #{depname,jdbcType=VARCHAR},
+      COMPPK = #{comppk,jdbcType=VARCHAR},
+      COMPNAME = #{compname,jdbcType=VARCHAR},
+      COMPNO = #{compno,jdbcType=VARCHAR},
+      TAX = #{tax,jdbcType=VARCHAR},
+      COMPADDR = #{compaddr,jdbcType=VARCHAR},
+      COMPPHONE = #{compphone,jdbcType=VARCHAR},
+      BANK = #{bank,jdbcType=VARCHAR},
+      BANKNUM = #{banknum,jdbcType=VARCHAR},
+      CREATEDATE = #{createdate,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR}
+    where DEPNO = #{depno,jdbcType=VARCHAR}
+  </update></mapper>

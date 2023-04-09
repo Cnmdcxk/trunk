@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>netplus</groupId>
+        <artifactId>netplus-job</artifactId>
+        <version>2.3.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>netplus-job-client</artifactId>
+    <version>1.0.YG-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <log4j2.version>2.16.0</log4j2.version>
+    </properties>
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+
+    	<dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-config</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+        
+        <!-- xxl-job-core -->
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-job-core</artifactId>
+            <version>2.3.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-joint-zkh-api</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-mall-api</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-provider-api</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>netplus</groupId>
+            <artifactId>netplus-interface-monitor-api</artifactId>
+            <version>1.0.YG-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <!-- 生成可执行文件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

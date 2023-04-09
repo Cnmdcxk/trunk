@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq403Mapper">
+    <select id="getTwoLevelClanameInfo" parameterType="map" resultMap="BaseResultMap">
+        select * from ygmalluser.tbmqq403
+        where onelevelclaname=#{onelevelclaname}
+        and twolevelclaname=#{twolevelclaname}
+    </select>
+
+    <select id="getTwoLevelInfoList" parameterType="map" resultMap="BaseResultMap">
+        select * from ygmalluser.tbmqq403
+        where twolevelclaname=#{twolevelclaname}
+    </select>
+
+    <select id="getAllTwoLevelInfoList" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq403">
+      select * from ygmalluser.tbmqq403
+    </select>
+
+
+    <select id="getAllCategory" resultType="netplus.mall.api.vo.category.Tbmqq403Vo">
+
+        select t1.twolevelclaname,t1.twolevelclapk,t1.onelevelclaname,t1.onelevelclapk,t2.categoryname,t2.categorypk,t3.icon
+        from ygmalluser.tbmqq403 t1
+        join ygmalluser.tbmqq402 t2 on t1.onelevelclaname=t2.onelevelclaname
+        join ygmalluser.tbmqq401 t3 on t2.categoryname=t3.categoryname
+
+    </select>
+
+
+    <select id="getTwoLevelClaNameList" parameterType="map" resultType="String">
+
+         select twolevelclaname
+         from ygmalluser.tbmqq403
+         <where>
+
+             <if test="oneLevelClaName !=null and oneLevelClaName !=''">
+                 and onelevelclaname=#{oneLevelClaName}
+             </if>
+
+
+             <if test="twoLevelClaName !=null and twoLevelClaName !=''">
+                 and twolevelclaname=#{twoLevelClaName}
+             </if>
+
+         </where>
+
+    </select>
+
+
+    <select id="getTwoLevelClaAndOneLevelClaList" parameterType="map" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq403">
+
+        select twolevelclaname, onelevelclaname
+        from ygmalluser.tbmqq403
+        where
+          twolevelclaname in
+          <foreach collection="twoLevelClaNameList" item="item" open="(" separator="," close=")">
+              #{item}
+          </foreach>
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.tbmqq403
+        (
+            onelevelclaname, twolevelclaname,
+            isactive, createuser, createdate,
+            createtime, updateuser, updatedate,
+            updatetime,
+            onelevelclapk, twolevelclapk, sortnum
+        )
+        (
+        <foreach collection="list" item="item" separator="union all">
+            select
+                #{item.onelevelclaname,jdbcType=VARCHAR}, #{item.twolevelclaname,jdbcType=VARCHAR},
+                #{item.isactive,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR},
+                #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR},
+                #{item.updatetime,jdbcType=VARCHAR},
+                #{item.onelevelclapk,jdbcType=VARCHAR}, #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.sortnum,jdbcType=VARCHAR}
+
+            from dual
+        </foreach>
+        )
+    </insert>
+
+    <delete id="deleteAll">
+        delete from ygmalluser.tbmqq403
+    </delete>
+</mapper>

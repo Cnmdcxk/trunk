@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq401Mapper">
+  <select id="getCategoryNameListKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+    select distinct
+    categoryname as key,
+    categoryname as value
+    from ygmalluser.tbmqq401
+  </select>
+
+
+  <select id="getCategoryNameList" parameterType="map" resultType="String">
+    select categoryname
+    from ygmalluser.tbmqq401
+
+    <where>
+      <if test="categoryName !=null and categoryName !=''">
+        and categoryname=#{categoryName}
+      </if>
+
+
+      <if test="categoryNameList !=null and categoryNameList.size>0">
+        and categoryname in
+        <foreach collection="categoryNameList" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+  </select>
+
+
+  <delete id="deleteAll">
+    delete from ygmalluser.tbmqq401
+  </delete>
+
+
+  <insert id="batchInsert" parameterType="java.util.ArrayList">
+    insert into ygmalluser.tbmqq401
+    (
+      categoryname, icon, isactive,
+      createuser, createdate, createtime,
+      updateuser, updatedate, updatetime,
+      categorypk, sortnum
+    )
+    (
+      <foreach collection="list" item="item" separator="union all">
+        select
+        #{item.categoryname,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR}, #{item.isactive,jdbcType=VARCHAR},
+        #{item.createuser,jdbcType=VARCHAR}, #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR},
+        #{item.updateuser,jdbcType=VARCHAR}, #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR},
+        #{item.categorypk,jdbcType=VARCHAR}, #{item.sortnum,jdbcType=VARCHAR}
+
+        from dual
+      </foreach>
+    )
+
+
+
+  </insert>
+
+
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/netplus-common/netplus-common.iml" filepath="$PROJECT_DIR$/netplus-common/netplus-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-commonservice-eureka/netplus-commonservice-eureka.iml" filepath="$PROJECT_DIR$/netplus-commonservice-eureka/netplus-commonservice-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-component/netplus-component.iml" filepath="$PROJECT_DIR$/netplus-component/netplus-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-component/netplus-component-api/netplus-component-api.iml" filepath="$PROJECT_DIR$/netplus-component/netplus-component-api/netplus-component-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-component-freemarker-web/netplus-component-freemarker-web.iml" filepath="$PROJECT_DIR$/netplus-component-freemarker-web/netplus-component-freemarker-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-component/netplus-component-service/netplus-component-service.iml" filepath="$PROJECT_DIR$/netplus-component/netplus-component-service/netplus-component-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-config/netplus-config.iml" filepath="$PROJECT_DIR$/netplus-config/netplus-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-excel/netplus-excel.iml" filepath="$PROJECT_DIR$/netplus-excel/netplus-excel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-excel/netplus-excel-api/netplus-excel-api.iml" filepath="$PROJECT_DIR$/netplus-excel/netplus-excel-api/netplus-excel-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-excel/netplus-excel-service/netplus-excel-service.iml" filepath="$PROJECT_DIR$/netplus-excel/netplus-excel-service/netplus-excel-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor.iml" filepath="$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-api/netplus-interface-monitor-api.iml" filepath="$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-api/netplus-interface-monitor-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-service/netplus-interface-monitor-service.iml" filepath="$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-service/netplus-interface-monitor-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-web/netplus-interface-monitor-web.iml" filepath="$PROJECT_DIR$/netplus-interface-monitor/netplus-interface-monitor-web/netplus-interface-monitor-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-job/netplus-job.iml" filepath="$PROJECT_DIR$/netplus-job/netplus-job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-job/netplus-job-admin/netplus-job-admin.iml" filepath="$PROJECT_DIR$/netplus-job/netplus-job-admin/netplus-job-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-job/netplus-job-client/netplus-job-client.iml" filepath="$PROJECT_DIR$/netplus-job/netplus-job-client/netplus-job-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-job/netplus-job-core/netplus-job-core.iml" filepath="$PROJECT_DIR$/netplus-job/netplus-job-core/netplus-job-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp.iml" filepath="$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-api/netplus-joint-erp-api.iml" filepath="$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-api/netplus-joint-erp-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-in-service/netplus-joint-erp-in-service.iml" filepath="$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-in-service/netplus-joint-erp-in-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-out-service/netplus-joint-erp-out-service.iml" filepath="$PROJECT_DIR$/netplus-joint-erp/netplus-joint-erp-out-service/netplus-joint-erp-out-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh.iml" filepath="$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-api/netplus-joint-zkh-api.iml" filepath="$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-api/netplus-joint-zkh-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-in-service/netplus-joint-zkh-in-service.iml" filepath="$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-in-service/netplus-joint-zkh-in-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-out-service/netplus-joint-zkh-out-service.iml" filepath="$PROJECT_DIR$/netplus-joint-zkh/netplus-joint-zkh-out-service/netplus-joint-zkh-out-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-mall/netplus-mall.iml" filepath="$PROJECT_DIR$/netplus-mall/netplus-mall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-mall/netplus-mall-api/netplus-mall-api.iml" filepath="$PROJECT_DIR$/netplus-mall/netplus-mall-api/netplus-mall-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-mall/netplus-mall-service/netplus-mall-service.iml" filepath="$PROJECT_DIR$/netplus-mall/netplus-mall-service/netplus-mall-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-mall/netplus-mall-web/netplus-mall-web.iml" filepath="$PROJECT_DIR$/netplus-mall/netplus-mall-web/netplus-mall-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging.iml" filepath="$PROJECT_DIR$/netplus-messaging/netplus-messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-api/netplus-messaging-api.iml" filepath="$PROJECT_DIR$/netplus-messaging/netplus-messaging-api/netplus-messaging-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-service/netplus-messaging-service.iml" filepath="$PROJECT_DIR$/netplus-messaging/netplus-messaging-service/netplus-messaging-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-messaging/netplus-messaging-web/netplus-messaging-web.iml" filepath="$PROJECT_DIR$/netplus-messaging/netplus-messaging-web/netplus-messaging-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-portal/netplus-portal.iml" filepath="$PROJECT_DIR$/netplus-portal/netplus-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-portal/netplus-portal-web/netplus-portal-web.iml" filepath="$PROJECT_DIR$/netplus-portal/netplus-portal-web/netplus-portal-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-provider/netplus-provider.iml" filepath="$PROJECT_DIR$/netplus-provider/netplus-provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-provider/netplus-provider-api/netplus-provider-api.iml" filepath="$PROJECT_DIR$/netplus-provider/netplus-provider-api/netplus-provider-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-provider/netplus-provider-service/netplus-provider-service.iml" filepath="$PROJECT_DIR$/netplus-provider/netplus-provider-service/netplus-provider-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-provider/netplus-provider-web/netplus-provider-web.iml" filepath="$PROJECT_DIR$/netplus-provider/netplus-provider-web/netplus-provider-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netplus-static/netplus-static.iml" filepath="$PROJECT_DIR$/netplus-static/netplus-static.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/trunk.iml" filepath="$PROJECT_DIR$/.idea/trunk.iml" />
+    </modules>
+  </component>
+</project>

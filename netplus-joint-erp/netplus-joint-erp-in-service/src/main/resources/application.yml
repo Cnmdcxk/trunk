@@ -1,0 +1,49 @@
+server:
+  port: 20033
+
+
+---
+spring:
+  profiles: default
+  application:
+    name: netplus-joint-erp-in-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+---
+spring:
+  profiles: ygmall_test
+  application:
+    name:  netplus-joint-erp-in-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.36.8.14:1521:test11g
+    username: ygmalluser
+    password: ygmallDev
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+---
+spring:
+  profiles: ygmall_prod
+  application:
+    name:  netplus-joint-erp-in-service
+  datasource:
+    driverClassName: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@10.10.5.87:1521/ygdbrv
+    username: ygmalluser
+    password: ygProd246
+mybatis:
+  mapperLocations: classpath:mybatis/xml/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+
+
+

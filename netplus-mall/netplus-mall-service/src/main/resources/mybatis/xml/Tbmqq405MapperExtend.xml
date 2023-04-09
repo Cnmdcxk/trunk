@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq405Mapper">
+  <sql id="getMaterialSql">
+    select t1.*,t3.categoryname,t2.ONELEVELCLANAME
+    from ygmalluser.tbmqq405 t1
+    left join ygmalluser.tbmqq403 t2 on  t1.TWOLEVELCLAPK=t2.TWOLEVELCLAPK
+    left join ygmalluser.tbmqq402 t3 on t3.ONELEVELCLAPK=t2.ONELEVELCLAPK
+    <where>
+
+      <if test="searchKey != null and searchKey != ''">
+        and (
+              t1.twolevelclaname like '%' || #{searchKey} || '%'
+              or t1.matrlno like '%' || #{searchKey} || '%'
+              or t1.matrldesc like '%' || #{searchKey} || '%'
+            )
+      </if>
+
+      <if test="twolevelclanameList != null and twolevelclanameList.size > 0">
+        and t1.twolevelclaname in
+        <foreach collection="twolevelclanameList" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+
+    </where>
+    order by t1.updatedate desc, t1.updatetime desc
+  </sql>
+
+  <select id="getCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1) totalCount
+    from ( <include refid="getMaterialSql" /> ) t
+  </select>
+
+  <select id="getMaterialList" parameterType="java.util.Map" resultType="netplus.mall.api.vo.Tbmqq405Vo">
+    select tt.*
+    from
+    (
+    select t.*, rownum r
+    from ( <include refid="getMaterialSql" /> ) t
+    ) tt
+    where tt.r <include refid="Common.gte" /> and tt.r <include refid="Common.lte"/>
+  </select>
+
+  <select id="getTwoLevelClaNameKV" parameterType="map" resultType="netplus.component.entity.data.KeyValue">
+    select t.twolevelclaname as key, t.twolevelclaname as value
+    from ( <include refid="getMaterialSql" /> ) t
+    group by t.twolevelclaname
+  </select>
+
+  <select id="getMaterialInfo" parameterType="java.util.Map" resultType="netplus.mall.api.vo.Tbmqq405Vo">
+
+    select t1.matrlno, t1.twolevelclaname, t2.onelevelclaname, t3.categoryname
+    from ygmalluser.tbmqq405 t1
+    join ygmalluser.tbmqq403 t2 on t1.twolevelclaname=t2.twolevelclaname
+    join ygmalluser.tbmqq402 t3 on t2.onelevelclaname=t3.onelevelclaname
+    <where>
+      <if test="matrlNo !=null and matrlNo !=''">
+        and t1.matrlno=#{matrlNo}
+      </if>
+      <if test="matrlTm !=null and matrlTm !=''">
+        and t1.matrltm=#{matrlTm}
+      </if>
+      <if test="matrlNoList !=null and matrlNoList.size>0">
+        and t1.matrlno in
+        <foreach collection="matrlNoList" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+    </where>
+
+  </select>
+
+  <select id="getAllMatrlList" resultType="netplus.mall.api.vo.Tbmqq405Vo">
+    select * from ygmalluser.tbmqq405
+  </select>
+
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into ygmalluser.TBMQQ405
+    (
+      matrlno, twolevelclaname, matrldesc,
+      unit, productname, spec,
+      quality, isactive, createuser,
+      createdate, createtime, updateuser,
+      updatedate, updatetime,
+      twolevelclapk, matrltm, matrlid
+    )
+     (
+      <foreach collection="list" item="item" separator="union all">
+        select
+       #{item.matrlno,jdbcType=VARCHAR}, #{item.twolevelclaname,jdbcType=VARCHAR}, #{item.matrldesc,jdbcType=VARCHAR},
+        #{item.unit,jdbcType=VARCHAR}, #{item.productname,jdbcType=VARCHAR}, #{item.spec,jdbcType=VARCHAR},
+        #{item.quality,jdbcType=VARCHAR}, #{item.isactive,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR},
+        #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR},
+        #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR},
+        #{item.twolevelclapk,jdbcType=VARCHAR}, #{item.matrltm,jdbcType=VARCHAR}, #{item.matrlid,jdbcType=VARCHAR}
+        from dual
+      </foreach>
+      )
+  </insert>
+
+  <select id="getMatrlNo" parameterType="map" resultType="netplus.mall.api.pojo.ygmalluser.Tbmqq405">
+    select matrltm,matrlid,matrlno
+    from ygmalluser.tbmqq405
+    where   matrltm=#{matrlTm}
+  </select>
+
+
+  <select id="getMatrlByIdsAndSupplierNo" parameterType="map" resultType="netplus.mall.api.vo.Tbmqq405Vo">
+
+    select
+      t5.matrlid,
+      t5.twolevelclaname,
+      t5.twolevelclapk,
+      t3.onelevelclapk,
+      t3.onelevelclaname,
+      t2.categoryname,
+      t2.categorypk,
+      t6.thrplatgoodno
+
+    from ygmalluser.tbmqq405 t5
+    join ygmalluser.tbmqq403 t3 on t5.twolevelclapk=t3.twolevelclapk
+    join ygmalluser.tbmqq402 t2 on t3.onelevelclapk=t2.onelevelclapk
+    left join ygmalluser.tbmqq406 t6 on t6.supplierno=#{supplierNo} and t5.matrlid=t6.matrlid and t6.isactive='Y'
+
+    where t5.matrlid in <foreach collection="matrlIdList" item="item" open="(" separator="," close=")">#{item}</foreach>
+
+
+  </select>
+
+
+  <delete id="deleteAll">
+    delete from ygmalluser.tbmqq405
+  </delete>
+
+  <select id="selectTwoClaname" parameterType="map" resultType="int">
+    select  count(1)
+    from ygmalluser.tbmqq405
+    where twolevelclaname=#{twolevelclaname}
+  </select>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="netplus.mall.service.dao.Tbmqq435Mapper">
+    <select id="getSupplierGoodPicList" resultType="netplus.mall.api.vo.Tbmqq435Vo">
+
+        select t1.*, t2.matrltm
+        from ygmalluser.tbmqq435 t1
+        join ygmalluser.tbmqq430 t2 on t1.goodid=t2.goodid and t1.supplierno=t2.supplierno
+        where
+
+          t1.supplierno=#{supplierNo}
+
+          <if test="goodId !=null and goodId !=''">
+              and t1.goodid=#{goodId}
+          </if>
+
+          <if test="goodIdList !=null and goodIdList.size>0">
+              and t1.goodid in
+              <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+
+    </select>
+
+
+    <insert id="batchInsert" parameterType="java.util.ArrayList">
+        insert into ygmalluser.TBMQQ435
+        (
+            supplierno, goodid, picturename,
+            pictureurl, picturenum, createuser,
+            createdate, createtime, updateuser,
+            updatedate, updatetime
+        )
+        (
+            <foreach collection="list" item="item" separator="union all">
+                select
+                    #{item.supplierno,jdbcType=VARCHAR}, #{item.goodid,jdbcType=VARCHAR}, #{item.picturename,jdbcType=VARCHAR},
+                    #{item.pictureurl,jdbcType=VARCHAR}, #{item.picturenum,jdbcType=VARCHAR}, #{item.createuser,jdbcType=VARCHAR},
+                    #{item.createdate,jdbcType=VARCHAR}, #{item.createtime,jdbcType=VARCHAR}, #{item.updateuser,jdbcType=VARCHAR},
+                    #{item.updatedate,jdbcType=VARCHAR}, #{item.updatetime,jdbcType=VARCHAR}
+                from dual
+            </foreach>
+        )
+    </insert>
+
+    <delete id="delGoodPic" parameterType="map">
+
+        delete
+        from ygmalluser.tbmqq435
+        <where>
+
+            supplierno=#{supplierNo}
+
+            <if test="goodIdList !=null and goodIdList.size>0">
+                and goodid in
+                <foreach collection="goodIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+
+            <if test="goodId !=null and goodId !=''">
+                and goodid=#{goodId}
+            </if>
+        </where>
+
+    </delete>
+
+    <select id="getGoodPicList" resultType="netplus.mall.api.vo.Tbmqq435Vo">
+        select *
+        from ygmalluser.tbmqq435
+        where goodid=#{goodId}
+    </select>
+
+</mapper>
